@@ -93,6 +93,7 @@ services:
       - /dev/shm:/dev/shm  # Partage de mémoire pour Playwright
     deploy:
       replicas: 3
+      endpoint_mode: dnsrr
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
       interval: 30s

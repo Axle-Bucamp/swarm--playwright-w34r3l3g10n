@@ -167,7 +167,7 @@ main() {
     
     # Démarrer le gestionnaire WARP
     log "Démarrage du gestionnaire WARP..."
-    "$WARP_MANAGER" &
+    "$WARP_MANAGER" -y &
     WARP_MANAGER_PID=$!
     
     # Attendre un peu pour vérifier que le démarrage s'est bien passé

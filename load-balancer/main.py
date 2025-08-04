@@ -20,6 +20,9 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from contextlib import asynccontextmanager
 
+import socket
+from httpx import AsyncClient
+
 # Configuration
 REDIS_URL = os.getenv("REDIS_URL", "redis://redis:6379")
 AGENT_DISCOVERY_INTERVAL = int(os.getenv("AGENT_DISCOVERY_INTERVAL", "30"))
@@ -40,7 +43,7 @@ class Agent(BaseModel):
     url: str
     status: str = "unknown"
     load: int = 0
-    last_seen: datetime
+    last_seen: datetime = datetime.now()
     capabilities: List[str] = []
     performance_metrics: Dict[str, Any] = {}
 
@@ -96,63 +99,78 @@ class LoadBalancer:
             await self.redis_client.close()
             
         await self.http_client.aclose()
-        
+
+    async def resolve_service_ips(self, hostname: str) -> list[str]:
+        """Résout les adresses IP de toutes les répliques d'un service Docker DNSRR"""
+        try:
+            return socket.gethostbyname_ex(hostname)[2]
+        except socket.gaierror as e:
+            logger.warning(f"Échec de la résolution DNS pour {hostname}: {e}")
+            return []
+
+    async def check_agent(self, ip: str, port: int, service_name: str, client) -> Agent | None:
+        """Interroge une réplique d'agent à l'IP donnée"""
+        url = f"http://{ip}:{port}/health"
+        try:
+            response = await client.get(url, timeout=5.0)
+            if response.status_code == 200:
+                agent_info = response.json()
+                agent_id = agent_info.get("agent_id", f"{service_name}-{ip}")
+                return Agent(
+                    id=agent_id,
+                    url=url,
+                    status="healthy",
+                    last_seen=datetime.now(),
+                    capabilities=agent_info.get("capabilities", []),
+                    performance_metrics=agent_info.get("metrics", {})
+                )
+        except Exception as e:
+            logger.warning(f"Échec de connexion à {url}: {e}")
+        return None
+
     async def discover_agents(self):
-        """Découvre les agents disponibles via Docker Swarm DNS"""
+        """Découvre les agents disponibles via Docker Swarm DNSRR"""
         logger.info("Découverte des agents...")
+
+        self.agents = {}  # reset before each discovery
+        service_names = [
+            "agent",
+            #"swarm-playwright-agent",
+        ]
+        discovered_agents = []
+        client = self.http_client
         
-        # Dans Docker Swarm, les services sont accessibles via DNS
-        # On essaie de contacter les agents sur les ports standards
-        potential_agents = []
-        
-        # Agents standards (répliques du service agent)
-        for i in range(1, 11):  # Jusqu'à 10 agents
-            agent_urls = [
-                f"http://agent-{i}:8000",
-                f"http://swarm-playwright-agent-{i}:8000",
-                f"http://mcp-agent-{i}:8000"
-            ]
-            
-            for url in agent_urls:
-                try:
-                    response = await self.http_client.get(f"{url}/health", timeout=5.0)
-                    if response.status_code == 200:
-                        agent_info = response.json()
-                        agent_id = agent_info.get("agent_id", f"agent-{i}")
-                        
-                        agent = Agent(
-                            id=agent_id,
-                            url=url,
-                            status="healthy",
-                            last_seen=datetime.now(),
-                            capabilities=agent_info.get("capabilities", []),
-                            performance_metrics=agent_info.get("metrics", {})
-                        )
-                        
-                        self.agents[agent_id] = agent
-                        logger.info(f"Agent découvert: {agent_id} @ {url}")
-                        break
-                        
-                except Exception as e:
-                    logger.debug(f"Agent non disponible à {url}: {e}")
-                    continue
-                    
-        # Mise à jour dans Redis
+        tasks = []
+        for service_name in service_names:
+            ips = await self.resolve_service_ips(service_name)
+            logger.info(f"discovered ips: {ips}")
+            logger.info(f"{len(ips)} IPs résolues pour {service_name}: {ips}")
+            for ip in ips:
+                tasks.append(self.check_agent(ip, port=8000, service_name=service_name, client=client))
+
+        results = await asyncio.gather(*tasks)
+        for agent in results:
+            if agent:
+                self.agents[agent.id] = agent
+                discovered_agents.append(agent.id)
+                logger.info(f"Agent découvert: {agent.id} @ {agent.url}")
+
+        # Sauvegarde dans Redis
         if self.redis_client:
             try:
                 agents_data = {
-                    agent_id: agent.dict() 
+                    agent_id: agent.model_dump(mode="json")
                     for agent_id, agent in self.agents.items()
                 }
                 await self.redis_client.set(
-                    "agents", 
+                    "agents",
                     json.dumps(agents_data, default=str),
-                    ex=300  # Expire après 5 minutes
+                    ex=300  # expire in 5 minutes
                 )
             except Exception as e:
                 logger.error(f"Erreur sauvegarde agents Redis: {e}")
-                
-        logger.info(f"Découverte terminée: {len(self.agents)} agents trouvés")
+
+        logger.info(f"Découverte terminée: {len(self.agents)} agent(s) trouvé(s)")
         
     async def health_check_agents(self):
         """Vérifie la santé des agents"""
