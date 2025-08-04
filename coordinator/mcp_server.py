@@ -12,6 +12,8 @@ import random
 import time
 from typing import Any, Dict, List, Optional, Sequence
 from urllib.parse import urlparse
+from pydantic import BaseModel
+import datetime
 
 import httpx
 from mcp.server import Server
@@ -25,6 +27,29 @@ from mcp.types import (
     TextContent,
     Tool,
 )
+
+class Agent(BaseModel):
+    id: str
+    url: str
+    status: str = "unknown"
+    load: int = 0
+    last_seen: datetime
+    capabilities: List[str] = []
+    performance_metrics: Dict[str, Any] = {}
+
+class Task(BaseModel):
+    id: str
+    type: str
+    payload: Dict[str, Any]
+    priority: int = 1
+    timeout: int = 30
+    retry_count: int = 0
+    max_retries: int = 3
+
+class ExecuteRequest(BaseModel):
+    agent_id: Optional[str] = None
+    task: Dict[str, Any]
+    strategy: str = "auto"
 
 # Configuration
 AGENT_POOL_SIZE = int(os.getenv("AGENT_POOL_SIZE", "5"))
@@ -86,15 +111,15 @@ class SwarmCoordinator:
         # Sélection basée sur la charge
         return min(available_agents, key=lambda x: x.get("load", 0))
         
-    async def execute_task(self, task: Dict[str, Any]) -> Dict[str, Any]:
+    async def execute_task(self, task: Task) -> Dict[str, Any]:
         """Exécute une tâche sur un agent sélectionné"""
-        agent = await self.select_agent(task.get("type", "default"))
+        agent = await self.select_agent(task.type)
         
         if not agent:
             return {
                 "success": False,
                 "error": "Aucun agent disponible",
-                "task_id": task.get("id")
+                "task_id": task.id
             }
             
         try:
@@ -109,14 +134,14 @@ class SwarmCoordinator:
             
             if response.status_code == 200:
                 result = response.json()
-                logger.info(f"Tâche {task.get('id')} exécutée avec succès sur l'agent {agent['id']}")
+                logger.info(f"Tâche {task.id} exécutée avec succès sur l'agent {agent['id']}")
                 return result
             else:
                 logger.error(f"Erreur lors de l'exécution de la tâche: {response.status_code}")
                 return {
                     "success": False,
                     "error": f"Erreur HTTP {response.status_code}",
-                    "task_id": task.get("id")
+                    "task_id": task.id
                 }
                 
         except Exception as e:
@@ -124,7 +149,7 @@ class SwarmCoordinator:
             return {
                 "success": False,
                 "error": str(e),
-                "task_id": task.get("id")
+                "task_id": task.id
             }
 
 # Instance globale du coordinateur
@@ -254,7 +279,16 @@ async def handle_list_tools() -> ListToolsResult:
                     "properties": {
                         "task": {
                             "type": "object",
-                            "description": "Tâche à exécuter"
+                            "description": """
+                                    Dict Tâche à exécuter class Task(BaseModel):
+                                        id: str
+                                        type: str
+                                        payload: Dict[str, Any]
+                                        priority: int = 1
+                                        timeout: int = 30
+                                        retry_count: int = 0
+                                        max_retries: int = 3
+                            """
                         },
                         "replicas": {
                             "type": "integer",

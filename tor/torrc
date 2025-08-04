@@ -57,12 +57,6 @@ DirPort 0
 BridgeRelay 0
 ExitRelay 0
 
-# Configuration de l'isolation des circuits
-IsolateClientAuth 1
-IsolateClientProtocol 1
-IsolateDestAddr 1
-IsolateDestPort 1
-
 # Optimisations pour l'automatisation
 DisableDebuggerAttachment 0
 SafeLogging 1
@@ -81,11 +75,6 @@ ClientRejectInternalAddresses 1
 RunAsDaemon 0
 PidFile /var/lib/tor/tor.pid
 
-# Rotation des circuits pour éviter la corrélation
-MaxCircuitDirtiness 300
-NewCircuitPeriod 15
-MaxOnionsPending 10
-
 # Configuration spéciale pour les tests de charge
 EnforceDistinctSubnets 1
 ClientDNSRejectInternalAddresses 1
@@ -97,8 +86,4 @@ HTTPSProxy warp:3128
 # Configuration de l'entropie
 HardwareAccel 1
 DisableAllSwap 1
-
-# Logging détaillé pour le debug (à désactiver en production)
-SafeLogging 0
-LogTimeGranularity 1
 

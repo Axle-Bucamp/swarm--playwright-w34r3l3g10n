@@ -47,21 +47,15 @@ check_privileges() {
 # Configuration du système
 setup_system() {
     log "Configuration du système..."
-    
-    # Créer les répertoires nécessaires
+
     mkdir -p /var/log/warp /etc/wireguard /opt/warp
-    
-    # Activer le forwarding IP
-    echo 1 > /proc/sys/net/ipv4/ip_forward
-    echo 1 > /proc/sys/net/ipv6/conf/all/forwarding 2>/dev/null || true
-    
-    # Configurer les paramètres réseau pour WireGuard
+
+    # Persist only, let Docker set it
     echo 'net.ipv4.ip_forward = 1' >> /etc/sysctl.conf 2>/dev/null || true
     echo 'net.ipv6.conf.all.forwarding = 1' >> /etc/sysctl.conf 2>/dev/null || true
-    
-    # Charger le module WireGuard si nécessaire
+
     modprobe wireguard 2>/dev/null || log "Module WireGuard déjà chargé ou intégré au noyau"
-    
+
     log "Système configuré"
 }
 

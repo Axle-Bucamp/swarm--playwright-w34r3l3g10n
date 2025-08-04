@@ -25,7 +25,7 @@ RUN mkdir -p /etc/wireguard /var/log/warp /opt/warp \
 # Copier les scripts et configurations
 COPY entrypoint.sh /entrypoint.sh
 COPY warp-manager.sh /opt/warp/warp-manager.sh
-COPY wgcf-profile.conf /etc/wireguard/wgcf.conf.template
+COPY wgcf-profile.conf.template /etc/wireguard/wgcf.conf.template
 
 # Rendre les scripts exécutables
 RUN chmod +x /entrypoint.sh /opt/warp/warp-manager.sh

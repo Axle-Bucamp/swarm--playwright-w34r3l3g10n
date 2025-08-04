@@ -23,7 +23,7 @@ services:
       dockerfile: Dockerfile
     restart: unless-stopped
     ports:
-      - "8001:8001"
+      - "8010:8001"
     environment:
       - REDIS_URL=redis://redis:6379
       - LOAD_BALANCER_URL=http://load-balancer:8080
@@ -135,6 +135,7 @@ services:
       - NET_ADMIN
     sysctls:
       - net.ipv4.conf.all.src_valid_mark=1
+      - net.ipv6.conf.all.forwarding=1
       - net.ipv4.ip_forward=1
     deploy:
       replicas: 3
@@ -143,7 +144,7 @@ services:
       interval: 60s
       timeout: 30s
       retries: 3
-
+      
   # Monitoring avec Prometheus (optionnel pour le développement)
   prometheus:
     image: prom/prometheus:latest
@@ -188,7 +189,7 @@ networks:
     driver: bridge
     ipam:
       config:
-        - subnet: 172.20.0.0/16
+        - subnet: 173.21.0.0/16
 
 volumes:
   redis_data:
