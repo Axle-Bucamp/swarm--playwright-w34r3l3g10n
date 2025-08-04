@@ -23,7 +23,6 @@ GuardLifetime 30 days
 NewCircuitPeriod 30
 MaxCircuitDirtiness 600
 CircuitBuildTimeout 60
-CircuitIdleTimeout 3600
 
 # Optimisations de bande passante
 RelayBandwidthRate 0
@@ -33,7 +32,6 @@ MaxAdvertisedBandwidth 1 GB
 # Configuration des connexions
 ConnLimit 1000
 MaxClientCircuitsPending 32
-MaxOnionsPending 100
 
 # Sécurité renforcée
 StrictNodes 1
@@ -60,7 +58,6 @@ ExitRelay 0
 # Optimisations pour l'automatisation
 DisableDebuggerAttachment 0
 SafeLogging 1
-WarnUnsafeSocks 0
 
 # Configuration des timeouts
 SocksTimeout 120
@@ -80,7 +77,6 @@ EnforceDistinctSubnets 1
 ClientDNSRejectInternalAddresses 1
 
 # Optimisations réseau
-TCPProxy socks5 warp:1080
 HTTPSProxy warp:3128
 
 # Configuration de l'entropie

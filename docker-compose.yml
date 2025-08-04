@@ -1,3 +1,4 @@
+
 services:
   # Redis pour la coordination et les queues
   redis:

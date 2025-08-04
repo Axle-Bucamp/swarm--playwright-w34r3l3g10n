@@ -58,7 +58,7 @@ RUN useradd -m -u 1000 agent && \
 
 # Créer les répertoires nécessaires
 RUN mkdir -p /tmp/screenshots /tmp/downloads && \
-    chown -R agent:agent /tmp/screenshots /tmp/downloads
+    chown -R agent:agent /tmp/screenshots /tmp/downloads /tmp
 
 USER agent
 
@@ -78,7 +78,7 @@ HEALTHCHECK --interval=30s --timeout=10s --start-period=30s --retries=3 \
 COPY entrypoint.sh /entrypoint.sh
 USER root
 RUN chmod +x /entrypoint.sh
-USER agent
+USER root
 
 # Point d'entrée
 ENTRYPOINT ["/entrypoint.sh"]

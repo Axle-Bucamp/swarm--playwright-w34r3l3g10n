@@ -535,7 +535,7 @@ class PlaywrightAgent:
             
             if amount is None:
                 # Scroll naturel basé sur le profil
-                amount = random.randint(100, 400) * self.profile.scroll_speed
+                amount = int(random.randint(100, 400) * self.profile.scroll_speed)
                 
             if direction == "up":
                 amount = -amount

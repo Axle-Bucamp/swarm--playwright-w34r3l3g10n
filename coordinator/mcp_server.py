@@ -33,7 +33,7 @@ class Agent(BaseModel):
     url: str
     status: str = "unknown"
     load: int = 0
-    last_seen: datetime
+    last_seen: datetime.date
     capabilities: List[str] = []
     performance_metrics: Dict[str, Any] = {}
 
@@ -119,7 +119,7 @@ class SwarmCoordinator:
             return {
                 "success": False,
                 "error": "Aucun agent disponible",
-                "task_id": task.get("id")
+                "task_id": task["id"]
             }
             
         try:
@@ -134,14 +134,14 @@ class SwarmCoordinator:
             
             if response.status_code == 200:
                 result = response.json()
-                logger.info(f"Tâche {task.get("id")} exécutée avec succès sur l'agent {agent['id']}")
+                logger.info( f"Tâche exécutée avec succès sur l'agent " )
                 return result
             else:
                 logger.error(f"Erreur lors de l'exécution de la tâche: {response.status_code}")
                 return {
                     "success": False,
                     "error": f"Erreur HTTP {response.status_code}",
-                    "task_id": task.get("id")
+                    "task_id": task["id"]
                 }
                 
         except Exception as e:
@@ -149,7 +149,7 @@ class SwarmCoordinator:
             return {
                 "success": False,
                 "error": str(e),
-                "task_id": task.get("id")
+                "task_id": task["id"]
             }
 
 # Instance globale du coordinateur
@@ -522,6 +522,37 @@ async def main():
     """Point d'entrée principal"""
     # Initialiser le coordinateur
     await coordinator.initialize()
+
+    from mcp.server import NotificationOptions
+
+    experimental_capabilities = {
+        "playwright": {
+            "trace": True,
+            "record_video": False,
+            "screenshot_on_failure": True
+        },
+        "automation": {
+            "headless": True,
+            "proxy_enabled": True,
+            "custom_user_agent": "swarmbot/1.0"
+        },
+        "diagnostics": {
+            "cpu_usage": True,
+            "memory_usage": True,
+            "network_debug": False
+        },
+        "tools_changed": {
+            "notify_on_tool_addition": True,
+            "notify_on_tool_removal": True,
+            "notify_on_tool_update": True
+        },
+        "settings": {
+            "default_timeout_ms": 30000,
+            "max_retries": 3,
+            "log_verbosity": "debug",
+            "max_concurrent_sessions": 5
+        }
+    }
     
     # Démarrer le serveur MCP
     async with stdio_server() as (read_stream, write_stream):
@@ -532,8 +563,8 @@ async def main():
                 server_name="swarm-playwright-w34r3l3g10n",
                 server_version="1.0.0",
                 capabilities=server.get_capabilities(
-                    notification_options=None,
-                    experimental_capabilities=None,
+                    notification_options=NotificationOptions(),
+                    experimental_capabilities=experimental_capabilities,
                 ),
             ),
         )
