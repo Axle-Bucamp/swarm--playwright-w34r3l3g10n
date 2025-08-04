@@ -111,15 +111,15 @@ class SwarmCoordinator:
         # Sélection basée sur la charge
         return min(available_agents, key=lambda x: x.get("load", 0))
         
-    async def execute_task(self, task: Task) -> Dict[str, Any]:
+    async def execute_task(self, task: Dict[str, Any]) -> Dict[str, Any]:
         """Exécute une tâche sur un agent sélectionné"""
-        agent = await self.select_agent(task.type)
+        agent = await self.select_agent(str(task.get("type")))
         
         if not agent:
             return {
                 "success": False,
                 "error": "Aucun agent disponible",
-                "task_id": task.id
+                "task_id": task.get("id")
             }
             
         try:
@@ -134,14 +134,14 @@ class SwarmCoordinator:
             
             if response.status_code == 200:
                 result = response.json()
-                logger.info(f"Tâche {task.id} exécutée avec succès sur l'agent {agent['id']}")
+                logger.info(f"Tâche {task.get("id")} exécutée avec succès sur l'agent {agent['id']}")
                 return result
             else:
                 logger.error(f"Erreur lors de l'exécution de la tâche: {response.status_code}")
                 return {
                     "success": False,
                     "error": f"Erreur HTTP {response.status_code}",
-                    "task_id": task.id
+                    "task_id": task.get("id")
                 }
                 
         except Exception as e:
@@ -149,7 +149,7 @@ class SwarmCoordinator:
             return {
                 "success": False,
                 "error": str(e),
-                "task_id": task.id
+                "task_id": task.get("id")
             }
 
 # Instance globale du coordinateur
