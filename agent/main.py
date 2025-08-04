@@ -189,7 +189,7 @@ class AgentManager:
             else:
                 self.metrics["tasks_failed"] += 1
                 
-            self.metrics["avg_response_time"] = (
+            self.metrics["avg_response_time"] = int(
                 (self.metrics["avg_response_time"] * (self.metrics["tasks_completed"] + self.metrics["tasks_failed"] - 1) + execution_time) /
                 (self.metrics["tasks_completed"] + self.metrics["tasks_failed"])
             )

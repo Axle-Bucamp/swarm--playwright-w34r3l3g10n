@@ -48,7 +48,7 @@ class Task:
     payload: Dict[str, Any]
     priority: TaskPriority = TaskPriority.NORMAL
     status: TaskStatus = TaskStatus.PENDING
-    created_at: float = None
+    created_at: float = 0
     assigned_at: Optional[float] = None
     started_at: Optional[float] = None
     completed_at: Optional[float] = None
@@ -56,9 +56,9 @@ class Task:
     retry_count: int = 0
     max_retries: int = MAX_RETRIES
     timeout: int = TASK_TIMEOUT
-    dependencies: List[str] = None
-    tags: List[str] = None
-    metadata: Dict[str, Any] = None
+    dependencies: List[str] = []
+    tags: List[str] = []
+    metadata: Dict[str, Any] = {}
     result: Optional[Dict[str, Any]] = None
     error: Optional[str] = None
     
