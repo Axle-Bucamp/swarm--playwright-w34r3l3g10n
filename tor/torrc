@@ -1,0 +1,104 @@
+# Configuration Tor pour Swarm Playwright W34R3L3G10N
+# Optimisée pour l'anonymat et la performance
+
+# Répertoires de données
+DataDirectory /var/lib/tor
+Log notice file /var/log/tor/tor.log
+Log notice stdout
+
+# Configuration SOCKS
+SOCKSPort 0.0.0.0:9050
+SOCKSPolicy accept *
+
+# Configuration du client
+ClientOnly 1
+ClientUseIPv6 0
+
+# Optimisations de performance
+NumEntryGuards 8
+NumDirectoryGuards 3
+GuardLifetime 30 days
+
+# Configuration des circuits
+NewCircuitPeriod 30
+MaxCircuitDirtiness 600
+CircuitBuildTimeout 60
+CircuitIdleTimeout 3600
+
+# Optimisations de bande passante
+RelayBandwidthRate 0
+RelayBandwidthBurst 0
+MaxAdvertisedBandwidth 1 GB
+
+# Configuration des connexions
+ConnLimit 1000
+MaxClientCircuitsPending 32
+MaxOnionsPending 100
+
+# Sécurité renforcée
+StrictNodes 1
+ExitNodes {us},{ca},{gb},{de},{fr},{nl},{se},{ch}
+ExcludeNodes {cn},{ru},{ir},{kp},{sy}
+ExcludeExitNodes {cn},{ru},{ir},{kp},{sy}
+
+# Éviter les nœuds malveillants connus
+ExcludeNodes BadExit
+ExcludeExitNodes BadExit
+
+# Configuration DNS
+DNSPort 0
+AutomapHostsOnResolve 0
+AutomapHostsSuffixes .onion,.exit
+
+# Désactiver les services non nécessaires
+ControlPort 0
+ORPort 0
+DirPort 0
+BridgeRelay 0
+ExitRelay 0
+
+# Configuration de l'isolation des circuits
+IsolateClientAuth 1
+IsolateClientProtocol 1
+IsolateDestAddr 1
+IsolateDestPort 1
+
+# Optimisations pour l'automatisation
+DisableDebuggerAttachment 0
+SafeLogging 1
+WarnUnsafeSocks 0
+
+# Configuration des timeouts
+SocksTimeout 120
+CircuitStreamTimeout 60
+LearnCircuitBuildTimeout 1
+
+# Éviter la détection
+GeoIPExcludeUnknown 1
+ClientRejectInternalAddresses 1
+
+# Configuration pour Docker
+RunAsDaemon 0
+PidFile /var/lib/tor/tor.pid
+
+# Rotation des circuits pour éviter la corrélation
+MaxCircuitDirtiness 300
+NewCircuitPeriod 15
+MaxOnionsPending 10
+
+# Configuration spéciale pour les tests de charge
+EnforceDistinctSubnets 1
+ClientDNSRejectInternalAddresses 1
+
+# Optimisations réseau
+TCPProxy socks5 warp:1080
+HTTPSProxy warp:3128
+
+# Configuration de l'entropie
+HardwareAccel 1
+DisableAllSwap 1
+
+# Logging détaillé pour le debug (à désactiver en production)
+SafeLogging 0
+LogTimeGranularity 1
+

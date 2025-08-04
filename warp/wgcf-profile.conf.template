@@ -1,0 +1,14 @@
+# Template de configuration Cloudflare WARP
+# Ce fichier sera généré dynamiquement par wgcf
+
+[Interface]
+PrivateKey = WARP_PRIVATE_KEY_PLACEHOLDER
+Address = WARP_ADDRESS_PLACEHOLDER
+DNS = 1.1.1.1, 1.0.0.1
+MTU = 1280
+
+[Peer]
+PublicKey = bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=
+AllowedIPs = 0.0.0.0/0
+Endpoint = engage.cloudflareclient.com:2408
+

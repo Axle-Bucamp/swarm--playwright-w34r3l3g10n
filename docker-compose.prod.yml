@@ -1,0 +1,385 @@
+version: '3.9'
+
+services:
+  # Redis pour la coordination et les queues
+  redis:
+    image: redis:7-alpine
+    command: redis-server --appendonly yes --maxmemory 2gb --maxmemory-policy allkeys-lru
+    volumes:
+      - redis_data:/data
+    networks:
+      - swarm_net
+    deploy:
+      replicas: 1
+      placement:
+        constraints:
+          - node.role == manager
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+      resources:
+        limits:
+          memory: 2G
+          cpus: '1.0'
+        reservations:
+          memory: 1G
+          cpus: '0.5'
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  # Coordinateur MCP principal
+  coordinator:
+    image: swarm-playwright/coordinator:latest
+    ports:
+      - "8001:8001"
+    environment:
+      - REDIS_URL=redis://redis:6379
+      - LOAD_BALANCER_URL=http://load-balancer:8080
+      - LOG_LEVEL=INFO
+      - AGENT_POOL_SIZE=10
+    networks:
+      - swarm_net
+    deploy:
+      replicas: 2
+      placement:
+        constraints:
+          - node.role == manager
+      restart_policy:
+        condition: on-failure
+        delay: 10s
+        max_attempts: 3
+      resources:
+        limits:
+          memory: 1G
+          cpus: '1.0'
+        reservations:
+          memory: 512M
+          cpus: '0.5'
+      update_config:
+        parallelism: 1
+        delay: 10s
+        failure_action: rollback
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8001/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Load Balancer
+  load-balancer:
+    image: swarm-playwright/load-balancer:latest
+    ports:
+      - "8080:8080"
+    environment:
+      - REDIS_URL=redis://redis:6379
+      - LOG_LEVEL=INFO
+      - AGENT_DISCOVERY_INTERVAL=30
+      - HEALTH_CHECK_INTERVAL=10
+      - AGENT_TIMEOUT=60
+    networks:
+      - swarm_net
+    deploy:
+      replicas: 3
+      placement:
+        max_replicas_per_node: 1
+      restart_policy:
+        condition: on-failure
+        delay: 10s
+        max_attempts: 3
+      resources:
+        limits:
+          memory: 1G
+          cpus: '1.0'
+        reservations:
+          memory: 512M
+          cpus: '0.5'
+      update_config:
+        parallelism: 1
+        delay: 10s
+        failure_action: rollback
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Agents Playwright (scalables)
+  agent:
+    image: swarm-playwright/agent:latest
+    environment:
+      - TOR_PROXY_HOST=tor
+      - TOR_PROXY_PORT=9050
+      - HEADLESS=true
+      - LOG_LEVEL=INFO
+      - MAX_CONCURRENT_TASKS=5
+      - TASK_TIMEOUT=600
+    networks:
+      - swarm_net
+    volumes:
+      - /dev/shm:/dev/shm
+    deploy:
+      replicas: 10
+      placement:
+        max_replicas_per_node: 2
+      restart_policy:
+        condition: on-failure
+        delay: 15s
+        max_attempts: 3
+      resources:
+        limits:
+          memory: 2G
+          cpus: '2.0'
+        reservations:
+          memory: 1G
+          cpus: '1.0'
+      update_config:
+        parallelism: 2
+        delay: 30s
+        failure_action: rollback
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Conteneurs Tor
+  tor:
+    image: swarm-playwright/tor:latest
+    environment:
+      - CIRCUIT_ROTATION_INTERVAL=180
+      - ENABLE_CIRCUIT_ROTATION=true
+      - ENABLE_MONITORING=true
+    networks:
+      - swarm_net
+    deploy:
+      replicas: 10
+      placement:
+        max_replicas_per_node: 2
+      restart_policy:
+        condition: on-failure
+        delay: 20s
+        max_attempts: 3
+      resources:
+        limits:
+          memory: 512M
+          cpus: '0.5'
+        reservations:
+          memory: 256M
+          cpus: '0.25'
+      update_config:
+        parallelism: 3
+        delay: 20s
+        failure_action: rollback
+    healthcheck:
+      test: ["CMD", "timeout", "30", "curl", "--socks5-hostname", "127.0.0.1:9050", "-s", "http://httpbin.org/ip"]
+      interval: 120s
+      timeout: 60s
+      retries: 2
+
+  # Conteneurs WARP
+  warp:
+    image: swarm-playwright/warp:latest
+    environment:
+      - ENABLE_SOCKS_PROXY=true
+      - ENABLE_HTTP_PROXY=true
+      - SOCKS_PORT=1080
+      - HTTP_PORT=3128
+    networks:
+      - swarm_net
+    cap_add:
+      - NET_ADMIN
+    sysctls:
+      - net.ipv4.conf.all.src_valid_mark=1
+      - net.ipv4.ip_forward=1
+    deploy:
+      replicas: 10
+      placement:
+        max_replicas_per_node: 2
+      restart_policy:
+        condition: on-failure
+        delay: 30s
+        max_attempts: 3
+      resources:
+        limits:
+          memory: 256M
+          cpus: '0.5'
+        reservations:
+          memory: 128M
+          cpus: '0.25'
+      update_config:
+        parallelism: 2
+        delay: 30s
+        failure_action: rollback
+    healthcheck:
+      test: ["CMD", "timeout", "30", "curl", "--interface", "wgcf", "-s", "http://httpbin.org/ip"]
+      interval: 120s
+      timeout: 60s
+      retries: 2
+
+  # Monitoring avec Prometheus
+  prometheus:
+    image: prom/prometheus:latest
+    ports:
+      - "9090:9090"
+    volumes:
+      - prometheus_config:/etc/prometheus
+      - prometheus_data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/etc/prometheus/console_libraries'
+      - '--web.console.templates=/etc/prometheus/consoles'
+      - '--storage.tsdb.retention.time=720h'
+      - '--web.enable-lifecycle'
+      - '--web.enable-admin-api'
+    networks:
+      - swarm_net
+    deploy:
+      replicas: 1
+      placement:
+        constraints:
+          - node.role == manager
+      restart_policy:
+        condition: on-failure
+        delay: 10s
+        max_attempts: 3
+      resources:
+        limits:
+          memory: 2G
+          cpus: '1.0'
+        reservations:
+          memory: 1G
+          cpus: '0.5'
+
+  # Grafana pour la visualisation
+  grafana:
+    image: grafana/grafana:latest
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD_FILE=/run/secrets/grafana_admin_password
+      - GF_USERS_ALLOW_SIGN_UP=false
+      - GF_INSTALL_PLUGINS=grafana-clock-panel,grafana-simple-json-datasource
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - grafana_config:/etc/grafana/provisioning
+    secrets:
+      - grafana_admin_password
+    networks:
+      - swarm_net
+    deploy:
+      replicas: 1
+      placement:
+        constraints:
+          - node.role == manager
+      restart_policy:
+        condition: on-failure
+        delay: 10s
+        max_attempts: 3
+      resources:
+        limits:
+          memory: 1G
+          cpus: '0.5'
+        reservations:
+          memory: 512M
+          cpus: '0.25'
+
+  # Exporteur de métriques pour les agents
+  node-exporter:
+    image: prom/node-exporter:latest
+    ports:
+      - "9100:9100"
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /:/rootfs:ro
+    command:
+      - '--path.procfs=/host/proc'
+      - '--path.rootfs=/rootfs'
+      - '--path.sysfs=/host/sys'
+      - '--collector.filesystem.mount-points-exclude=^/(sys|proc|dev|host|etc)($$|/)'
+    networks:
+      - swarm_net
+    deploy:
+      mode: global
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+      resources:
+        limits:
+          memory: 128M
+          cpus: '0.2'
+        reservations:
+          memory: 64M
+          cpus: '0.1'
+
+  # Reverse proxy Nginx (optionnel)
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - nginx_config:/etc/nginx/conf.d
+      - nginx_ssl:/etc/nginx/ssl
+    networks:
+      - swarm_net
+    deploy:
+      replicas: 2
+      placement:
+        max_replicas_per_node: 1
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+      resources:
+        limits:
+          memory: 256M
+          cpus: '0.5'
+        reservations:
+          memory: 128M
+          cpus: '0.25'
+      update_config:
+        parallelism: 1
+        delay: 10s
+        failure_action: rollback
+
+networks:
+  swarm_net:
+    driver: overlay
+    attachable: true
+    ipam:
+      config:
+        - subnet: 172.30.0.0/16
+
+volumes:
+  redis_data:
+    driver: local
+  prometheus_data:
+    driver: local
+  prometheus_config:
+    driver: local
+  grafana_data:
+    driver: local
+  grafana_config:
+    driver: local
+  nginx_config:
+    driver: local
+  nginx_ssl:
+    driver: local
+
+secrets:
+  grafana_admin_password:
+    external: true
+
+configs:
+  prometheus_config:
+    external: true
+  grafana_dashboards:
+    external: true
+

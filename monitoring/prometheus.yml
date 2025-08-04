@@ -1,0 +1,62 @@
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+rule_files:
+  - "alert_rules.yml"
+
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets:
+          - alertmanager:9093
+
+scrape_configs:
+  # Prometheus lui-même
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+
+  # Coordinateur MCP
+  - job_name: 'coordinator'
+    static_configs:
+      - targets: ['coordinator:8001']
+    metrics_path: '/metrics'
+    scrape_interval: 10s
+
+  # Load Balancer
+  - job_name: 'load-balancer'
+    static_configs:
+      - targets: ['load-balancer:8080']
+    metrics_path: '/metrics'
+    scrape_interval: 10s
+
+  # Agents Playwright (découverte automatique)
+  - job_name: 'agents'
+    dns_sd_configs:
+      - names:
+          - 'agent'
+        type: 'A'
+        port: 8000
+    metrics_path: '/metrics'
+    scrape_interval: 15s
+
+  # Redis
+  - job_name: 'redis'
+    static_configs:
+      - targets: ['redis:6379']
+    metrics_path: '/metrics'
+    scrape_interval: 30s
+
+  # Node Exporter (métriques système)
+  - job_name: 'node-exporter'
+    static_configs:
+      - targets: ['node-exporter:9100']
+    scrape_interval: 15s
+
+  # Métriques Docker (si disponible)
+  - job_name: 'docker'
+    static_configs:
+      - targets: ['docker-exporter:9323']
+    scrape_interval: 30s
+
