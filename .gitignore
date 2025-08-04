@@ -1,0 +1,51 @@
+# Byte-compiled / cache files
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+*.so
+
+# Virtual environments
+.env/
+.venv/
+env/
+venv/
+*.egg-info/
+
+# Logs and runtime files
+*.log
+*.pid
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Tests and coverage
+.coverage
+htmlcov/
+.tox/
+.pytest_cache/
+
+# MyPy / Pyright / Pylint
+.mypy_cache/
+.pyright/
+.pylint.d/
+
+# Local settings
+*.local.json
+*.env
+.env.*
+
+# Redis data (if mounted locally)
+dump.rdb
+appendonly.aof
+
+# Docker artifacts
+docker-compose.override.yml

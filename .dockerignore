@@ -1,0 +1,36 @@
+# Python bytecode and cache
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Git & VCS
+.git/
+.gitignore
+
+# Virtual environments
+env/
+.venv/
+venv/
+
+# Local config and secrets
+*.env
+*.local.json
+
+# OS and IDE files
+.DS_Store
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Testing
+.coverage
+.pytest_cache/
+.tox/
+
+# Logs
+*.log
+
+# Docker files that shouldn't go in image
+docker-compose.override.yml
