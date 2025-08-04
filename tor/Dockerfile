@@ -8,7 +8,7 @@ RUN apk add --no-cache \
     && rm -rf /var/cache/apk/*
 
 # Créer l'utilisateur tor
-RUN adduser -D -s /bin/bash tor
+#RUN adduser -D -s /bin/bash tor
 
 # Créer les répertoires nécessaires
 RUN mkdir -p /var/lib/tor /var/log/tor /etc/tor \
