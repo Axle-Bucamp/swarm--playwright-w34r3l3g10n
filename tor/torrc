@@ -76,8 +76,6 @@ PidFile /var/lib/tor/tor.pid
 EnforceDistinctSubnets 1
 ClientDNSRejectInternalAddresses 1
 
-# Optimisations réseau
-HTTPProxy warp:3128
 
 # Configuration de l'entropie
 HardwareAccel 1

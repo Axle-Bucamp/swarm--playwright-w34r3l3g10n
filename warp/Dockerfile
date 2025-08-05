@@ -9,7 +9,7 @@ RUN apk add --no-cache \
     bash \
     openssl \
     jq \
-    && rm -rf /var/cache/apk/*
+    && rm -rf /var/cache/apk/* 
 
 # Télécharger wgcf (Cloudflare WARP configurator)
 RUN wget -O /usr/local/bin/wgcf https://github.com/ViRb3/wgcf/releases/download/v2.2.16/wgcf_2.2.16_linux_amd64 \
@@ -26,6 +26,8 @@ RUN mkdir -p /etc/wireguard /var/log/warp /opt/warp \
 COPY entrypoint.sh /entrypoint.sh
 COPY warp-manager.sh /opt/warp/warp-manager.sh
 COPY wgcf-profile.conf.template /etc/wireguard/wgcf.conf.template
+COPY wgcf-profile.conf.template /etc/wireguard/wgcf.conf 
+# ensure different ips ?
 RUN head -n1 /opt/warp/warp-manager.sh
 
 # Rendre les scripts exécutables

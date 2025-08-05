@@ -2,7 +2,7 @@
 set -e
 
 # Configuration
-WARP_INTERFACE="${WARP_INTERFACE:-wgcf}"
+WARP_INTERFACE="wgcf"
 WARP_CONFIG="${WARP_CONFIG:-/etc/wireguard/wgcf.conf}"
 WARP_ACCOUNT_FILE="/etc/wireguard/wgcf-account.toml"
 LOG_FILE="/var/log/warp/warp.log"
@@ -124,8 +124,9 @@ start_warp_interface() {
     
     # Extraire l'adresse IP de la configuration
     local warp_ip
-    warp_ip=$(grep "^Address" "$WARP_CONFIG" | cut -d'=' -f2 | tr -d ' ')
-    
+    warp_ip=$(grep "^Address" "$WARP_CONFIG" | cut -d'=' -f2 | tr -d ' ' | cut -d',' -f1)
+    log "base config ip: $warp_ip"
+
     if [ -z "$warp_ip" ]; then
         log "ERREUR: Impossible d'extraire l'adresse IP WARP"
         return 1
@@ -170,23 +171,24 @@ setup_warp_routes() {
 test_warp_connectivity() {
     local max_attempts=10
     local attempt=1
-    
-    log "Test de connectivité WARP..."
-    
+
+    log "Test de connectivité WARP via l'interface $WARP_INTERFACE..."
+
     while [ $attempt -le $max_attempts ]; do
-        # Tester la connectivité via l'interface WARP
-        if timeout 10 curl --interface "$WARP_INTERFACE" -s http://httpbin.org/ip >/dev/null 2>&1; then
-            local warp_exit_ip
-            warp_exit_ip=$(timeout 10 curl --interface "$WARP_INTERFACE" -s http://httpbin.org/ip | jq -r '.origin' 2>/dev/null || echo "Inconnue")
+        # Tester la connectivité via WARP
+        local warp_exit_ip
+        warp_exit_ip=$(timeout 10 curl --interface "$WARP_INTERFACE" -4 -s http://httpbin.org/ip)
+
+        if [ -n "$warp_exit_ip" ]; then
             log "WARP connecté avec succès. IP de sortie: $warp_exit_ip"
             return 0
         fi
-        
+
         log "Tentative de connexion WARP $attempt/$max_attempts échouée"
         sleep 5
         attempt=$((attempt + 1))
     done
-    
+
     log "ERREUR: Impossible d'établir la connectivité WARP"
     return 1
 }

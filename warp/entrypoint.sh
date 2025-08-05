@@ -170,7 +170,7 @@ main() {
     
     # Démarrer le gestionnaire WARP
     log "Démarrage du gestionnaire WARP..."
-    yes | "$WARP_MANAGER" &
+    yes | $WARP_MANAGER &
     WARP_MANAGER_PID=$!
     
     # Attendre un peu pour vérifier que le démarrage s'est bien passé
