@@ -77,7 +77,7 @@ EnforceDistinctSubnets 1
 ClientDNSRejectInternalAddresses 1
 
 # Optimisations réseau
-HTTPSProxy warp:3128
+HTTPProxy warp:3128
 
 # Configuration de l'entropie
 HardwareAccel 1

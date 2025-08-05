@@ -26,6 +26,7 @@ RUN mkdir -p /etc/wireguard /var/log/warp /opt/warp \
 COPY entrypoint.sh /entrypoint.sh
 COPY warp-manager.sh /opt/warp/warp-manager.sh
 COPY wgcf-profile.conf.template /etc/wireguard/wgcf.conf.template
+RUN head -n1 /opt/warp/warp-manager.sh
 
 # Rendre les scripts exécutables
 RUN chmod +x /entrypoint.sh /opt/warp/warp-manager.sh
@@ -38,7 +39,7 @@ ENV WARP_INTERFACE=wgcf
 ENV WARP_CONFIG=/etc/wireguard/wgcf.conf
 ENV ENABLE_SOCKS_PROXY=true
 ENV ENABLE_HTTP_PROXY=true
-ENV SOCKS_PORT=1080
+# ENV SOCKS_PORT=1080
 ENV HTTP_PORT=3128
 
 # Point d'entrée

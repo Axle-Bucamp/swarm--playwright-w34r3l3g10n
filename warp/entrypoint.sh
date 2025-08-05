@@ -164,10 +164,13 @@ main() {
     
     # Rendre le gestionnaire exécutable
     chmod +x "$WARP_MANAGER"
+
+    log "Vérification présence fichier: $WARP_MANAGER"
+    ls -l "$WARP_MANAGER" || log "Fichier non trouvé"
     
     # Démarrer le gestionnaire WARP
     log "Démarrage du gestionnaire WARP..."
-    "$WARP_MANAGER" -y &
+    yes | "$WARP_MANAGER" &
     WARP_MANAGER_PID=$!
     
     # Attendre un peu pour vérifier que le démarrage s'est bien passé
