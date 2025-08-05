@@ -1,8 +1,17 @@
-mcp
-httpx
-redis
-fastapi
-uvicorn[standard]
-pydantic
-asyncio-mqtt
+# Core dependencies
+fastapi>=0.100.0
+uvicorn[standard]>=0.22.0
+pydantic>=2.0.0,<3.0.0
+httpx>=0.24.0
+redis>=4.5.0
 
+# Monitoring et logging
+structlog>=23.0.0
+
+# Utilitaires
+python-dotenv>=1.0.0
+
+# Development dependencies (optionnel)
+pytest>=7.0.0
+pytest-asyncio>=0.21.0
+pytest-cov>=4.0.0

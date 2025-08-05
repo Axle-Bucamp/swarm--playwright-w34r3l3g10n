@@ -17,31 +17,32 @@ services:
       timeout: 5s
       retries: 3
 
-  # Coordinateur MCP principal
+
+  # Coordinateur MCP corrigé
   coordinator:
     build:
       context: ./coordinator
       dockerfile: Dockerfile
     restart: unless-stopped
     ports:
-      - "8010:8001"
+      - "3000:3000"
     environment:
-      - REDIS_URL=redis://redis:6379
       - LOAD_BALANCER_URL=http://load-balancer:8080
+      - REDIS_URL=redis://redis:6379
+      - AGENT_POOL_SIZE=10
       - LOG_LEVEL=INFO
-      - AGENT_POOL_SIZE=5
+      - AGENT_DISCOVERY_INTERVAL=30
+      - HEALTH_CHECK_INTERVAL=10
     depends_on:
+      load-balancer:
+        condition: service_healthy
       redis:
         condition: service_healthy
+    volumes:
+      - ./coordinator/mcp_server.py:/app/mcp_server.py:ro
+      - ./coordinator/models_pydantic.py:/app/models_pydantic.py:ro
     networks:
       - swarm_net
-    volumes:
-      - ./coordinator:/app
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8001/health"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
 
   # Load Balancer
   load-balancer:
@@ -79,7 +80,7 @@ services:
       - "8000-8002:8000"
     environment: 
       - TOR_PROXY_HOST=tor
-      - TOR_PROXY_PORT=8000
+      - TOR_PROXY_PORT=9050
       - HEADLESS=true
       - LOG_LEVEL=INFO
       - MAX_CONCURRENT_TASKS=3
