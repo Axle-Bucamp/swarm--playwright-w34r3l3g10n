@@ -34,8 +34,8 @@ ConnLimit 1000
 MaxClientCircuitsPending 32
 
 # Sécurité renforcée
-StrictNodes 1
-ExitNodes {us},{ca},{gb},{de},{fr},{nl},{se},{ch}
+StrictNodes 0
+ExitNodes {us},{ca},{gb},{de},{nl},{se},{ch}
 ExcludeNodes {cn},{ru},{ir},{kp},{sy}
 ExcludeExitNodes {cn},{ru},{ir},{kp},{sy}
 
@@ -76,8 +76,6 @@ PidFile /var/lib/tor/tor.pid
 EnforceDistinctSubnets 1
 ClientDNSRejectInternalAddresses 1
 
-
 # Configuration de l'entropie
 HardwareAccel 1
 DisableAllSwap 1
-

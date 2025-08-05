@@ -1,0 +1,716 @@
+2025-08-05T09:00:50.539Z  INFO warp::warp_service: Starting WarpService pid=20
+2025-08-05T09:00:50.539Z  INFO warp::warp_service: Version: 2025.5.943.0
+2025-08-05T09:00:50.666Z DEBUG warp_settings::raw_settings: Loading settings from file "/var/lib/cloudflare-warp/settings.json"
+2025-08-05T09:00:50.691Z  INFO warp_settings::manager: User preferences not loaded e=No such file or directory (os error 2)
+2025-08-05T09:00:50.691Z DEBUG warp_settings::raw_settings: Loading consumer settings from file "/var/lib/cloudflare-warp/consumer-settings.json"
+2025-08-05T09:00:50.697Z  INFO warp_settings::manager: Consumer preferences not loaded e=No such file or directory (os error 2)
+2025-08-05T09:00:50.698Z DEBUG warp_settings::manager::final_overrides: Loading final overrides settings from file "/var/lib/cloudflare-warp/final-overrides-settings.json"
+2025-08-05T09:00:50.703Z  INFO warp_settings::manager: Final override settings not loaded e=No such file or directory (os error 2)
+2025-08-05T09:00:50.721Z DEBUG warp_settings::manager: Starting local policy file watch parent_path="/var/lib/cloudflare-warp"
+2025-08-05T09:00:50.860Z DEBUG warp_api_client::addresses: Initializing base API endpoint settings consumer=ConsumerEndpointConfig { ips: [104.16.24.84, 104.16.192.82, 2606:4700::6810:1854, 2606:4700::6810:c052], api_sni: ApiSni("api.cloudflareclient.com.") } zt=ZeroTrustEndpointConfig { ips: [162.159.137.105, 162.159.138.105, 2606:4700:7::a29f:8969, 2606:4700:7::a29f:8a69], api_sni: ApiSni("zero-trust-client.cloudflareclient.com."), notifications_sni: NotificationsSni("notifications.cloudflareclient.com") } compliance_environment=Normal
+2025-08-05T09:00:50.862Z  WARN network_info::linux::dns_manager::dns_owner: Could not determine resolv.conf file owner: No comment line contained an owner slug
+2025-08-05T09:00:50.874Z DEBUG watchdog: warp::watchdog: Kicking off watchdog
+2025-08-05T09:00:50.875Z DEBUG warp::warp_service: Main loop refactor feature enabled
+2025-08-05T09:00:50.875Z DEBUG actor_watchdog: Initializing watchdog actor
+2025-08-05T09:00:50.875Z DEBUG actor_alternate_network: Initializing alternate network actor
+2025-08-05T09:00:50.876Z DEBUG actor_main_loop_compat: Initializing main loop compat actor
+2025-08-05T09:00:50.876Z DEBUG actor_statistics: Initializing statistics actor
+2025-08-05T09:00:50.876Z DEBUG actor_connectivity: Initializing connectivity actor
+2025-08-05T09:00:50.877Z DEBUG actor_remote_dex_command: Initializing remote DEX command actor
+2025-08-05T09:00:50.877Z DEBUG actor_device_state: Initializing device state actor
+2025-08-05T09:00:50.878Z DEBUG actor_emergency_disconnect: Initializing emergency disconnect actor
+2025-08-05T09:00:50.878Z DEBUG actor_registration_verifier: Initializing registration verifier actor
+2025-08-05T09:00:50.878Z DEBUG actor_root_ca: Initializing root-ca actor
+2025-08-05T09:00:50.878Z DEBUG actor_root_ca: Sleeping for 15s to allow main loop boot-up
+2025-08-05T09:00:50.879Z  INFO main_loop: warp_net::ipc: Bound ipc socket name="cloudflare-warp/warp_service" path="/run/cloudflare-warp/warp_service"
+2025-08-05T09:00:50.879Z  INFO main_loop: warp::warp_service: Warp IPC listening on "cloudflare-warp/warp_service"
+2025-08-05T09:00:50.886Z  INFO firewall::engine: Firewall engine running
+2025-08-05T09:00:50.894Z DEBUG network_info::linux::power_notifier: Initializing dbus connection
+2025-08-05T09:00:50.898Z  WARN main_loop: warp::warp_service: Failed to load Registration error=OsError(Os { code: 2, kind: NotFound, message: "No such file or directory" })
+2025-08-05T09:00:50.901Z DEBUG warp_api_client::client::ops: Sending API request GET zero-trust-client.cloudflareclient.com./v0/client_config
+2025-08-05T09:00:50.901Z DEBUG warp_api_client::client::ops: Sending API request GET api.cloudflareclient.com./v0/client_config
+2025-08-05T09:00:51.004Z DEBUG run: warp_settings::manager: LayerManager update: NetworkDefaults(NetworkDefaults { split_config: Some(Exclude { ips: [(10.0.0.0/8, None), (100.64.0.0/10, None), (169.254.0.0/16, None), (172.16.0.0/12, None), (192.0.0.0/24, None), (192.168.0.0/16, None), (224.0.0.0/24, None), (240.0.0.0/4, None), (239.255.255.250/32, None), (255.255.255.255/32, None), (fe80::/10, None), (fd00::/8, None), (ff01::/16, None), (ff02::/16, None), (ff03::/16, None), (ff04::/16, None), (ff05::/16, None), (fc00::/7, None), (17.249.0.0/16, None), (17.252.0.0/16, None), (17.57.144.0/22, None), (17.188.128.0/18, None), (17.188.20.0/23, None), (2620:149:a44::/48, None), (2403:300:a42::/48, None), (2403:300:a51::/48, None), (2a01:b740:a42::/48, None)], hosts: [] }) })
+2025-08-05T09:00:51.004Z DEBUG main_loop: warp::warp_service: Checking for registration vs settings account mismatch reg_is_teams=false settings_is_teams=false reg_org=None settings_org=None
+2025-08-05T09:00:51.004Z  INFO firewall::engine: Firewall unloaded
+2025-08-05T09:00:51.004Z  INFO main_loop: warp::warp_service: New User Settings
+2025-08-05T09:00:51.004Z DEBUG main_loop: warp::warp_service::ipc_handlers: Sending IPC update: SettingsUpdated
+2025-08-05T09:00:51.004Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc Broadcast ResponseUpdate: SettingsUpdated
+2025-08-05T09:00:51.004Z DEBUG main_loop: warp::warp_service: update_settings: no restart required
+2025-08-05T09:00:51.004Z  INFO warp::warp_service: Spawning registration changed IPC loop
+2025-08-05T09:00:51.004Z  INFO main_loop: warp::warp_service: WARP status: Unable(RegistrationMissing(ManualDeletion))
+2025-08-05T09:00:51.004Z DEBUG main_loop: warp::warp_service::ipc_handlers: Sending IPC status update: Unable(RegistrationMissing(ManualDeletion))
+2025-08-05T09:00:51.004Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc Broadcast ResponseStatus: Unable(RegistrationMissing(ManualDeletion))
+2025-08-05T09:00:51.004Z DEBUG utilities::tokio::select_watcher: Entering: [main loop] arm="status_change"
+2025-08-05T09:00:51.004Z DEBUG main_loop: warp::warp_service: Checking for registration vs settings account mismatch reg_is_teams=false settings_is_teams=false reg_org=None settings_org=None
+2025-08-05T09:00:51.004Z DEBUG utilities::tokio::select_watcher: Exiting: [main loop] arm="status_change" elapsed=62.501µs
+2025-08-05T09:00:51.004Z DEBUG utilities::tokio::select_watcher: Entering: [main loop] arm="settings_changed"
+2025-08-05T09:00:51.004Z  INFO firewall::engine: Firewall unloaded
+2025-08-05T09:00:51.004Z  INFO main_loop: warp::warp_service: User Settings Changed: {}
+2025-08-05T09:00:51.004Z DEBUG main_loop: warp::warp_service::ipc_handlers: Sending IPC update: SettingsUpdated
+2025-08-05T09:00:51.004Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc Broadcast ResponseUpdate: SettingsUpdated
+2025-08-05T09:00:51.004Z DEBUG main_loop: warp::warp_service: update_settings: no restart required
+2025-08-05T09:00:51.005Z DEBUG utilities::tokio::select_watcher: Exiting: [main loop] arm="settings_changed" elapsed=373.11µs
+2025-08-05T09:00:51.636Z  WARN warp_net::ipc::unix: Failed to get path for client error="return code = -1, errno = 13, message = 'Permission denied'" pid=51
+2025-08-05T09:00:51.636Z  WARN warp_net::ipc::unix: Failed to get path for client error="return code = -1, errno = 13, message = 'Permission denied'" pid=51
+2025-08-05T09:00:51.636Z  INFO warp::warp_service::ipc_loop: IPC: new connection exec_context=Regular process_name="<Unknown>" pid=51
+2025-08-05T09:00:51.659Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc request: b6952fe1-7487-4a49-b7b1-8cd214869c8e; GetAppSettings
+2025-08-05T09:00:51.659Z DEBUG utilities::tokio::select_watcher: Entering: [main loop] arm="handle_ipc_request"
+2025-08-05T09:00:51.659Z DEBUG utilities::tokio::select_watcher: Exiting: [main loop] arm="handle_ipc_request" elapsed=208.316µs
+2025-08-05T09:00:51.659Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc request: 96e813b2-593c-4f9a-bf75-671fb71899e8; GetRegistrationInfo
+2025-08-05T09:00:51.659Z DEBUG utilities::tokio::select_watcher: Entering: [main loop] arm="handle_ipc_request"
+2025-08-05T09:00:51.659Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc response: 96e813b2-593c-4f9a-bf75-671fb71899e8; RegistrationInfo: None
+2025-08-05T09:00:51.659Z DEBUG utilities::tokio::select_watcher: Exiting: [main loop] arm="handle_ipc_request" elapsed=173.413µs
+2025-08-05T09:00:51.661Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc request: 8340d919-e28e-4d93-aafc-ef2384ed539e; NewRegistration
+2025-08-05T09:00:51.661Z DEBUG utilities::tokio::select_watcher: Entering: [main loop] arm="handle_ipc_request"
+2025-08-05T09:00:51.661Z DEBUG main_loop: warp::warp_service::ipc_handlers: Sending IPC update: RegistrationInProgress
+2025-08-05T09:00:51.661Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc Broadcast ResponseUpdate: RegistrationInProgress
+2025-08-05T09:00:51.662Z DEBUG upload_stats{stats=StatsPayload { counters: [CounterPayload { name: "alternate-network.updates_recv", labels: {}, count: 1 }, CounterPayload { name: "watchdog.updates_recv", labels: {}, count: 0 }, CounterPayload { name: "statistics.updates_recv", labels: {}, count: 1 }, CounterPayload { name: "main-loop-compat.updates_recv", labels: {}, count: 0 }, CounterPayload { name: "connectivity.commands_recv", labels: {}, count: 0 }, CounterPayload { name: "device-state.requests_recv", labels: {}, count: 0 }, CounterPayload { name: "statistics.requests_recv", labels: {}, count: 0 }, CounterPayload { name: "connectivity.updates_recv", labels: {}, count: 0 }, CounterPayload { name: "emergency-disconnect.reinitializations", labels: {}, count: 0 }, CounterPayload { name: "message_bus.bus_driver_commands_sent", labels: {}, count: 0 }, CounterPayload { name: "emergency-disconnect.requests_recv", labels: {}, count: 0 }, CounterPayload { name: "statistics.commands_recv", labels: {}, count: 0 }, CounterPayload { name: "root-ca.commands_recv", labels: {}, count: 0 }, CounterPayload { name: "remote-dex-command.requests_recv", labels: {}, count: 0 }, CounterPayload { name: "main-loop-compat.requests_recv", labels: {}, count: 0 }, CounterPayload { name: "main-loop-compat.commands_recv", labels: {}, count: 0 }, CounterPayload { name: "device-state.reinitializations", labels: {}, count: 0 }, CounterPayload { name: "device-state.commands_recv", labels: {}, count: 0 }, CounterPayload { name: "registration-verifier.reinitializations", labels: {}, count: 0 }, CounterPayload { name: "device-state.updates_recv", labels: {}, count: 2 }, CounterPayload { name: "alternate-network.reinitializations", labels: {}, count: 0 }, CounterPayload { name: "message_bus.bus_driver_request_timeouts", labels: {}, count: 0 }, CounterPayload { name: "watchdog.reinitializations", labels: {}, count: 0 }, CounterPayload { name: "alternate-network.commands_recv", labels: {}, count: 0 }, CounterPayload { name: "root-ca.updates_recv", labels: {}, count: 1 }, CounterPayload { name: "emergency-disconnect.commands_recv", labels: {}, count: 0 }, CounterPayload { name: "root-ca.reinitializations", labels: {}, count: 0 }, CounterPayload { name: "remote-dex-command.reinitializations", labels: {}, count: 0 }, CounterPayload { name: "connectivity.reinitializations", labels: {}, count: 0 }, CounterPayload { name: "connectivity.requests_recv", labels: {}, count: 0 }, CounterPayload { name: "message_bus.bus_driver_updates_sent", labels: {}, count: 2 }, CounterPayload { name: "registration-verifier.updates_recv", labels: {}, count: 1 }, CounterPayload { name: "registration-verifier.requests_recv", labels: {}, count: 0 }, CounterPayload { name: "statistics.reinitializations", labels: {}, count: 0 }, CounterPayload { name: "root-ca.requests_recv", labels: {}, count: 0 }, CounterPayload { name: "registration-verifier.commands_recv", labels: {}, count: 0 }, CounterPayload { name: "main-loop-compat.reinitializations", labels: {}, count: 0 }, CounterPayload { name: "alternate-network.requests_recv", labels: {}, count: 0 }, CounterPayload { name: "remote-dex-command.commands_recv", labels: {}, count: 0 }, CounterPayload { name: "remote-dex-command.updates_recv", labels: {}, count: 0 }, CounterPayload { name: "watchdog.requests_recv", labels: {}, count: 8 }, CounterPayload { name: "watchdog.commands_recv", labels: {}, count: 0 }, CounterPayload { name: "emergency-disconnect.updates_recv", labels: {}, count: 2 }], summaries: [SummaryPayload { name: "main-loop-compat.lifetime_sec_nanosec", labels: {}, sum: -0.0, count: 0 }, SummaryPayload { name: "watchdog.lifetime_sec_nanosec", labels: {}, sum: -0.0, count: 0 }, SummaryPayload { name: "registration-verifier.lifetime_sec_nanosec", labels: {}, sum: -0.0, count: 0 }, SummaryPayload { name: "message_bus.bus_driver_request_duration_sec_nano_sec", labels: {}, sum: 0.009324964, count: 8 }, SummaryPayload { name: "connectivity.lifetime_sec_nanosec", labels: {}, sum: -0.0, count: 0 }, SummaryPayload { name: "device-state.lifetime_sec_nanosec", labels: {}, sum: -0.0, count: 0 }, SummaryPayload { name: "emergency-disconnect.lifetime_sec_nanosec", labels: {}, sum: -0.0, count: 0 }, SummaryPayload { name: "root-ca.lifetime_sec_nanosec", labels: {}, sum: -0.0, count: 0 }, SummaryPayload { name: "remote-dex-command.lifetime_sec_nanosec", labels: {}, sum: -0.0, count: 0 }, SummaryPayload { name: "statistics.lifetime_sec_nanosec", labels: {}, sum: -0.0, count: 0 }, SummaryPayload { name: "alternate-network.lifetime_sec_nanosec", labels: {}, sum: -0.0, count: 0 }], gauges: [GaugesPayload { name: "ntp-clock.min_since_ntp_sync", labels: {}, value: 0.000122804 }, GaugesPayload { name: "message_bus.bus_driver_current_actors", labels: {}, value: 10.0 }] } context="registration change"}: actor_statistics::handler: Starting to upload stats
+2025-08-05T09:00:51.662Z  WARN upload_stats{stats=StatsPayload { counters: [CounterPayload { name: "alternate-network.updates_recv", labels: {}, count: 1 }, CounterPayload { name: "watchdog.updates_recv", labels: {}, count: 0 }, CounterPayload { name: "statistics.updates_recv", labels: {}, count: 1 }, CounterPayload { name: "main-loop-compat.updates_recv", labels: {}, count: 0 }, CounterPayload { name: "connectivity.commands_recv", labels: {}, count: 0 }, CounterPayload { name: "device-state.requests_recv", labels: {}, count: 0 }, CounterPayload { name: "statistics.requests_recv", labels: {}, count: 0 }, CounterPayload { name: "connectivity.updates_recv", labels: {}, count: 0 }, CounterPayload { name: "emergency-disconnect.reinitializations", labels: {}, count: 0 }, CounterPayload { name: "message_bus.bus_driver_commands_sent", labels: {}, count: 0 }, CounterPayload { name: "emergency-disconnect.requests_recv", labels: {}, count: 0 }, CounterPayload { name: "statistics.commands_recv", labels: {}, count: 0 }, CounterPayload { name: "root-ca.commands_recv", labels: {}, count: 0 }, CounterPayload { name: "remote-dex-command.requests_recv", labels: {}, count: 0 }, CounterPayload { name: "main-loop-compat.requests_recv", labels: {}, count: 0 }, CounterPayload { name: "main-loop-compat.commands_recv", labels: {}, count: 0 }, CounterPayload { name: "device-state.reinitializations", labels: {}, count: 0 }, CounterPayload { name: "device-state.commands_recv", labels: {}, count: 0 }, CounterPayload { name: "registration-verifier.reinitializations", labels: {}, count: 0 }, CounterPayload { name: "device-state.updates_recv", labels: {}, count: 2 }, CounterPayload { name: "alternate-network.reinitializations", labels: {}, count: 0 }, CounterPayload { name: "message_bus.bus_driver_request_timeouts", labels: {}, count: 0 }, CounterPayload { name: "watchdog.reinitializations", labels: {}, count: 0 }, CounterPayload { name: "alternate-network.commands_recv", labels: {}, count: 0 }, CounterPayload { name: "root-ca.updates_recv", labels: {}, count: 1 }, CounterPayload { name: "emergency-disconnect.commands_recv", labels: {}, count: 0 }, CounterPayload { name: "root-ca.reinitializations", labels: {}, count: 0 }, CounterPayload { name: "remote-dex-command.reinitializations", labels: {}, count: 0 }, CounterPayload { name: "connectivity.reinitializations", labels: {}, count: 0 }, CounterPayload { name: "connectivity.requests_recv", labels: {}, count: 0 }, CounterPayload { name: "message_bus.bus_driver_updates_sent", labels: {}, count: 2 }, CounterPayload { name: "registration-verifier.updates_recv", labels: {}, count: 1 }, CounterPayload { name: "registration-verifier.requests_recv", labels: {}, count: 0 }, CounterPayload { name: "statistics.reinitializations", labels: {}, count: 0 }, CounterPayload { name: "root-ca.requests_recv", labels: {}, count: 0 }, CounterPayload { name: "registration-verifier.commands_recv", labels: {}, count: 0 }, CounterPayload { name: "main-loop-compat.reinitializations", labels: {}, count: 0 }, CounterPayload { name: "alternate-network.requests_recv", labels: {}, count: 0 }, CounterPayload { name: "remote-dex-command.commands_recv", labels: {}, count: 0 }, CounterPayload { name: "remote-dex-command.updates_recv", labels: {}, count: 0 }, CounterPayload { name: "watchdog.requests_recv", labels: {}, count: 8 }, CounterPayload { name: "watchdog.commands_recv", labels: {}, count: 0 }, CounterPayload { name: "emergency-disconnect.updates_recv", labels: {}, count: 2 }], summaries: [SummaryPayload { name: "main-loop-compat.lifetime_sec_nanosec", labels: {}, sum: -0.0, count: 0 }, SummaryPayload { name: "watchdog.lifetime_sec_nanosec", labels: {}, sum: -0.0, count: 0 }, SummaryPayload { name: "registration-verifier.lifetime_sec_nanosec", labels: {}, sum: -0.0, count: 0 }, SummaryPayload { name: "message_bus.bus_driver_request_duration_sec_nano_sec", labels: {}, sum: 0.009324964, count: 8 }, SummaryPayload { name: "connectivity.lifetime_sec_nanosec", labels: {}, sum: -0.0, count: 0 }, SummaryPayload { name: "device-state.lifetime_sec_nanosec", labels: {}, sum: -0.0, count: 0 }, SummaryPayload { name: "emergency-disconnect.lifetime_sec_nanosec", labels: {}, sum: -0.0, count: 0 }, SummaryPayload { name: "root-ca.lifetime_sec_nanosec", labels: {}, sum: -0.0, count: 0 }, SummaryPayload { name: "remote-dex-command.lifetime_sec_nanosec", labels: {}, sum: -0.0, count: 0 }, SummaryPayload { name: "statistics.lifetime_sec_nanosec", labels: {}, sum: -0.0, count: 0 }, SummaryPayload { name: "alternate-network.lifetime_sec_nanosec", labels: {}, sum: -0.0, count: 0 }], gauges: [GaugesPayload { name: "ntp-clock.min_since_ntp_sync", labels: {}, value: 0.000122804 }, GaugesPayload { name: "message_bus.bus_driver_current_actors", labels: {}, value: 10.0 }] } context="registration change"}: actor_statistics::handler: Skipped uploading aggregate stats because registration was none!
+2025-08-05T09:00:51.662Z  INFO actor_statistics::handler: Switched to new registration for stats. All stats have been reset. new_registration_id=None
+2025-08-05T09:00:51.662Z DEBUG utilities::tokio::select_watcher: Exiting: [main loop] arm="handle_ipc_request" elapsed=1.030181ms
+2025-08-05T09:00:51.662Z DEBUG utilities::tokio::select_watcher: Entering: [main loop] arm="registration_change"
+2025-08-05T09:00:51.662Z DEBUG utilities::tokio::select_watcher: Exiting: [main loop] arm="registration_change" elapsed=946.674µs
+2025-08-05T09:00:51.662Z DEBUG warp::warp_service::ipc_handlers: Sending IPC update: ConfigurationUpdated
+2025-08-05T09:00:51.662Z DEBUG warp::warp_service::ipc_handlers: Ipc Broadcast ResponseUpdate: ConfigurationUpdated
+2025-08-05T09:00:51.662Z  INFO main_loop:handle_update{update=AlternateNetworkChanged(None)}: warp::warp_service::actor_compat: Detected alternate network name=None
+2025-08-05T09:00:51.662Z DEBUG utilities::tokio::select_watcher: Entering: [main loop] arm="main_loop_compat_rx"
+2025-08-05T09:00:51.663Z DEBUG utilities::tokio::select_watcher: Exiting: [main loop] arm="main_loop_compat_rx" elapsed=293.423µs
+2025-08-05T09:00:51.665Z ERROR utilities::device_info::linux: Failed to load SMBiosData error=Os { code: 2, kind: NotFound, message: "No such file or directory" }
+2025-08-05T09:00:51.665Z DEBUG warp_api_client::apis::registration: New registration auth_method=Consumer
+2025-08-05T09:00:51.665Z DEBUG warp_api_client::client: Sending API request POST https://api.cloudflareclient.com.//v0/reg
+2025-08-05T09:00:52.880Z DEBUG warp_api_endpoints::payloads: Warp endpoint override ports ports=[2408, 500, 1701, 4500]
+2025-08-05T09:00:52.880Z DEBUG main_loop: warp_api_client::executor: Returning API response for NewRegistration request_id=8340d919-e28e-4d93-aafc-ef2384ed539e
+2025-08-05T09:00:52.881Z DEBUG utilities::tokio::select_watcher: Entering: [main loop] arm="api_responses"
+2025-08-05T09:00:52.881Z DEBUG run: warp_settings::manager: LayerManager update: NetworkPolicy(Some(NetworkPolicySettings { onboarding: None, operation_mode: None, disable_auto_fallback: None, fallback_domains: None, proxy_port: None, split_config: None, gateway_id: None, support_url: None, allow_mode_switch: None, switch_locked: None, auto_connect: None, captive_portal: None, organization: None, allow_updates: None, allowed_to_leave: None, profile_id: None, lan_allow_settings: Some(LanAllowSettings { minutes: None, subnet_size: SubnetSize(24) }), warp_tunnel_protocol: Some(Masque), masque_settings: None, register_interface_ip_with_dns: None, anycast_split_ips: Some(AnycastSplitIps { always_exclude: [162.159.197.3, 2606:4700:102::3], always_include: [162.159.197.4, 2606:4700:102::4] }), firewall_scope: None, sccm_vpn_boundary_support: None, enable_post_quantum: None }))
+2025-08-05T09:00:52.893Z DEBUG main_loop: warp::warp_service::api_handlers: Registration updated current_registration=NewInProgress disposition=UpdateOnly
+2025-08-05T09:00:52.893Z DEBUG main_loop: warp::warp_service::api_handlers: Invalidating existing posture check scheduler on registration update
+2025-08-05T09:00:52.893Z DEBUG main_loop: warp::warp_service::api_handlers: Registration updated 0.00 hours old, refresh at 2025-08-06 9:00:52.880563324 +00:00:00
+Registration: 1f1d1654-fca8-43e2-9237-68ed5e5d78fa
+Device Identifiers: System User
+Auth Method: Consumer
+Public key: 2a79ed55f9d23fbc8c680a0a9da1d0e37eedcfb5180f0562b039e86d6df3d529
+Interface: WarpEndpoint { v4: 172.16.0.2, v6: 2606:4700:110:8cb0:3636:6dd0:8265:beb5 }
+Endpoints: [WarpSocketAddrPair { v4: 162.159.192.10:2408, v6: [2606:4700:d0::a29f:c00a]:2408 }, WarpSocketAddrPair { v4: 162.159.192.10:500, v6: [2606:4700:d0::a29f:c00a]:500 }, WarpSocketAddrPair { v4: 162.159.192.10:1701, v6: [2606:4700:d0::a29f:c00a]:1701 }, WarpSocketAddrPair { v4: 162.159.192.10:4500, v6: [2606:4700:d0::a29f:c00a]:4500 }]
+Subnet CIDRS: None
+
+Account: Free { id: AccountId(d9247341-7d38-41d3-be0c-36a6fdab612c), license: "980qTKI6-6329prKy-Y35NLP06" }
+
+2025-08-05T09:00:52.894Z  INFO main_loop: warp_storage::registration::registration_storage: Saving registration to active cache config_name=None username="WARPSecret"
+2025-08-05T09:00:52.980Z DEBUG main_loop: warp::warp::controller: Stopping WarpConnection state=Disconnected
+2025-08-05T09:00:52.981Z DEBUG warp::warp_service::ipc_handlers: Sending IPC update: ConfigurationUpdated
+2025-08-05T09:00:52.981Z  INFO firewall::engine: Firewall unloaded
+2025-08-05T09:00:52.981Z DEBUG warp::warp_service::ipc_handlers: Ipc Broadcast ResponseUpdate: ConfigurationUpdated
+2025-08-05T09:00:52.982Z DEBUG main_loop: warp::warp_service: Determining disconnected reason from connectivity state net_info=IPv4: [eth0; 172.24.0.2; Ethernet; Gateway: Some(172.24.0.1)], DNS servers:,  127.0.0.11:53
+ power_state=None disconnect_reason=None
+2025-08-05T09:00:52.983Z  WARN main_loop: warp::warp_service: Disconnecting, but reason is unknown
+2025-08-05T09:00:52.984Z DEBUG main_loop: warp::warp_service: Checking for registration vs settings account mismatch reg_is_teams=false settings_is_teams=false reg_org=None settings_org=None
+2025-08-05T09:00:52.984Z  INFO firewall::engine: Firewall unloaded
+2025-08-05T09:00:52.984Z  INFO main_loop: warp::warp_service: User Settings Changed: {warp_tunnel_protocol: "wireguard"->"masque", anycast_split_ips.always_include: Added: [{"ip":"162.159.197.4"},{"ip":"2606:4700:102::4"}] , anycast_split_ips.always_exclude: Added: [{"ip":"162.159.197.3"},{"ip":"2606:4700:102::3"}] , }
+2025-08-05T09:00:52.984Z DEBUG main_loop: warp::warp_service::ipc_handlers: Sending IPC update: SettingsUpdated
+2025-08-05T09:00:52.985Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc Broadcast ResponseUpdate: SettingsUpdated
+2025-08-05T09:00:52.985Z  INFO main_loop: warp::warp_service: New user settings modify the tunnel protocol, rotating keys new_settings.warp_tunnel_protocol=Masque new_key_data=RegistrationTunnelKeys { key_type: NistP256, tunnel_type: Masque }
+2025-08-05T09:00:52.986Z DEBUG upload_stats{stats=StatsPayload { counters: [CounterPayload { name: "registration-verifier.updates_recv", labels: {}, count: 1 }, CounterPayload { name: "root-ca.updates_recv", labels: {}, count: 1 }, CounterPayload { name: "emergency-disconnect.updates_recv", labels: {}, count: 2 }, CounterPayload { name: "watchdog.requests_recv", labels: {}, count: 13 }, CounterPayload { name: "alternate-network.updates_recv", labels: {}, count: 1 }, CounterPayload { name: "statistics.updates_recv", labels: {}, count: 1 }, CounterPayload { name: "message_bus.bus_driver_updates_sent", labels: {}, count: 3 }, CounterPayload { name: "device-state.updates_recv", labels: {}, count: 2 }, CounterPayload { name: "main-loop-compat.updates_recv", labels: {}, count: 1 }], summaries: [SummaryPayload { name: "message_bus.bus_driver_request_duration_sec_nano_sec", labels: {}, sum: 0.007089554, count: 13 }], gauges: [] } context="registration change"}: actor_statistics::handler: Starting to upload stats
+2025-08-05T09:00:52.986Z DEBUG main_loop: warp_api_client::executor: Spawning API request for RotateKeys request_id=ef2df21f-95a9-4f9c-bea3-20c37e61b2b9
+2025-08-05T09:00:52.986Z DEBUG main_loop: warp::warp_service: Determining disconnected reason from connectivity state net_info=IPv4: [eth0; 172.24.0.2; Ethernet; Gateway: Some(172.24.0.1)], DNS servers:,  127.0.0.11:53
+ power_state=None disconnect_reason=Some(SettingsChanged)
+2025-08-05T09:00:52.986Z  INFO main_loop: warp::warp_service: Disconnecting due to settings change
+2025-08-05T09:00:52.986Z  INFO main_loop: warp::warp_service: Disconnecting after settings change disconnected_reason=Disconnected(SettingsChanged)
+2025-08-05T09:00:52.986Z DEBUG main_loop: warp::warp::controller: Stopping WarpConnection state=Disconnected
+2025-08-05T09:00:52.986Z  INFO firewall::engine: Firewall unloaded
+2025-08-05T09:00:52.986Z  WARN upload_stats{stats=StatsPayload { counters: [CounterPayload { name: "registration-verifier.updates_recv", labels: {}, count: 1 }, CounterPayload { name: "root-ca.updates_recv", labels: {}, count: 1 }, CounterPayload { name: "emergency-disconnect.updates_recv", labels: {}, count: 2 }, CounterPayload { name: "watchdog.requests_recv", labels: {}, count: 13 }, CounterPayload { name: "alternate-network.updates_recv", labels: {}, count: 1 }, CounterPayload { name: "statistics.updates_recv", labels: {}, count: 1 }, CounterPayload { name: "message_bus.bus_driver_updates_sent", labels: {}, count: 3 }, CounterPayload { name: "device-state.updates_recv", labels: {}, count: 2 }, CounterPayload { name: "main-loop-compat.updates_recv", labels: {}, count: 1 }], summaries: [SummaryPayload { name: "message_bus.bus_driver_request_duration_sec_nano_sec", labels: {}, sum: 0.007089554, count: 13 }], gauges: [] } context="registration change"}: actor_statistics::handler: Skipped uploading aggregate stats because registration was none!
+2025-08-05T09:00:52.986Z  INFO actor_statistics::handler: Switched to new registration for stats. All stats have been reset. new_registration_id=None
+2025-08-05T09:00:52.987Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc response: 8340d919-e28e-4d93-aafc-ef2384ed539e; Success
+2025-08-05T09:00:52.987Z DEBUG warp_api_client::client: Sending API request PATCH https://api.cloudflareclient.com.//v0/reg/1f1d1654-fca8-43e2-9237-68ed5e5d78fa
+2025-08-05T09:00:52.987Z  INFO main_loop: warp::warp_service: WARP status: Disconnected(SettingsChanged)
+2025-08-05T09:00:52.987Z DEBUG main_loop: warp::warp_service::ipc_handlers: Sending IPC status update: Disconnected(SettingsChanged)
+2025-08-05T09:00:52.987Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc Broadcast ResponseStatus: Disconnected(SettingsChanged)
+2025-08-05T09:00:52.987Z DEBUG main_loop: warp::warp_service: Checking for registration vs settings account mismatch reg_is_teams=false settings_is_teams=false reg_org=None settings_org=None
+2025-08-05T09:00:52.987Z DEBUG utilities::tokio::select_watcher: Exiting: [main loop] arm="api_responses" elapsed=107.135587ms
+2025-08-05T09:00:52.987Z DEBUG utilities::tokio::select_watcher: Entering: [main loop] arm="status_change"
+2025-08-05T09:00:52.987Z DEBUG utilities::tokio::select_watcher: Exiting: [main loop] arm="status_change" elapsed=174.714µs
+2025-08-05T09:00:52.987Z DEBUG utilities::tokio::select_watcher: Entering: [main loop] arm="settings_changed"
+2025-08-05T09:00:52.988Z  INFO warp::warp_service::ipc_loop: IPC connection ended
+2025-08-05T09:00:52.988Z  INFO firewall::engine: Firewall unloaded
+2025-08-05T09:00:52.988Z  INFO main_loop: warp::warp_service: User Settings Changed: {}
+2025-08-05T09:00:52.988Z DEBUG main_loop: warp::warp_service::ipc_handlers: Sending IPC update: SettingsUpdated
+2025-08-05T09:00:52.988Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc Broadcast ResponseUpdate: SettingsUpdated
+2025-08-05T09:00:52.988Z  INFO main_loop: warp::warp_service: Settings and Registration determined that a key rotation was needed but there exists a pending API call that satisfies this constraint. Skipping for now.
+2025-08-05T09:00:52.988Z DEBUG main_loop: warp::warp_service: update_settings: no restart required
+2025-08-05T09:00:52.989Z DEBUG utilities::tokio::select_watcher: Exiting: [main loop] arm="settings_changed" elapsed=1.440313ms
+2025-08-05T09:00:52.989Z DEBUG utilities::tokio::select_watcher: Entering: [main loop] arm="registration_change"
+2025-08-05T09:00:52.989Z DEBUG main_loop: warp::warp_service: Determining disconnected reason from connectivity state net_info=IPv4: [eth0; 172.24.0.2; Ethernet; Gateway: Some(172.24.0.1)], DNS servers:,  127.0.0.11:53
+ power_state=None disconnect_reason=None
+2025-08-05T09:00:52.989Z  WARN main_loop: warp::warp_service: Disconnecting, but reason is unknown
+2025-08-05T09:00:52.989Z  INFO main_loop: warp::warp_service: WARP status: Disconnected(Manual)
+2025-08-05T09:00:52.989Z DEBUG utilities::tokio::select_watcher: Exiting: [main loop] arm="registration_change" elapsed=650.15µs
+2025-08-05T09:00:52.990Z DEBUG utilities::tokio::select_watcher: Entering: [main loop] arm="status_change"
+2025-08-05T09:00:52.990Z DEBUG main_loop: warp::warp_service::ipc_handlers: Sending IPC status update: Disconnected(Manual)
+2025-08-05T09:00:52.990Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc Broadcast ResponseStatus: Disconnected(Manual)
+2025-08-05T09:00:52.990Z DEBUG utilities::tokio::select_watcher: Exiting: [main loop] arm="status_change" elapsed=679.453µs
+2025-08-05T09:00:53.004Z  WARN warp_net::ipc::unix: Failed to get path for client error="return code = -1, errno = 13, message = 'Permission denied'" pid=52
+2025-08-05T09:00:53.005Z  WARN warp_net::ipc::unix: Failed to get path for client error="return code = -1, errno = 13, message = 'Permission denied'" pid=52
+2025-08-05T09:00:53.005Z  INFO warp::warp_service::ipc_loop: IPC: new connection exec_context=Regular process_name="<Unknown>" pid=52
+2025-08-05T09:00:53.006Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc request: 22692e71-a2c1-454c-84dd-44d37809524f; GetAppSettings
+2025-08-05T09:00:53.006Z DEBUG utilities::tokio::select_watcher: Entering: [main loop] arm="handle_ipc_request"
+2025-08-05T09:00:53.006Z DEBUG utilities::tokio::select_watcher: Exiting: [main loop] arm="handle_ipc_request" elapsed=204.016µs
+2025-08-05T09:00:53.011Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc request: 76fad89a-b797-4a5d-967f-33fca9c43439; GetRegistrationInfo
+2025-08-05T09:00:53.013Z DEBUG utilities::tokio::select_watcher: Entering: [main loop] arm="handle_ipc_request"
+2025-08-05T09:00:53.037Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc response: 76fad89a-b797-4a5d-967f-33fca9c43439; RegistrationInfo: Some(RegistrationInfo { id: Client(ConsumerRegistrationId(1f1d1654-fca8-43e2-9237-68ed5e5d78fa)), device_id: PhysicalDeviceId(1f1d1654-fca8-43e2-9237-68ed5e5d78fa), public_key: [42, 121, 237, 85, 249, 210, 63, 188, 140, 104, 10, 10, 157, 161, 208, 227, 126, 237, 207, 181, 24, 15, 5, 98, 176, 57, 232, 109, 109, 243, 213, 41], managed: false, account: Free { id: AccountId(d9247341-7d38-41d3-be0c-36a6fdab612c), license: "980qTKI6-6329prKy-Y35NLP06" }, alternate_networks: None })
+2025-08-05T09:00:53.051Z DEBUG utilities::tokio::select_watcher: Exiting: [main loop] arm="handle_ipc_request" elapsed=39.85462ms
+2025-08-05T09:00:53.070Z DEBUG utilities::tokio::select_watcher: Entering: [main loop] arm="handle_ipc_request"
+2025-08-05T09:00:53.071Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc request: edb4c718-7780-49ab-8a0f-9bf14a98adf6; SetAlwaysOn(true)
+2025-08-05T09:00:53.074Z  INFO main_loop: structlog: event="UserToggledV0" toggle="on" warp_colo="none" warp_metal="none" account_name="" account_id="d92473417d3841d3be0c36a6fdab612c" hostname="17535891ce66" serial_number=""
+2025-08-05T09:00:53.119Z DEBUG run: warp_settings::manager: LayerManager update: UserOverrides(<mutator>)
+2025-08-05T09:00:53.119Z DEBUG run: warp_settings::manager: UserOverrides updated: UserOverrides { version: None, always_on: Some(true), operation_mode: None, disable_for_wifi: None, disable_for_ethernet: None, disable_for_networks: None, families: None, dns_log_until: FutureSystemTime(None), gateway_id: None, onboarding: None, organization: None, split_config: None, fallback_domains: None, proxy_port: None, disable_connectivity_checks: None, override_api_endpoint: None, override_doh_endpoint: None, override_warp_endpoint: None, override_tunnel_mtu: None, qlog_log_until: FutureSystemTime(None), masque_settings: None, compliance_environment: None }
+2025-08-05T09:00:53.149Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc response: edb4c718-7780-49ab-8a0f-9bf14a98adf6; Success
+2025-08-05T09:00:53.154Z  INFO warp::warp_service::ipc_loop: IPC connection ended
+2025-08-05T09:00:53.155Z DEBUG utilities::tokio::select_watcher: Exiting: [main loop] arm="handle_ipc_request" elapsed=84.239495ms
+2025-08-05T09:00:53.155Z DEBUG main_loop: warp::warp_service: Checking for registration vs settings account mismatch reg_is_teams=false settings_is_teams=false reg_org=None settings_org=None
+2025-08-05T09:00:53.155Z DEBUG utilities::tokio::select_watcher: Entering: [main loop] arm="settings_changed"
+2025-08-05T09:00:53.157Z DEBUG firewall::change: Firewall allow API ips api_ips=[104.16.24.84, 104.16.192.82, 2606:4700::6810:1854, 2606:4700::6810:c052]
+2025-08-05T09:00:53.159Z DEBUG firewall::change: Changing catch all policy Deny->Deny
+2025-08-05T09:00:53.159Z DEBUG firewall::change: Firewall allow managed network endpoints managed_network_endpoints=[]
+2025-08-05T09:00:53.161Z DEBUG firewall::change: Firewall allow anycast ips: [162.159.197.3, 2606:4700:102::3]
+2025-08-05T09:00:53.162Z  INFO firewall::engine: Firewall starting
+2025-08-05T09:00:53.173Z  WARN warp_net::ipc::unix: Failed to get path for client error="return code = -1, errno = 13, message = 'Permission denied'" pid=59
+2025-08-05T09:00:53.173Z  WARN warp_net::ipc::unix: Failed to get path for client error="return code = -1, errno = 13, message = 'Permission denied'" pid=59
+2025-08-05T09:00:53.173Z  INFO warp::warp_service::ipc_loop: IPC: new connection exec_context=Regular process_name="<Unknown>" pid=59
+2025-08-05T09:00:53.440Z DEBUG firewall::linux: Firewall rules loaded
+2025-08-05T09:00:53.445Z  INFO main_loop: warp::warp_service: User Settings Changed: {always_on: false->true, }
+2025-08-05T09:00:53.445Z DEBUG main_loop: warp::warp_service::ipc_handlers: Sending IPC update: SettingsUpdated
+2025-08-05T09:00:53.445Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc Broadcast ResponseUpdate: SettingsUpdated
+2025-08-05T09:00:53.445Z  INFO main_loop: warp::warp_service: Settings and Registration determined that a key rotation was needed but there exists a pending API call that satisfies this constraint. Skipping for now.
+2025-08-05T09:00:53.445Z DEBUG main_loop: warp::warp_service: update_settings: no restart required
+2025-08-05T09:00:53.446Z DEBUG main_loop: warp::warp::controller: Stopping WarpConnection state=Disconnected
+2025-08-05T09:00:53.449Z DEBUG firewall::change: Firewall allow API ips api_ips=[104.16.24.84, 104.16.192.82, 2606:4700::6810:1854, 2606:4700::6810:c052]
+2025-08-05T09:00:53.449Z DEBUG firewall::change: Changing catch all policy Deny->Deny
+2025-08-05T09:00:53.449Z DEBUG firewall::change: Firewall allow managed network endpoints managed_network_endpoints=[]
+2025-08-05T09:00:53.449Z DEBUG firewall::change: Firewall allow anycast ips: [162.159.197.3, 2606:4700:102::3]
+2025-08-05T09:00:53.516Z DEBUG firewall::linux: Firewall rules loaded
+2025-08-05T09:00:53.516Z DEBUG main_loop: warp::warp_service: Determining disconnected reason from connectivity state net_info=IPv4: [eth0; 172.24.0.2; Ethernet; Gateway: Some(172.24.0.1)], DNS servers:,  127.0.0.11:53
+ power_state=None disconnect_reason=None
+2025-08-05T09:00:53.516Z  WARN main_loop: warp::warp_service: Disconnecting, but reason is unknown
+2025-08-05T09:00:53.516Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc request: b22d92ac-a256-4e14-aeb8-1be0c2d517d2; GetAppSettings
+2025-08-05T09:00:53.516Z DEBUG utilities::tokio::select_watcher: Exiting: [main loop] arm="settings_changed" elapsed=361.374091ms
+2025-08-05T09:00:53.517Z DEBUG utilities::tokio::select_watcher: Entering: [main loop] arm="handle_ipc_request"
+2025-08-05T09:00:53.517Z DEBUG utilities::tokio::select_watcher: Exiting: [main loop] arm="handle_ipc_request" elapsed=456.936µs
+2025-08-05T09:00:53.517Z DEBUG utilities::tokio::select_watcher: Entering: [main loop] arm="main_loop_compat_rx"
+2025-08-05T09:00:53.522Z DEBUG main_loop:handle_command: warp::warp::controller: Stopping WarpConnection state=Disconnected
+2025-08-05T09:00:53.522Z DEBUG firewall::change: Firewall allow API ips api_ips=[104.16.24.84, 104.16.192.82, 2606:4700::6810:1854, 2606:4700::6810:c052]
+2025-08-05T09:00:53.522Z DEBUG firewall::change: Changing catch all policy Deny->Deny
+2025-08-05T09:00:53.523Z DEBUG firewall::change: Firewall allow managed network endpoints managed_network_endpoints=[]
+2025-08-05T09:00:53.523Z DEBUG firewall::change: Firewall allow anycast ips: [162.159.197.3, 2606:4700:102::3]
+2025-08-05T09:00:53.615Z DEBUG firewall::linux: Firewall rules loaded
+2025-08-05T09:00:53.616Z  INFO main_loop:handle_command: warp::warp_service: captive_portal_fw_until: Indefinitely
+2025-08-05T09:00:53.620Z DEBUG main_loop:handle_command: warp::warp::proxying_dns: Using auto fallback: true
+2025-08-05T09:00:53.620Z  WARN main_loop:handle_command: warp::warp::tunnel: Settings and Registration mismatch on tunnel protocol. Falling back to registration protocol. settings_proto=Masque reg_proto=Wireguard
+2025-08-05T09:00:53.620Z DEBUG main_loop:handle_command: warp::warp::controller: Setting WarpConnection current_state=Disconnected
+2025-08-05T09:00:53.620Z DEBUG main_loop:handle_command: warp::warp::controller: Stopping WarpConnection state=Disconnected
+2025-08-05T09:00:53.621Z DEBUG utilities::tokio::select_watcher: Exiting: [main loop] arm="main_loop_compat_rx" elapsed=104.149633ms
+2025-08-05T09:00:53.621Z DEBUG main_loop: warp::warp::warp_connection: Current Network: IPv4: [eth0; 172.24.0.2; Ethernet; Gateway: Some(172.24.0.1)], DNS servers:,  127.0.0.11:53
+
+2025-08-05T09:00:53.621Z  INFO main_loop: warp::warp::warp_connection: Starting Warp Connection operation_mode=Warp dns_mode=DNS Proxy tunnel_mode=Exclude-only Tunnel posture_only=disabled forward_proxy=disabled
+2025-08-05T09:00:53.623Z  INFO main_loop: warp::warp::tunnel: Initiate WARP connection protocol=Wireguard self.masque_settings=MasqueProtocolSettings { http_version: H3WithH2Fallback }
+2025-08-05T09:00:53.623Z DEBUG firewall::change: Firewall allow tunnel UDP ipv4=[162.159.192.10] ipv6=[2606:4700:d0::a29f:c00a]
+2025-08-05T09:00:53.623Z  INFO main_loop: warp::warp_service: WARP status: Connecting(CheckingNetwork)
+2025-08-05T09:00:53.623Z DEBUG main_loop: warp::warp_service::ipc_handlers: Sending IPC status update: Connecting(CheckingNetwork)
+2025-08-05T09:00:53.623Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc Broadcast ResponseStatus: Connecting(CheckingNetwork)
+2025-08-05T09:00:53.624Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc request: cdd6a61e-315f-4f2b-bafc-c5cd639efbe3; GetRegistrationInfo
+2025-08-05T09:00:53.624Z DEBUG utilities::tokio::select_watcher: Entering: [main loop] arm="status_change"
+2025-08-05T09:00:53.624Z DEBUG utilities::tokio::select_watcher: Exiting: [main loop] arm="status_change" elapsed=750.163µs
+2025-08-05T09:00:53.624Z DEBUG utilities::tokio::select_watcher: Entering: [main loop] arm="handle_ipc_request"
+2025-08-05T09:00:53.633Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc response: cdd6a61e-315f-4f2b-bafc-c5cd639efbe3; RegistrationInfo: Some(RegistrationInfo { id: Client(ConsumerRegistrationId(1f1d1654-fca8-43e2-9237-68ed5e5d78fa)), device_id: PhysicalDeviceId(1f1d1654-fca8-43e2-9237-68ed5e5d78fa), public_key: [42, 121, 237, 85, 249, 210, 63, 188, 140, 104, 10, 10, 157, 161, 208, 227, 126, 237, 207, 181, 24, 15, 5, 98, 176, 57, 232, 109, 109, 243, 213, 41], managed: false, account: Free { id: AccountId(d9247341-7d38-41d3-be0c-36a6fdab612c), license: "980qTKI6-6329prKy-Y35NLP06" }, alternate_networks: None })
+2025-08-05T09:00:53.634Z DEBUG utilities::tokio::select_watcher: Exiting: [main loop] arm="handle_ipc_request" elapsed=10.412663ms
+2025-08-05T09:00:53.648Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc request: c1708530-e2b0-41fc-a204-1b158ecfd7c2; SetQlog(setting=Disabled)
+2025-08-05T09:00:53.648Z DEBUG utilities::tokio::select_watcher: Entering: [main loop] arm="handle_ipc_request"
+2025-08-05T09:00:53.648Z DEBUG run: warp_settings::manager: LayerManager update: UserOverrides(<mutator>)
+2025-08-05T09:00:53.648Z DEBUG run: warp_settings::manager: UserOverrides updated: UserOverrides { version: None, always_on: Some(true), operation_mode: None, disable_for_wifi: None, disable_for_ethernet: None, disable_for_networks: None, families: None, dns_log_until: FutureSystemTime(None), gateway_id: None, onboarding: None, organization: None, split_config: None, fallback_domains: None, proxy_port: None, disable_connectivity_checks: None, override_api_endpoint: None, override_doh_endpoint: None, override_warp_endpoint: None, override_tunnel_mtu: None, qlog_log_until: FutureSystemTime(None), masque_settings: None, compliance_environment: None }
+2025-08-05T09:00:53.652Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc response: c1708530-e2b0-41fc-a204-1b158ecfd7c2; Success
+2025-08-05T09:00:53.662Z DEBUG utilities::tokio::select_watcher: Exiting: [main loop] arm="handle_ipc_request" elapsed=14.637213ms
+2025-08-05T09:00:53.664Z  INFO warp::warp_service::ipc_loop: IPC connection ended
+2025-08-05T09:00:53.674Z DEBUG firewall::linux: Firewall rules loaded
+2025-08-05T09:00:53.675Z DEBUG firewall::change: Firewall allow captive portal detection
+2025-08-05T09:00:53.732Z DEBUG firewall::linux: Firewall rules loaded
+2025-08-05T09:00:53.732Z DEBUG captive_portal: Running captive portal detections [legacy,os-detected,http-redirect[cloudflareportal.com],no-dns-redirect[cloudflareportal.com],expected-content,third-party]
+2025-08-05T09:00:53.733Z  INFO run{detection_type=legacy}: captive_portal::detections::legacy: Checking for captive portal with legacy detection urls=["cloudflareportal.com", "cloudflareok.com", "cloudflarecp.com"]
+2025-08-05T09:00:53.733Z  INFO run{detection_type=http-redirect[cloudflareportal.com]}: captive_portal::detections::http_redirect: Checking for captive portal with HTTP-Redirect detection host="cloudflareportal.com" ips=None interface=None bind_addr=None
+2025-08-05T09:00:53.733Z  INFO captive_portal::detections::http_redirect: Checking for captive portal with HTTP-Redirect detection host="connectivitycheck.gstatic.com" ips=None interface=None bind_addr=None
+2025-08-05T09:00:53.734Z DEBUG run{detection_type=os-detected}: captive_portal::detections: return=Ok(NoCaptivePortalDetected)
+2025-08-05T09:00:53.746Z DEBUG main_loop:connect_single_protocol{protocol="wireguard"}:happy_eyeballs_with_retry{protocol="wireguard"}: warp_edge::happy_eyeballs: Attempting happy eyeballs with retries retries=0 retry_delay=0ns stage=FirstRun
+2025-08-05T09:00:53.747Z  INFO captive_portal::detections::http_redirect: Checking for captive portal with HTTP-Redirect detection host="www.msftconnecttest.com" ips=None interface=None bind_addr=None
+2025-08-05T09:00:53.747Z  INFO captive_portal::detections::http_redirect: Checking for captive portal with HTTP-Redirect detection host="captive.apple.com" ips=None interface=None bind_addr=None
+2025-08-05T09:00:53.748Z DEBUG main_loop:connect_single_protocol{protocol="wireguard"}:happy_eyeballs_with_retry{protocol="wireguard"}: warp_edge::happy_eyeballs: Attempting Happy Eyeballs to 162.159.192.10:2408 / [2606:4700:d0::a29f:c00a]:2408
+2025-08-05T09:00:53.748Z DEBUG main_loop:connect_single_protocol{protocol="wireguard"}:happy_eyeballs_with_retry{protocol="wireguard"}: warp_edge::happy_eyeballs: Start racer 172.24.0.2:50011 ---> 162.159.192.10:2408
+2025-08-05T09:00:53.749Z  INFO run{detection_type=no-dns-redirect[cloudflareportal.com]}: captive_portal::detections::http_redirect: Checking for captive portal with HTTP-Redirect detection host="cloudflareportal.com" ips=Some([104.24.0.1, 162.159.137.65, 172.64.1.0, 2606:4700:7::1, 2606:4700::1]) interface=None bind_addr=None
+2025-08-05T09:00:53.750Z DEBUG main_loop:connect_single_protocol{protocol="wireguard"}:happy_eyeballs_with_retry{protocol="wireguard"}: warp_edge::wireguard_tun: Handshaking wireguard with session tag affinity_tag=0
+2025-08-05T09:00:53.763Z DEBUG main_loop:connect_single_protocol{protocol="wireguard"}:happy_eyeballs_with_retry{protocol="wireguard"}: warp_edge::wireguard_tun: Sent handshake initiation to 162.159.192.10:2408
+2025-08-05T09:00:53.763Z DEBUG main_loop:connect_single_protocol{protocol="wireguard"}:happy_eyeballs_with_retry{protocol="wireguard"}: warp_edge::happy_eyeballs: Happy Eyeballs check failed v6=[2606:4700:d0::a29f:c00a]:2408 err=Connect(Os { code: 101, kind: NetworkUnreachable, message: "Network is unreachable" })
+2025-08-05T09:00:53.763Z DEBUG utilities::tokio::select_watcher: Entering: [main loop] arm="status_change"
+2025-08-05T09:00:53.763Z  INFO main_loop: warp::warp_service: WARP status: Connecting(PerformingHappyEyeballs((162.159.192.10:2408, [2606:4700:d0::a29f:c00a]:2408)))
+2025-08-05T09:00:53.763Z DEBUG main_loop: warp::warp_service::ipc_handlers: Sending IPC status update: Connecting(PerformingHappyEyeballs((162.159.192.10:2408, [2606:4700:d0::a29f:c00a]:2408)))
+2025-08-05T09:00:53.763Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc Broadcast ResponseStatus: Connecting(PerformingHappyEyeballs((162.159.192.10:2408, [2606:4700:d0::a29f:c00a]:2408)))
+2025-08-05T09:00:53.764Z DEBUG utilities::tokio::select_watcher: Exiting: [main loop] arm="status_change" elapsed=252.221µs
+2025-08-05T09:00:53.827Z DEBUG run{detection_type=no-dns-redirect[cloudflareportal.com]}: captive_portal::detections::http_redirect: 204 response for HTTP test. No captive portal detected
+2025-08-05T09:00:53.828Z DEBUG run{detection_type=no-dns-redirect[cloudflareportal.com]}: captive_portal::detections: return=Ok(NoCaptivePortalDetected)
+2025-08-05T09:00:53.828Z  INFO run{detection_type=legacy}: captive_portal::detections::legacy: Successfully resolved DNS queries
+2025-08-05T09:00:53.893Z DEBUG captive_portal::detections::http_redirect: 204 response for HTTP test. No captive portal detected
+2025-08-05T09:00:53.910Z DEBUG run{detection_type=expected-content}: captive_portal::detections::expected_content: 200 response and correct content for HTTP Content test. No captive portal detected
+2025-08-05T09:00:53.910Z DEBUG run{detection_type=expected-content}: captive_portal::detections: return=Ok(NoCaptivePortalDetected)
+2025-08-05T09:00:53.910Z DEBUG run{detection_type=http-redirect[cloudflareportal.com]}: captive_portal::detections::http_redirect: 204 response for HTTP test. No captive portal detected
+2025-08-05T09:00:53.910Z DEBUG run{detection_type=http-redirect[cloudflareportal.com]}: captive_portal::detections: return=Ok(NoCaptivePortalDetected)
+2025-08-05T09:00:53.943Z  INFO run{detection_type=legacy}: captive_portal::detections::legacy: Successfully retrieved HTTPs page
+2025-08-05T09:00:53.943Z DEBUG run{detection_type=legacy}: captive_portal::detections: return=Ok(NoCaptivePortalDetected)
+2025-08-05T09:00:54.005Z DEBUG captive_portal::detections::http_redirect: 200 response for HTTP test. No captive portal detected
+2025-08-05T09:00:54.178Z DEBUG warp_api_endpoints::payloads: Warp endpoint override ports ports=[443, 500, 1701, 4500, 4443, 8443, 8095]
+2025-08-05T09:00:54.181Z DEBUG main_loop: warp_api_client::executor: Returning API response for RotateKeys request_id=ef2df21f-95a9-4f9c-bea3-20c37e61b2b9
+2025-08-05T09:00:54.181Z DEBUG main_loop: warp::warp_service::api_handlers: Registration updated current_registration=Registered(reg=1f1d1654-fca8-43e2-9237-68ed5e5d78fa) disposition=CheckAndUpdate
+2025-08-05T09:00:54.181Z DEBUG main_loop: warp::warp_service::api_handlers: Invalidating existing posture check scheduler on registration update
+2025-08-05T09:00:54.181Z DEBUG main_loop: warp::warp_service::api_handlers: Registration updated 0.00 hours old, refresh at 2025-08-06 9:00:54.178468771 +00:00:00
+Registration: 1f1d1654-fca8-43e2-9237-68ed5e5d78fa
+Device Identifiers: System User
+Auth Method: Consumer
+Public key: 3059301306072a8648ce3d020106082a8648ce3d030107034200045da51d34b94732fca18398ee5aead7334604c63d0c36a8abd4f587788de5d115dc3a890a1c18cc9b8394beb93be1f2a6692c5cf1a799b20e1dc0a17aeca7ee6b
+Interface: WarpEndpoint { v4: 172.16.0.2, v6: 2606:4700:110:8f0c:c3ca:eb6d:11c:53ed }
+Endpoints: [WarpSocketAddrPair { v4: 162.159.198.2:443, v6: [2606:4700:103::2]:443 }, WarpSocketAddrPair { v4: 162.159.198.2:500, v6: [2606:4700:103::2]:500 }, WarpSocketAddrPair { v4: 162.159.198.2:1701, v6: [2606:4700:103::2]:1701 }, WarpSocketAddrPair { v4: 162.159.198.2:4500, v6: [2606:4700:103::2]:4500 }, WarpSocketAddrPair { v4: 162.159.198.2:4443, v6: [2606:4700:103::2]:4443 }, WarpSocketAddrPair { v4: 162.159.198.2:8443, v6: [2606:4700:103::2]:8443 }, WarpSocketAddrPair { v4: 162.159.198.2:8095, v6: [2606:4700:103::2]:8095 }]
+Subnet CIDRS: None
+
+Account: Free { id: AccountId(d9247341-7d38-41d3-be0c-36a6fdab612c), license: "980qTKI6-6329prKy-Y35NLP06" }
+
+2025-08-05T09:00:54.182Z DEBUG utilities::tokio::select_watcher: Entering: [main loop] arm="api_responses"
+2025-08-05T09:00:54.182Z  INFO main_loop: warp_storage::registration::registration_storage: Saving registration to active cache config_name=None username="WARPSecret"
+2025-08-05T09:00:54.187Z DEBUG main_loop: warp::warp::controller: Stopping WarpConnection state=Connecting
+2025-08-05T09:00:54.188Z DEBUG firewall::change: Firewall reset to defaults
+2025-08-05T09:00:54.188Z DEBUG warp::warp_service::ipc_handlers: Sending IPC update: ConfigurationUpdated
+2025-08-05T09:00:54.188Z DEBUG warp::warp_service::ipc_handlers: Ipc Broadcast ResponseUpdate: ConfigurationUpdated
+2025-08-05T09:00:54.188Z DEBUG upload_stats{stats=StatsPayload { counters: [CounterPayload { name: "statistics.updates_recv", labels: {}, count: 1 }, CounterPayload { name: "alternate-network.updates_recv", labels: {}, count: 1 }, CounterPayload { name: "emergency-disconnect.updates_recv", labels: {}, count: 2 }, CounterPayload { name: "message_bus.bus_driver_updates_sent", labels: {}, count: 2 }, CounterPayload { name: "message_bus.bus_driver_commands_sent", labels: {}, count: 1 }, CounterPayload { name: "registration-verifier.updates_recv", labels: {}, count: 1 }, CounterPayload { name: "main-loop-compat.commands_recv", labels: {}, count: 1 }, CounterPayload { name: "root-ca.updates_recv", labels: {}, count: 1 }, CounterPayload { name: "device-state.updates_recv", labels: {}, count: 2 }, CounterPayload { name: "watchdog.requests_recv", labels: {}, count: 12 }], summaries: [SummaryPayload { name: "message_bus.bus_driver_request_duration_sec_nano_sec", labels: {}, sum: 0.0031347469999999994, count: 12 }, SummaryPayload { name: "firewall.fw_avg_ms", labels: {}, sum: 541.0, count: 5 }], gauges: [GaugesPayload { name: "happy_eyeballs.conn_attempts_current", labels: {}, value: 1.0 }] } context="registration change"}: actor_statistics::handler: Starting to upload stats
+2025-08-05T09:00:54.188Z  WARN upload_stats{stats=StatsPayload { counters: [CounterPayload { name: "statistics.updates_recv", labels: {}, count: 1 }, CounterPayload { name: "alternate-network.updates_recv", labels: {}, count: 1 }, CounterPayload { name: "emergency-disconnect.updates_recv", labels: {}, count: 2 }, CounterPayload { name: "message_bus.bus_driver_updates_sent", labels: {}, count: 2 }, CounterPayload { name: "message_bus.bus_driver_commands_sent", labels: {}, count: 1 }, CounterPayload { name: "registration-verifier.updates_recv", labels: {}, count: 1 }, CounterPayload { name: "main-loop-compat.commands_recv", labels: {}, count: 1 }, CounterPayload { name: "root-ca.updates_recv", labels: {}, count: 1 }, CounterPayload { name: "device-state.updates_recv", labels: {}, count: 2 }, CounterPayload { name: "watchdog.requests_recv", labels: {}, count: 12 }], summaries: [SummaryPayload { name: "message_bus.bus_driver_request_duration_sec_nano_sec", labels: {}, sum: 0.0031347469999999994, count: 12 }, SummaryPayload { name: "firewall.fw_avg_ms", labels: {}, sum: 541.0, count: 5 }], gauges: [GaugesPayload { name: "happy_eyeballs.conn_attempts_current", labels: {}, value: 1.0 }] } context="registration change"}: actor_statistics::handler: Skipped uploading aggregate stats because registration was none!
+2025-08-05T09:00:54.188Z  INFO actor_statistics::handler: Switched to new registration for stats. All stats have been reset. new_registration_id=None
+2025-08-05T09:00:54.252Z DEBUG firewall::linux: Firewall rules loaded
+2025-08-05T09:00:54.253Z DEBUG firewall::change: Firewall allow API ips api_ips=[104.16.24.84, 104.16.192.82, 2606:4700::6810:1854, 2606:4700::6810:c052]
+2025-08-05T09:00:54.253Z DEBUG firewall::change: Changing catch all policy Deny->Deny
+2025-08-05T09:00:54.253Z DEBUG firewall::change: Firewall allow managed network endpoints managed_network_endpoints=[]
+2025-08-05T09:00:54.253Z DEBUG firewall::change: Firewall allow anycast ips: [162.159.197.3, 2606:4700:102::3]
+2025-08-05T09:00:54.274Z DEBUG firewall::linux: Firewall rules loaded
+2025-08-05T09:00:54.283Z DEBUG main_loop: warp::warp_service: Determining disconnected reason from connectivity state net_info=IPv4: [eth0; 172.24.0.2; Ethernet; Gateway: Some(172.24.0.1)], DNS servers:,  127.0.0.11:53
+ power_state=None disconnect_reason=None
+2025-08-05T09:00:54.283Z  WARN main_loop: warp::warp_service: Disconnecting, but reason is unknown
+2025-08-05T09:00:54.283Z DEBUG main_loop: warp::warp_service: Checking for registration vs settings account mismatch reg_is_teams=false settings_is_teams=false reg_org=None settings_org=None
+2025-08-05T09:00:54.284Z DEBUG firewall::change: Firewall allow API ips api_ips=[104.16.24.84, 104.16.192.82, 2606:4700::6810:1854, 2606:4700::6810:c052]
+2025-08-05T09:00:54.284Z DEBUG firewall::change: Changing catch all policy Deny->Deny
+2025-08-05T09:00:54.284Z DEBUG firewall::change: Firewall allow managed network endpoints managed_network_endpoints=[]
+2025-08-05T09:00:54.284Z DEBUG firewall::change: Firewall allow anycast ips: [162.159.197.3, 2606:4700:102::3]
+2025-08-05T09:00:54.323Z DEBUG firewall::linux: Firewall rules loaded
+2025-08-05T09:00:54.324Z  INFO main_loop: warp::warp_service: User Settings Changed: {}
+2025-08-05T09:00:54.324Z DEBUG main_loop: warp::warp_service::ipc_handlers: Sending IPC update: SettingsUpdated
+2025-08-05T09:00:54.324Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc Broadcast ResponseUpdate: SettingsUpdated
+2025-08-05T09:00:54.324Z DEBUG main_loop: warp::warp_service: update_settings: no restart required
+2025-08-05T09:00:54.324Z DEBUG main_loop: warp::warp::controller: Stopping WarpConnection state=Disconnected
+2025-08-05T09:00:54.324Z DEBUG firewall::change: Firewall allow API ips api_ips=[104.16.24.84, 104.16.192.82, 2606:4700::6810:1854, 2606:4700::6810:c052]
+2025-08-05T09:00:54.325Z DEBUG firewall::change: Changing catch all policy Deny->Deny
+2025-08-05T09:00:54.325Z DEBUG firewall::change: Firewall allow managed network endpoints managed_network_endpoints=[]
+2025-08-05T09:00:54.325Z DEBUG firewall::change: Firewall allow anycast ips: [162.159.197.3, 2606:4700:102::3]
+2025-08-05T09:00:54.390Z DEBUG firewall::linux: Firewall rules loaded
+2025-08-05T09:00:54.391Z DEBUG main_loop: warp::warp_service: Determining disconnected reason from connectivity state net_info=IPv4: [eth0; 172.24.0.2; Ethernet; Gateway: Some(172.24.0.1)], DNS servers:,  127.0.0.11:53
+ power_state=None disconnect_reason=None
+2025-08-05T09:00:54.391Z  WARN main_loop: warp::warp_service: Disconnecting, but reason is unknown
+2025-08-05T09:00:54.391Z DEBUG run: warp_settings::manager: LayerManager update: NetworkPolicy(Some(NetworkPolicySettings { onboarding: None, operation_mode: None, disable_auto_fallback: None, fallback_domains: None, proxy_port: None, split_config: None, gateway_id: None, support_url: None, allow_mode_switch: None, switch_locked: None, auto_connect: None, captive_portal: None, organization: None, allow_updates: None, allowed_to_leave: None, profile_id: None, lan_allow_settings: Some(LanAllowSettings { minutes: None, subnet_size: SubnetSize(24) }), warp_tunnel_protocol: Some(Masque), masque_settings: None, register_interface_ip_with_dns: None, anycast_split_ips: Some(AnycastSplitIps { always_exclude: [162.159.197.3, 2606:4700:102::3], always_include: [162.159.197.4, 2606:4700:102::4] }), firewall_scope: None, sccm_vpn_boundary_support: None, enable_post_quantum: None }))
+2025-08-05T09:00:54.396Z DEBUG utilities::tokio::select_watcher: Exiting: [main loop] arm="api_responses" elapsed=214.957715ms
+2025-08-05T09:00:54.396Z DEBUG utilities::tokio::select_watcher: Entering: [main loop] arm="main_loop_compat_rx"
+2025-08-05T09:00:54.412Z DEBUG main_loop:handle_command: warp::warp::controller: Stopping WarpConnection state=Disconnected
+2025-08-05T09:00:54.415Z DEBUG firewall::change: Firewall allow API ips api_ips=[104.16.24.84, 104.16.192.82, 2606:4700::6810:1854, 2606:4700::6810:c052]
+2025-08-05T09:00:54.416Z DEBUG firewall::change: Changing catch all policy Deny->Deny
+2025-08-05T09:00:54.416Z DEBUG firewall::change: Firewall allow managed network endpoints managed_network_endpoints=[]
+2025-08-05T09:00:54.416Z DEBUG firewall::change: Firewall allow anycast ips: [162.159.197.3, 2606:4700:102::3]
+2025-08-05T09:00:54.490Z DEBUG firewall::linux: Firewall rules loaded
+2025-08-05T09:00:54.491Z  INFO main_loop:handle_command: warp::warp_service: captive_portal_fw_until: Indefinitely
+2025-08-05T09:00:54.526Z DEBUG main_loop:handle_command: warp::warp::proxying_dns: Using auto fallback: true
+2025-08-05T09:00:54.527Z DEBUG main_loop:handle_command: warp::warp::controller: Setting WarpConnection current_state=Disconnected
+2025-08-05T09:00:54.527Z DEBUG main_loop:handle_command: warp::warp::controller: Stopping WarpConnection state=Disconnected
+2025-08-05T09:00:54.527Z DEBUG utilities::tokio::select_watcher: Exiting: [main loop] arm="main_loop_compat_rx" elapsed=135.882261ms
+2025-08-05T09:00:54.527Z DEBUG main_loop: warp::warp::warp_connection: Current Network: IPv4: [eth0; 172.24.0.2; Ethernet; Gateway: Some(172.24.0.1)], DNS servers:,  127.0.0.11:53
+
+2025-08-05T09:00:54.527Z  INFO main_loop: warp::warp::warp_connection: Starting Warp Connection operation_mode=Warp dns_mode=DNS Proxy tunnel_mode=Exclude-only Tunnel posture_only=disabled forward_proxy=disabled
+2025-08-05T09:00:54.527Z  INFO main_loop: warp::warp::tunnel: Initiate WARP connection protocol=Masque self.masque_settings=MasqueProtocolSettings { http_version: H3WithH2Fallback }
+2025-08-05T09:00:54.527Z  INFO main_loop: warp::warp_service: WARP status: Connecting(CheckingNetwork)
+2025-08-05T09:00:54.527Z DEBUG firewall::change: Firewall allow tunnel UDP ipv4=[162.159.198.2] ipv6=[2606:4700:103::2]
+2025-08-05T09:00:54.527Z DEBUG utilities::tokio::select_watcher: Entering: [main loop] arm="status_change"
+2025-08-05T09:00:54.527Z DEBUG main_loop: warp::warp_service::ipc_handlers: Sending IPC status update: Connecting(CheckingNetwork)
+2025-08-05T09:00:54.527Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc Broadcast ResponseStatus: Connecting(CheckingNetwork)
+2025-08-05T09:00:54.527Z  INFO main_loop: warp::warp_service: WARP status: Connecting(InitializingSettings)
+2025-08-05T09:00:54.527Z DEBUG main_loop: warp::warp_service::ipc_handlers: Sending IPC status update: Connecting(InitializingSettings)
+2025-08-05T09:00:54.527Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc Broadcast ResponseStatus: Connecting(InitializingSettings)
+2025-08-05T09:00:54.527Z DEBUG utilities::tokio::select_watcher: Exiting: [main loop] arm="status_change" elapsed=203.217µs
+2025-08-05T09:00:54.527Z DEBUG utilities::tokio::select_watcher: Entering: [main loop] arm="registration_change"
+2025-08-05T09:00:54.527Z DEBUG utilities::tokio::select_watcher: Exiting: [main loop] arm="registration_change" elapsed=105.409µs
+2025-08-05T09:00:54.527Z DEBUG utilities::tokio::select_watcher: Entering: [main loop] arm="status_change"
+2025-08-05T09:00:54.527Z DEBUG utilities::tokio::select_watcher: Exiting: [main loop] arm="status_change" elapsed=112.809µs
+2025-08-05T09:00:54.594Z DEBUG firewall::linux: Firewall rules loaded
+2025-08-05T09:00:54.594Z DEBUG firewall::change: Firewall allow tunnel TCP addresses=[162.159.198.2:443, 162.159.198.2:500, 162.159.198.2:1701, 162.159.198.2:4443, 162.159.198.2:4500, 162.159.198.2:8095, 162.159.198.2:8443, [2606:4700:103::2]:443, [2606:4700:103::2]:500, [2606:4700:103::2]:1701, [2606:4700:103::2]:4443, [2606:4700:103::2]:4500, [2606:4700:103::2]:8095, [2606:4700:103::2]:8443]
+2025-08-05T09:00:54.686Z DEBUG firewall::linux: Firewall rules loaded
+2025-08-05T09:00:54.687Z DEBUG firewall::change: Firewall allow captive portal detection
+2025-08-05T09:00:54.764Z DEBUG firewall::linux: Firewall rules loaded
+2025-08-05T09:00:54.764Z DEBUG main_loop:connect_with_fallback{primary="masque" fallback="H2"}:happy_eyeballs_with_retry{protocol="masque"}: warp_edge::happy_eyeballs: Attempting happy eyeballs with retries retries=0 retry_delay=0ns stage=FirstRun
+2025-08-05T09:00:54.764Z DEBUG main_loop:connect_with_fallback{primary="masque" fallback="H2"}:happy_eyeballs_with_retry{protocol="masque"}: warp_edge::happy_eyeballs: Attempting Happy Eyeballs to 162.159.198.2:443 / [2606:4700:103::2]:443
+2025-08-05T09:00:54.764Z DEBUG main_loop:connect_with_fallback{primary="masque" fallback="H2"}:happy_eyeballs_with_retry{protocol="masque"}: warp_edge::happy_eyeballs: Start racer 172.24.0.2:56451 ---> 162.159.198.2:443
+2025-08-05T09:00:54.764Z DEBUG captive_portal: Running captive portal detections [legacy,os-detected,http-redirect[cloudflareportal.com],no-dns-redirect[cloudflareportal.com],expected-content,third-party]
+2025-08-05T09:00:54.764Z  INFO run{detection_type=http-redirect[cloudflareportal.com]}: captive_portal::detections::http_redirect: Checking for captive portal with HTTP-Redirect detection host="cloudflareportal.com" ips=None interface=None bind_addr=None
+2025-08-05T09:00:54.764Z  INFO run{detection_type=legacy}: captive_portal::detections::legacy: Checking for captive portal with legacy detection urls=["cloudflareportal.com", "cloudflareok.com", "cloudflarecp.com"]
+2025-08-05T09:00:54.764Z DEBUG run{detection_type=os-detected}: captive_portal::detections: return=Ok(NoCaptivePortalDetected)
+2025-08-05T09:00:54.764Z  INFO run{detection_type=no-dns-redirect[cloudflareportal.com]}: captive_portal::detections::http_redirect: Checking for captive portal with HTTP-Redirect detection host="cloudflareportal.com" ips=Some([104.24.0.1, 162.159.137.65, 172.64.1.0, 2606:4700:7::1, 2606:4700::1]) interface=None bind_addr=None
+2025-08-05T09:00:54.765Z  INFO captive_portal::detections::http_redirect: Checking for captive portal with HTTP-Redirect detection host="connectivitycheck.gstatic.com" ips=None interface=None bind_addr=None
+2025-08-05T09:00:54.765Z  INFO captive_portal::detections::http_redirect: Checking for captive portal with HTTP-Redirect detection host="www.msftconnecttest.com" ips=None interface=None bind_addr=None
+2025-08-05T09:00:54.765Z DEBUG main_loop:connect_with_fallback{primary="masque" fallback="H2"}:happy_eyeballs_with_retry{protocol="masque"}: warp_edge::h3_tun: Creating QUIC Client Connection Parmaeters qlog_setting=Disabled idle_timeout=IdleTimeout { idle_duration: IdleDuration(5s), retries: 0 }
+2025-08-05T09:00:54.770Z DEBUG main_loop:connect_with_fallback{primary="masque" fallback="H2"}:happy_eyeballs_with_retry{protocol="masque"}: warp_edge::h3_tun: Sending handshake initiation to 162.159.198.2:443
+2025-08-05T09:00:54.770Z  INFO captive_portal::detections::http_redirect: Checking for captive portal with HTTP-Redirect detection host="captive.apple.com" ips=None interface=None bind_addr=None
+2025-08-05T09:00:54.771Z  INFO slog: created unestablished quiche::Connection slog.target="tokio_quiche::quic" slog.module_path="tokio_quiche::quic" slog.file="/home/vsts_azpcontainer/.cargo/git/checkouts/quiche-4103ffa15137cf39/bfd737b/tokio-quiche/src/quic/mod.rs" slog.line=235 slog.column=5 slog.kv="provided_dcid=None,scid=f3167fe12f9552954c006dc9820ff1b9366ebea9"
+2025-08-05T09:00:54.771Z DEBUG main_loop:connect_with_fallback{primary="masque" fallback="H2"}:happy_eyeballs_with_retry{protocol="masque"}: warp_edge::happy_eyeballs: Happy Eyeballs check failed v6=[2606:4700:103::2]:443 err=Connect(Os { code: 101, kind: NetworkUnreachable, message: "Network is unreachable" })
+2025-08-05T09:00:54.771Z  INFO main_loop: warp::warp_service: WARP status: Connecting(PerformingHappyEyeballs((162.159.198.2:443, [2606:4700:103::2]:443)))
+2025-08-05T09:00:54.772Z DEBUG main_loop: warp::warp_service::ipc_handlers: Sending IPC status update: Connecting(PerformingHappyEyeballs((162.159.198.2:443, [2606:4700:103::2]:443)))
+2025-08-05T09:00:54.772Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc Broadcast ResponseStatus: Connecting(PerformingHappyEyeballs((162.159.198.2:443, [2606:4700:103::2]:443)))
+2025-08-05T09:00:54.781Z DEBUG utilities::tokio::select_watcher: Entering: [main loop] arm="status_change"
+2025-08-05T09:00:54.781Z DEBUG utilities::tokio::select_watcher: Exiting: [main loop] arm="status_change" elapsed=9.340374ms
+2025-08-05T09:00:54.784Z DEBUG slog: sending client Initials to peer slog.target="tokio_quiche::quic::router::connector" slog.module_path="tokio_quiche::quic::router::connector" slog.file="/home/vsts_azpcontainer/.cargo/git/checkouts/quiche-4103ffa15137cf39/bfd737b/tokio-quiche/src/quic/router/connector.rs" slog.line=266 slog.column=5 slog.kv="scid=f3167fe12f9552954c006dc9820ff1b9366ebea9"
+2025-08-05T09:00:54.800Z  INFO run{detection_type=legacy}: captive_portal::detections::legacy: Successfully resolved DNS queries
+2025-08-05T09:00:54.835Z DEBUG run{detection_type=no-dns-redirect[cloudflareportal.com]}: captive_portal::detections::http_redirect: 204 response for HTTP test. No captive portal detected
+2025-08-05T09:00:54.835Z DEBUG run{detection_type=no-dns-redirect[cloudflareportal.com]}: captive_portal::detections: return=Ok(NoCaptivePortalDetected)
+2025-08-05T09:00:54.847Z DEBUG slog: sending client Initials to peer slog.target="tokio_quiche::quic::router::connector" slog.module_path="tokio_quiche::quic::router::connector" slog.file="/home/vsts_azpcontainer/.cargo/git/checkouts/quiche-4103ffa15137cf39/bfd737b/tokio-quiche/src/quic/router/connector.rs" slog.line=266 slog.column=5 slog.kv="scid=f3167fe12f9552954c006dc9820ff1b9366ebea9"
+2025-08-05T09:00:54.850Z DEBUG slog: sending client Initials to peer slog.target="tokio_quiche::quic::router::connector" slog.module_path="tokio_quiche::quic::router::connector" slog.file="/home/vsts_azpcontainer/.cargo/git/checkouts/quiche-4103ffa15137cf39/bfd737b/tokio-quiche/src/quic/router/connector.rs" slog.line=266 slog.column=5 slog.kv="scid=f3167fe12f9552954c006dc9820ff1b9366ebea9"
+2025-08-05T09:00:54.873Z DEBUG slog: QUIC connection established slog.target="tokio_quiche::quic::router::connector" slog.module_path="tokio_quiche::quic::router::connector" slog.file="/home/vsts_azpcontainer/.cargo/git/checkouts/quiche-4103ffa15137cf39/bfd737b/tokio-quiche/src/quic/router/connector.rs" slog.line=176 slog.column=13 slog.kv="scid=f3167fe12f9552954c006dc9820ff1b9366ebea9"
+2025-08-05T09:00:54.873Z DEBUG main_loop:connect_with_fallback{primary="masque" fallback="H2"}:happy_eyeballs_with_retry{protocol="masque"}: warp_edge::h3_tun: Established QUIC connection with 162.159.198.2:443 scid=f3167fe12f9552954c006dc9820ff1b9366ebea9
+2025-08-05T09:00:54.873Z DEBUG main_loop:connect_with_fallback{primary="masque" fallback="H2"}:happy_eyeballs_with_retry{protocol="masque"}: warp_edge::h3_tun: Establishing MASQUE tunnel on existing QUIC connection scid=f3167fe12f9552954c006dc9820ff1b9366ebea9 endpoint=162.159.198.2:443
+2025-08-05T09:00:54.874Z  INFO main_loop:connect_with_fallback{primary="masque" fallback="H2"}:happy_eyeballs_with_retry{protocol="masque"}:proxy_task{scid=f3167fe12f9552954c006dc9820ff1b9366ebea9}: warp_edge::h3_tun: Starting MASQUE proxy task idle_timeout=IdleTimeout { idle_duration: IdleDuration(5s), retries: 0 } keepalive_interval=4s
+2025-08-05T09:00:54.875Z  INFO main_loop: warp::warp_service: WARP status: Connecting(EstablishingConnection(162.159.198.2:443))
+2025-08-05T09:00:54.875Z DEBUG main_loop: warp::warp_service::ipc_handlers: Sending IPC status update: Connecting(EstablishingConnection(162.159.198.2:443))
+2025-08-05T09:00:54.875Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc Broadcast ResponseStatus: Connecting(EstablishingConnection(162.159.198.2:443))
+2025-08-05T09:00:54.875Z  INFO slog: creating new flow for MASQUE request slog.target="tokio_quiche::http3::driver::client" slog.module_path="tokio_quiche::http3::driver::client" slog.file="/home/vsts_azpcontainer/.cargo/git/checkouts/quiche-4103ffa15137cf39/bfd737b/tokio-quiche/src/http3/driver/client.rs" slog.line=168 slog.column=13 slog.kv="flow_id=0,stream_id=0"
+2025-08-05T09:00:54.875Z DEBUG utilities::tokio::select_watcher: Entering: [main loop] arm="status_change"
+2025-08-05T09:00:54.875Z DEBUG utilities::tokio::select_watcher: Exiting: [main loop] arm="status_change" elapsed=342.829µs
+2025-08-05T09:00:54.894Z DEBUG captive_portal::detections::http_redirect: 204 response for HTTP test. No captive portal detected
+2025-08-05T09:00:54.925Z DEBUG run{detection_type=expected-content}: captive_portal::detections::expected_content: 200 response and correct content for HTTP Content test. No captive portal detected
+2025-08-05T09:00:54.925Z DEBUG run{detection_type=expected-content}: captive_portal::detections: return=Ok(NoCaptivePortalDetected)
+2025-08-05T09:00:54.936Z DEBUG run{detection_type=http-redirect[cloudflareportal.com]}: captive_portal::detections::http_redirect: 204 response for HTTP test. No captive portal detected
+2025-08-05T09:00:54.936Z DEBUG run{detection_type=http-redirect[cloudflareportal.com]}: captive_portal::detections: return=Ok(NoCaptivePortalDetected)
+2025-08-05T09:00:54.982Z DEBUG captive_portal::detections::http_redirect: 200 response for HTTP test. No captive portal detected
+2025-08-05T09:00:55.028Z  INFO run{detection_type=legacy}: captive_portal::detections::legacy: Successfully retrieved HTTPs page
+2025-08-05T09:00:55.029Z DEBUG run{detection_type=legacy}: captive_portal::detections: return=Ok(NoCaptivePortalDetected)
+2025-08-05T09:00:55.120Z DEBUG main_loop:handle_update{update=NetworkInfoChanged}: warp::warp_service::actor_compat: Handling network status change old_info=IPv4: [eth0; 172.24.0.2; Ethernet; Gateway: Some(172.24.0.1)], DNS servers:,  127.0.0.11:53
+ new_info=IPv4: [eth0; 172.24.0.2; Ethernet; Gateway: Some(172.24.0.1)], DNS servers:,  127.0.0.11:53
+
+2025-08-05T09:00:55.131Z DEBUG utilities::tokio::select_watcher: Entering: [main loop] arm="main_loop_compat_rx"
+2025-08-05T09:00:55.131Z DEBUG utilities::tokio::select_watcher: Exiting: [main loop] arm="main_loop_compat_rx" elapsed=11.508254ms
+2025-08-05T09:00:56.680Z DEBUG slog: got a response for stream_id=0, headers=[":status: 200", "cf-team: 291b0f73cb00011c762ff0e400000001"] slog.target="httx::http3::client" slog.module_path="httx::http3::client" slog.file="/home/vsts_azpcontainer/.cargo/registry/src/freighter.rust.cfdata.org-59708f22138b42f9/httx-0.31.0/src/http3/client/mod.rs" slog.line=253 slog.column=17
+2025-08-05T09:00:56.680Z DEBUG slog: upgraded H3Body: flow_id=0, mode=WithContextId slog.target="httx::body" slog.module_path="httx::body" slog.file="/home/vsts_azpcontainer/.cargo/registry/src/freighter.rust.cfdata.org-59708f22138b42f9/httx-0.31.0/src/body/mod.rs" slog.line=678 slog.column=5
+2025-08-05T09:00:56.681Z DEBUG main_loop:connect_with_fallback{primary="masque" fallback="H2"}: warp::warp::tunnel::fallback: Connecting with primary connection protocol, reverting fallback firewall config
+2025-08-05T09:00:56.681Z DEBUG firewall::change: Firewall allow tunnel TCP addresses=[]
+2025-08-05T09:00:56.702Z DEBUG main_loop:connect_with_fallback{primary="masque" fallback="H2"}:tunnel_stats_reporting_task{scid=f3167fe12f9552954c006dc9820ff1b9366ebea9}: warp_edge::h3_tun::tunnel_stats: Updating tunnel stats reporting interval from=120s to=15s
+2025-08-05T09:00:56.706Z DEBUG slog: got a response for stream_id=4, headers=[":status: 200", "cf-team: 291b0f73df00011c762ff0f400000001"] slog.target="httx::http3::client" slog.module_path="httx::http3::client" slog.file="/home/vsts_azpcontainer/.cargo/registry/src/freighter.rust.cfdata.org-59708f22138b42f9/httx-0.31.0/src/http3/client/mod.rs" slog.line=253 slog.column=17
+2025-08-05T09:00:56.750Z DEBUG captive_portal::detections::http_redirect: Failed to perform HTTP request err=reqwest::Error { kind: Request, url: "http://www.msftconnecttest.com/connecttest.txt", source: TimedOut }
+2025-08-05T09:00:56.753Z DEBUG run{detection_type=third-party}: captive_portal::detections::third_party: Third party detections complete detections=[("connectivitycheck.gstatic.com", Ok(NoCaptivePortalDetected)), ("captive.apple.com", Ok(NoCaptivePortalDetected)), ("www.msftconnecttest.com", Err(BadNetwork))]
+2025-08-05T09:00:56.753Z DEBUG run{detection_type=third-party}: captive_portal::detections: return=Err(BadNetwork)
+2025-08-05T09:00:56.753Z DEBUG captive_portal: Captive portal detection completed results=[("os-detected", Ok(NoCaptivePortalDetected)), ("no-dns-redirect[cloudflareportal.com]", Ok(NoCaptivePortalDetected)), ("expected-content", Ok(NoCaptivePortalDetected)), ("http-redirect[cloudflareportal.com]", Ok(NoCaptivePortalDetected)), ("legacy", Ok(NoCaptivePortalDetected)), ("third-party", Err(BadNetwork))]
+2025-08-05T09:00:56.801Z DEBUG firewall::linux: Firewall rules loaded
+2025-08-05T09:00:56.801Z DEBUG firewall::change: Firewall disallow captive portal detection
+2025-08-05T09:00:56.801Z DEBUG main_loop:start_tunnel_processing{protocol="masque"}: warp::warp::tunnel: Connected to 162.159.198.2:443
+2025-08-05T09:00:56.801Z  INFO main_loop:start_tunnel_processing{protocol="masque"}: warp::warp::tunnel: DNS resolver connection is being made inside of the tunnel
+2025-08-05T09:00:56.802Z DEBUG main_loop:start_tunnel_processing{protocol="masque"}: warp_primitives::daemon_status: Connection stage 'Establishing connection to 162.159.198.2:443' took 1927ms which is longer than threshold of 500ms
+2025-08-05T09:00:56.807Z  INFO main_loop: warp::warp_service: WARP status: Connecting(InitializingTunnelInterface)
+2025-08-05T09:00:56.807Z DEBUG main_loop: warp::warp_service::ipc_handlers: Sending IPC status update: Connecting(InitializingTunnelInterface)
+2025-08-05T09:00:56.807Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc Broadcast ResponseStatus: Connecting(InitializingTunnelInterface)
+2025-08-05T09:00:56.821Z DEBUG utilities::tokio::select_watcher: Entering: [main loop] arm="status_change"
+2025-08-05T09:00:56.822Z  INFO main_loop: warp::warp_service: WARP status: Connecting(ConfiguringInitialFirewall)
+2025-08-05T09:00:56.822Z DEBUG main_loop: warp::warp_service::ipc_handlers: Sending IPC status update: Connecting(ConfiguringInitialFirewall)
+2025-08-05T09:00:56.823Z DEBUG utilities::tokio::select_watcher: Exiting: [main loop] arm="status_change" elapsed=15.534188ms
+2025-08-05T09:00:56.823Z DEBUG utilities::tokio::select_watcher: Entering: [main loop] arm="status_change"
+2025-08-05T09:00:56.823Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc Broadcast ResponseStatus: Connecting(ConfiguringInitialFirewall)
+2025-08-05T09:00:56.823Z DEBUG utilities::tokio::select_watcher: Exiting: [main loop] arm="status_change" elapsed=1.589732ms
+2025-08-05T09:00:56.850Z DEBUG firewall::linux: Firewall rules loaded
+2025-08-05T09:00:56.851Z DEBUG firewall::change: Firewall allow interface CloudflareWARP
+2025-08-05T09:00:56.852Z DEBUG firewall::captive_portal: Firewall captive portal detection expired
+2025-08-05T09:00:56.887Z DEBUG firewall::linux: Firewall rules loaded
+2025-08-05T09:00:56.958Z DEBUG firewall::change: Firewall allowing private IPs
+2025-08-05T09:00:56.958Z DEBUG utilities::tokio::select_watcher: Entering: [main loop] arm="status_change"
+2025-08-05T09:00:56.959Z  INFO main_loop: warp::warp_service: WARP status: Connecting(ConfiguringFirewallRules)
+2025-08-05T09:00:56.959Z DEBUG main_loop: warp::warp_service::ipc_handlers: Sending IPC status update: Connecting(ConfiguringFirewallRules)
+2025-08-05T09:00:56.959Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc Broadcast ResponseStatus: Connecting(ConfiguringFirewallRules)
+2025-08-05T09:00:56.959Z DEBUG utilities::tokio::select_watcher: Exiting: [main loop] arm="status_change" elapsed=196.116µs
+2025-08-05T09:00:57.007Z DEBUG firewall::linux: Firewall rules loaded
+2025-08-05T09:00:57.009Z  INFO main_loop: warp::warp::proxying_dns: Initiate DNS connection
+2025-08-05T09:00:57.009Z DEBUG main_loop: warp::warp::proxying_dns: Racing DNS IPs ips=[162.159.36.1, 162.159.46.1, 2606:4700:4700::1111, 2606:4700:4700::1001]
+2025-08-05T09:00:57.018Z DEBUG tunnel_loop{protocol="masque" con_id="f3167fe12f9552954c006dc9820ff1b9366ebea9"}: warp_edge::tunnel_loop: Tunnel loop statistics stats=TunnelLoopStats { tun_packet_too_large: 0, edge_packet_too_large: 0, tun_packet_too_small: 0, edge_packet_too_small: 0, tun_packet_martian: 0, tun_packet_unhandled: 1, dropped_edge_packet: 0, dropped_tun_packet: 0, dropped_dns_packet: 0, successfully_retried_tun_packet: 0 }
+2025-08-05T09:00:57.049Z DEBUG main_loop: warp::warp::proxying_dns: DNS TCP connection to Gateway DoH resolver was successful raced_ip=2606:4700:4700::1001
+2025-08-05T09:00:57.049Z DEBUG main_loop: dns_proxy::proxy: Creating DoH resolver config=ResolverConfig { domain: None, search: [], name_servers: NameServerConfigGroup([NameServerConfig { socket_addr: 162.159.36.1:443, protocol: Https, tls_dns_name: Some("cloudflare-dns.com"), trust_negative_responses: true, tls_config: None, bind_addr: None }, NameServerConfig { socket_addr: 162.159.46.1:443, protocol: Https, tls_dns_name: Some("cloudflare-dns.com"), trust_negative_responses: true, tls_config: None, bind_addr: None }, NameServerConfig { socket_addr: [2606:4700:4700::1111]:443, protocol: Https, tls_dns_name: Some("cloudflare-dns.com"), trust_negative_responses: true, tls_config: None, bind_addr: None }, NameServerConfig { socket_addr: [2606:4700:4700::1001]:443, protocol: Https, tls_dns_name: Some("cloudflare-dns.com"), trust_negative_responses: true, tls_config: None, bind_addr: None }], None) } options=ResolverOpts { ndots: 1, timeout: 4s, attempts: 0, rotate: false, check_names: true, edns0: true, validate: false, ip_strategy: Ipv4thenIpv6, cache_size: 32, use_hosts_file: true, positive_min_ttl: None, negative_min_ttl: None, positive_max_ttl: None, negative_max_ttl: Some(10s), num_concurrent_reqs: 1, preserve_intermediates: true, try_tcp_on_error: false, server_ordering_strategy: QueryStatistics, recursion_desired: true, authentic_data: false, shuffle_dns_servers: false }
+2025-08-05T09:00:57.050Z DEBUG firewall::change: Firewall allow captive portal detection
+2025-08-05T09:00:57.050Z  INFO main_loop: warp::warp_service: WARP status: Connecting(CheckingForRouteToDnsEndpoint)
+2025-08-05T09:00:57.050Z DEBUG utilities::tokio::select_watcher: Entering: [main loop] arm="status_change"
+2025-08-05T09:00:57.050Z DEBUG main_loop: warp::warp_service::ipc_handlers: Sending IPC status update: Connecting(CheckingForRouteToDnsEndpoint)
+2025-08-05T09:00:57.050Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc Broadcast ResponseStatus: Connecting(CheckingForRouteToDnsEndpoint)
+2025-08-05T09:00:57.050Z DEBUG utilities::tokio::select_watcher: Exiting: [main loop] arm="status_change" elapsed=275.823µs
+2025-08-05T09:00:57.108Z DEBUG firewall::linux: Firewall rules loaded
+2025-08-05T09:00:57.109Z DEBUG captive_portal: Running captive portal detections [legacy,os-detected,http-redirect[cloudflareportal.com],no-dns-redirect[cloudflareportal.com],expected-content,third-party]
+2025-08-05T09:00:57.109Z  INFO run{detection_type=legacy}: captive_portal::detections::legacy: Checking for captive portal with legacy detection urls=["cloudflareportal.com", "cloudflareok.com", "cloudflarecp.com"]
+2025-08-05T09:00:57.110Z  INFO captive_portal::detections::http_redirect: Checking for captive portal with HTTP-Redirect detection host="connectivitycheck.gstatic.com" ips=None interface=Some("eth0") bind_addr=Some(172.24.0.2)
+2025-08-05T09:00:57.110Z DEBUG run{detection_type=os-detected}: captive_portal::detections: return=Ok(NoCaptivePortalDetected)
+2025-08-05T09:00:57.110Z  INFO run{detection_type=http-redirect[cloudflareportal.com]}: captive_portal::detections::http_redirect: Checking for captive portal with HTTP-Redirect detection host="cloudflareportal.com" ips=None interface=Some("eth0") bind_addr=Some(172.24.0.2)
+2025-08-05T09:00:57.110Z  INFO run{detection_type=no-dns-redirect[cloudflareportal.com]}: captive_portal::detections::http_redirect: Checking for captive portal with HTTP-Redirect detection host="cloudflareportal.com" ips=Some([104.24.0.1, 162.159.137.65, 172.64.1.0, 2606:4700:7::1, 2606:4700::1]) interface=Some("eth0") bind_addr=Some(172.24.0.2)
+2025-08-05T09:00:57.111Z  INFO captive_portal::detections::http_redirect: Checking for captive portal with HTTP-Redirect detection host="www.msftconnecttest.com" ips=None interface=Some("eth0") bind_addr=Some(172.24.0.2)
+2025-08-05T09:00:57.111Z  INFO captive_portal::detections::http_redirect: Checking for captive portal with HTTP-Redirect detection host="captive.apple.com" ips=None interface=Some("eth0") bind_addr=Some(172.24.0.2)
+2025-08-05T09:00:57.131Z  INFO run{detection_type=legacy}: captive_portal::detections::legacy: Successfully resolved DNS queries
+2025-08-05T09:00:57.170Z DEBUG run{detection_type=no-dns-redirect[cloudflareportal.com]}: captive_portal::detections::http_redirect: 204 response for HTTP test. No captive portal detected
+2025-08-05T09:00:57.170Z DEBUG run{detection_type=no-dns-redirect[cloudflareportal.com]}: captive_portal::detections: return=Ok(NoCaptivePortalDetected)
+2025-08-05T09:00:57.202Z DEBUG main_loop: warp::warp::proxying_dns: Connectivity Check resolved query for connectivity.cloudflareclient.com resolved_ips=[162.159.137.65, 162.159.138.65]
+2025-08-05T09:00:57.202Z DEBUG main_loop: dns_proxy::resolver: Ending DoH connection stats=establish_time:2025-08-05 9:00:57.109263567 +00:00:00, ip:2606:4700:4700::1001, attempted_queries:1, successful_queries:1, certificate_errors:0, timeout_errors:0, no_connection_errors:0, proto_errors:0, io_errors:0, msg_errors:0
+2025-08-05T09:00:57.202Z DEBUG main_loop: warp::warp::proxying_dns: Acquiring bind semaphore available_permits=1
+2025-08-05T09:00:57.202Z DEBUG main_loop: warp::warp::proxying_dns: Binding UDP and TCP sockets dns_servers=[127.0.2.2, 127.0.2.3]
+2025-08-05T09:00:57.202Z DEBUG main_loop: warp::warp::proxying_dns: Successfully bound DNS listen sockets udp_sockets=2 tcp_sockets=2
+2025-08-05T09:00:57.205Z DEBUG main_loop: warp::warp::proxying_dns: Read system DNS configuration initial_dns_config=(ResolverConfig { domain: None, search: [], name_servers: NameServerConfigGroup([NameServerConfig { socket_addr: 127.0.0.11:53, protocol: Udp, tls_dns_name: None, trust_negative_responses: false, tls_config: None, bind_addr: None }, NameServerConfig { socket_addr: 127.0.0.11:53, protocol: Tcp, tls_dns_name: None, trust_negative_responses: false, tls_config: None, bind_addr: None }], None) }, ResolverOpts { ndots: 0, timeout: 5s, attempts: 2, rotate: false, check_names: true, edns0: false, validate: false, ip_strategy: Ipv4thenIpv6, cache_size: 32, use_hosts_file: true, positive_min_ttl: None, negative_min_ttl: None, positive_max_ttl: None, negative_max_ttl: None, num_concurrent_reqs: 2, preserve_intermediates: true, try_tcp_on_error: false, server_ordering_strategy: QueryStatistics, recursion_desired: true, authentic_data: false, shuffle_dns_servers: false })
+2025-08-05T09:00:57.205Z DEBUG main_loop: warp::warp::proxying_dns: Initializing DNS restore settings net.v4_ifaces=[eth0; 172.24.0.2; Ethernet; Gateway: Some(172.24.0.1)] net.v6_ifaces=[]
+2025-08-05T09:00:57.205Z DEBUG main_loop: warp::warp::dns_recovery::unix: Applying DNS settings [127.0.2.2, 127.0.2.3, ::ffff:127.0.2.2, ::ffff:127.0.2.3]
+2025-08-05T09:00:57.205Z DEBUG warp_dns: Starting DnsOverWarp task tun_address=172.16.0.2:0
+2025-08-05T09:00:57.206Z  INFO dns_proxy::proxy: Default fallbacks configured default_fallback_ips=[127.0.0.11:53] config=ResolverConfig { domain: None, search: [], name_servers: NameServerConfigGroup([NameServerConfig { socket_addr: 127.0.0.11:53, protocol: Udp, tls_dns_name: None, trust_negative_responses: true, tls_config: None, bind_addr: None }, NameServerConfig { socket_addr: 127.0.0.11:53, protocol: Tcp, tls_dns_name: None, trust_negative_responses: true, tls_config: None, bind_addr: None }], None) } sys_options=ResolverOpts { ndots: 0, timeout: 11s, attempts: 0, rotate: false, check_names: true, edns0: true, validate: false, ip_strategy: Ipv4thenIpv6, cache_size: 32, use_hosts_file: true, positive_min_ttl: None, negative_min_ttl: None, positive_max_ttl: None, negative_max_ttl: None, num_concurrent_reqs: 8, preserve_intermediates: true, try_tcp_on_error: false, server_ordering_strategy: QueryStatistics, recursion_desired: true, authentic_data: false, shuffle_dns_servers: false }
+2025-08-05T09:00:57.221Z DEBUG run{detection_type=http-redirect[cloudflareportal.com]}: captive_portal::detections::http_redirect: 204 response for HTTP test. No captive portal detected
+2025-08-05T09:00:57.221Z DEBUG run{detection_type=http-redirect[cloudflareportal.com]}: captive_portal::detections: return=Ok(NoCaptivePortalDetected)
+2025-08-05T09:00:57.221Z DEBUG captive_portal::detections::http_redirect: 204 response for HTTP test. No captive portal detected
+2025-08-05T09:00:57.222Z DEBUG run{detection_type=expected-content}: captive_portal::detections::expected_content: 200 response and correct content for HTTP Content test. No captive portal detected
+2025-08-05T09:00:57.223Z DEBUG run{detection_type=expected-content}: captive_portal::detections: return=Ok(NoCaptivePortalDetected)
+2025-08-05T09:00:57.234Z DEBUG captive_portal::detections::http_redirect: 200 response for HTTP test. No captive portal detected
+2025-08-05T09:00:57.240Z DEBUG main_loop: network_info::linux::dns_manager: detected system dns manager file_owner=Unknown os_configuration_owner=File
+2025-08-05T09:00:57.286Z  INFO run{detection_type=legacy}: captive_portal::detections::legacy: Successfully retrieved HTTPs page
+2025-08-05T09:00:57.286Z DEBUG run{detection_type=legacy}: captive_portal::detections: return=Ok(NoCaptivePortalDetected)
+2025-08-05T09:00:57.605Z  INFO main_loop: warp::warp_service: WARP status: Connecting(ApplyingDnsSettings)
+2025-08-05T09:00:57.605Z DEBUG main_loop: warp::warp_service::ipc_handlers: Sending IPC status update: Connecting(ApplyingDnsSettings)
+2025-08-05T09:00:57.605Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc Broadcast ResponseStatus: Connecting(ApplyingDnsSettings)
+2025-08-05T09:00:57.605Z DEBUG utilities::tokio::select_watcher: Entering: [main loop] arm="status_change"
+2025-08-05T09:00:57.605Z DEBUG utilities::tokio::select_watcher: Exiting: [main loop] arm="status_change" elapsed=636.852µs
+2025-08-05T09:00:57.607Z  INFO main_loop: warp::warp_service: WARP status: Connecting(PerformingConnectivityChecks)
+2025-08-05T09:00:57.607Z DEBUG main_loop: warp::warp_service::ipc_handlers: Sending IPC status update: Connecting(PerformingConnectivityChecks)
+2025-08-05T09:00:57.607Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc Broadcast ResponseStatus: Connecting(PerformingConnectivityChecks)
+2025-08-05T09:00:57.608Z DEBUG utilities::tokio::select_watcher: Entering: [main loop] arm="status_change"
+2025-08-05T09:00:57.609Z DEBUG utilities::tokio::select_watcher: Exiting: [main loop] arm="status_change" elapsed=2.343594ms
+2025-08-05T09:00:57.612Z DEBUG connectivity_check: Resolved connectivity-check.warp-svc. to [127.0.2.2, 127.0.2.3, ::ffff:127.0.2.2, ::ffff:127.0.2.3]
+2025-08-05T09:00:57.660Z DEBUG do_trace_inner{host="engage.cloudflareclient.com" host_with_protocol="https://engage.cloudflareclient.com" timeout=4s sockets=[162.159.197.3:443, [2606:4700:102::3]:443] con_check_meta=ConnectivityCheckMetadata { proxy_local_addr: None }}: connectivity_check: fl=1036f25
+h=engage.cloudflareclient.com
+ip=88.120.253.46
+ts=1754384457.638
+visit_scheme=https
+uag=WARP for Linux
+colo=CDG
+sliver=none
+http=http/1.1
+loc=FR
+tls=TLSv1.3
+sni=plaintext
+warp=off
+gateway=off
+rbi=off
+kex=X25519
+
+2025-08-05T09:00:57.667Z DEBUG do_trace_inner{host="connectivity.cloudflareclient.com" host_with_protocol="https://connectivity.cloudflareclient.com" timeout=4s sockets=[162.159.197.4:443, [2606:4700:102::4]:443] con_check_meta=ConnectivityCheckMetadata { proxy_local_addr: None }}: connectivity_check: fl=19f653
+h=connectivity.cloudflareclient.com
+ip=104.28.248.25
+ts=1754384457.64
+visit_scheme=https
+uag=WARP for Linux
+colo=CDG
+sliver=none
+http=http/1.1
+loc=FR
+tls=TLSv1.3
+sni=plaintext
+warp=off
+gateway=off
+rbi=off
+kex=X25519
+
+2025-08-05T09:00:57.676Z DEBUG main_loop: warp::warp::connectivity_check: Trace status: Ok(TraceResult { metal_id: "19f653", colo: "CDG", ip: 104.28.248.25 })
+2025-08-05T09:00:57.679Z  INFO main_loop: warp::warp_service: WARP status: Connecting(ValidatingDnsConfiguration)
+2025-08-05T09:00:57.679Z DEBUG main_loop: warp::warp_service::ipc_handlers: Sending IPC status update: Connecting(ValidatingDnsConfiguration)
+2025-08-05T09:00:57.679Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc Broadcast ResponseStatus: Connecting(ValidatingDnsConfiguration)
+2025-08-05T09:00:57.679Z DEBUG utilities::tokio::select_watcher: Entering: [main loop] arm="status_change"
+2025-08-05T09:00:57.679Z DEBUG utilities::tokio::select_watcher: Exiting: [main loop] arm="status_change" elapsed=284.524µs
+2025-08-05T09:00:57.771Z DEBUG captive_portal::detections::http_redirect: Failed to perform HTTP request err=reqwest::Error { kind: Request, url: "http://www.msftconnecttest.com/connecttest.txt", source: TimedOut }
+2025-08-05T09:00:57.771Z DEBUG run{detection_type=third-party}: captive_portal::detections::third_party: Third party detections complete detections=[("connectivitycheck.gstatic.com", Ok(NoCaptivePortalDetected)), ("captive.apple.com", Ok(NoCaptivePortalDetected)), ("www.msftconnecttest.com", Err(BadNetwork))]
+2025-08-05T09:00:57.771Z DEBUG run{detection_type=third-party}: captive_portal::detections: return=Err(BadNetwork)
+2025-08-05T09:00:57.771Z DEBUG captive_portal: Captive portal detection completed results=[("os-detected", Ok(NoCaptivePortalDetected)), ("no-dns-redirect[cloudflareportal.com]", Ok(NoCaptivePortalDetected)), ("expected-content", Ok(NoCaptivePortalDetected)), ("http-redirect[cloudflareportal.com]", Ok(NoCaptivePortalDetected)), ("legacy", Ok(NoCaptivePortalDetected)), ("third-party", Err(BadNetwork))]
+2025-08-05T09:00:57.771Z DEBUG firewall::change: Firewall disallow captive portal detection
+2025-08-05T09:00:57.958Z DEBUG main_loop: connectivity_check: Resolved connectivity.cloudflareclient.com to [2606:4700:7::a29f:8941, 2606:4700:7::a29f:8a41, 162.159.138.65, 162.159.137.65]
+2025-08-05T09:00:57.958Z DEBUG main_loop: warp::warp::warp_connection: Connect finished
+2025-08-05T09:00:57.959Z DEBUG actor_statistics::handler: Recording gauge into histogram context=RecordIntoHistogramInfo { gauge_key: KeyName("conn_attempts_current"), histogram_key: KeyName("conn_attempts_all"), component: "happy_eyeballs" }
+2025-08-05T09:00:57.959Z DEBUG main_loop: warp::warp::warp_connection: start_status=Ok(())
+2025-08-05T09:00:57.959Z DEBUG main_loop: warp::warp::controller: self.warp future resolved
+2025-08-05T09:00:57.959Z  INFO main_loop: warp::warp_service: WARP status: Connected
+2025-08-05T09:00:57.961Z DEBUG utilities::tokio::select_watcher: Entering: [main loop] arm="tunnel_taskset_errors_fut"
+2025-08-05T09:00:57.961Z DEBUG utilities::tokio::select_watcher: Exiting: [main loop] arm="tunnel_taskset_errors_fut" elapsed=1.337311ms
+2025-08-05T09:00:57.961Z DEBUG utilities::tokio::select_watcher: Entering: [main loop] arm="status_change"
+2025-08-05T09:00:57.961Z DEBUG main_loop: warp::warp_service::ipc_handlers: Sending IPC status update: Connected
+2025-08-05T09:00:57.961Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc Broadcast ResponseStatus: Connected
+2025-08-05T09:00:57.961Z DEBUG utilities::tokio::select_watcher: Exiting: [main loop] arm="status_change" elapsed=1.484723ms
+2025-08-05T09:00:58.082Z DEBUG firewall::linux: Firewall rules loaded
+2025-08-05T09:00:58.082Z DEBUG firewall::captive_portal: Firewall captive portal detection expired
+2025-08-05T09:00:59.126Z DEBUG utilities::tokio::select_watcher: Entering: [main loop] arm="main_loop_compat_rx"
+2025-08-05T09:00:59.126Z DEBUG main_loop:handle_update{update=NetworkInfoChanged}: warp::warp_service::actor_compat: Handling network status change old_info=IPv4: [eth0; 172.24.0.2; Ethernet; Gateway: Some(172.24.0.1)], DNS servers:,  127.0.0.11:53
+ new_info=IPv4: [eth0; 172.24.0.2; Ethernet; Gateway: Some(172.24.0.1)], DNS servers:,  127.0.2.2:53,  127.0.2.3:53
+
+2025-08-05T09:00:59.127Z DEBUG main_loop:handle_update{update=NetworkInfoChanged}: warp::warp::proxying_dns: Reapplying DNS settings when the list of DNS servers contains ourselves new_info.dns_servers=[127.0.2.2:53, 127.0.2.3:53] ADVERTISED_DNS_TARGETS=[127.0.2.2, 127.0.2.3, ::ffff:127.0.2.2, ::ffff:127.0.2.3]
+2025-08-05T09:00:59.127Z  INFO main_loop:handle_update{update=NetworkInfoChanged}: warp::warp::proxying_dns: Reinforcing old DNS settings old_info.dns_servers=[127.0.0.11:53] new_info.dns_servers=[127.0.2.2:53, 127.0.2.3:53]
+2025-08-05T09:00:59.127Z DEBUG main_loop:handle_update{update=NetworkInfoChanged}: warp::warp::dns_recovery::unix: Reverting DNS settings old_dns=RestoreDNS { action: OverwriteResolv([35, 32, 71, 101, 110, 101, 114, 97, 116, 101, 100, 32, 98, 121, 32, 68, 111, 99, 107, 101, 114, 32, 69, 110, 103, 105, 110, 101, 46, 10, 35, 32, 84, 104, 105, 115, 32, 102, 105, 108, 101, 32, 99, 97, 110, 32, 98, 101, 32, 101, 100, 105, 116, 101, 100, 59, 32, 68, 111, 99, 107, 101, 114, 32, 69, 110, 103, 105, 110, 101, 32, 119, 105, 108, 108, 32, 110, 111, 116, 32, 109, 97, 107, 101, 32, 102, 117, 114, 116, 104, 101, 114, 32, 99, 104, 97, 110, 103, 101, 115, 32, 111, 110, 99, 101, 32, 105, 116, 10, 35, 32, 104, 97, 115, 32, 98, 101, 101, 110, 32, 109, 111, 100, 105, 102, 105, 101, 100, 46, 10, 10, 110, 97, 109, 101, 115, 101, 114, 118, 101, 114, 32, 49, 50, 55, 46, 48, 46, 48, 46, 49, 49, 10, 111, 112, 116, 105, 111, 110, 115, 32, 110, 100, 111, 116, 115, 58, 48, 10, 10, 35, 32, 66, 97, 115, 101, 100, 32, 111, 110, 32, 104, 111, 115, 116, 32, 102, 105, 108, 101, 58, 32, 39, 47, 101, 116, 99, 47, 114, 101, 115, 111, 108, 118, 46, 99, 111, 110, 102, 39, 32, 40, 105, 110, 116, 101, 114, 110, 97, 108, 32, 114, 101, 115, 111, 108, 118, 101, 114, 41, 10, 35, 32, 69, 120, 116, 83, 101, 114, 118, 101, 114, 115, 58, 32, 91, 104, 111, 115, 116, 40, 49, 57, 50, 46, 49, 54, 56, 46, 54, 53, 46, 55, 41, 93, 10, 35, 32, 79, 118, 101, 114, 114, 105, 100, 101, 115, 58, 32, 91, 93, 10, 35, 32, 79, 112, 116, 105, 111, 110, 32, 110, 100, 111, 116, 115, 32, 102, 114, 111, 109, 58, 32, 105, 110, 116, 101, 114, 110, 97, 108, 10]), resolv_conf_owner: Unknown, os_config_owner: File, previous_nameservers: Some([127.0.0.11]), warp_nameservers: [127.0.2.2, 127.0.2.3, ::ffff:127.0.2.2, ::ffff:127.0.2.3] }
+2025-08-05T09:00:59.136Z  WARN main_loop:handle_update{update=NetworkInfoChanged}: network_info::linux::dns_manager: Failed to notify system DNS manager of change. DNS may be broken if systemd-resolved is used owner=Unknown os_config_owner=File err=Failed to restart systemd-resolved
+
+Caused by:
+    org.freedesktop.DBus.Error.ServiceUnknown: The name org.freedesktop.systemd1 was not provided by any .service files
+2025-08-05T09:00:59.136Z DEBUG main_loop:handle_update{update=NetworkInfoChanged}: warp::warp::dns_recovery::unix: DNS settings reverted (<resolv.conf restored>)
+2025-08-05T09:00:59.152Z DEBUG main_loop:handle_update{update=NetworkInfoChanged}: warp::warp::dns_recovery::unix: Applying DNS settings [127.0.2.2, 127.0.2.3, ::ffff:127.0.2.2, ::ffff:127.0.2.3]
+2025-08-05T09:00:59.157Z DEBUG main_loop:handle_update{update=NetworkInfoChanged}: network_info::linux::dns_manager: detected system dns manager file_owner=Unknown os_configuration_owner=File
+2025-08-05T09:00:59.729Z DEBUG main_loop:handle_update{update=NetworkInfoChanged}: warp::warp::proxying_dns: Skip notifying DNS changes as servers was empty or only contained our own advertised IPs. servers=[127.0.2.2:53, 127.0.2.3:53] ADVERTISED_DNS_TARGETS=[127.0.2.2, 127.0.2.3, ::ffff:127.0.2.2, ::ffff:127.0.2.3]
+2025-08-05T09:00:59.733Z DEBUG utilities::tokio::select_watcher: Exiting: [main loop] arm="main_loop_compat_rx" elapsed=606.402358ms
+2025-08-05T09:00:59.733Z DEBUG utilities::tokio::select_watcher: Entering: [main loop] arm="main_loop_compat_rx"
+2025-08-05T09:00:59.729Z DEBUG main_loop:handle_command: warp::warp_service::actor_compat: Force-fetching registration config id=1f1d1654-fca8-43e2-9237-68ed5e5d78fa
+2025-08-05T09:00:59.733Z DEBUG main_loop:handle_command: warp_api_client::executor: Spawning API request for GetRegistrationConfig request_id=63116098-1355-41f5-ae0a-ee8d747f60d7
+2025-08-05T09:00:59.735Z DEBUG warp_api_client::apis::registration: Getting registration registration_id=Client(ConsumerRegistrationId(1f1d1654-fca8-43e2-9237-68ed5e5d78fa))
+2025-08-05T09:00:59.735Z DEBUG warp_api_client::client: Sending API request GET https://api.cloudflareclient.com.//v0/reg/1f1d1654-fca8-43e2-9237-68ed5e5d78fa
+2025-08-05T09:00:59.736Z DEBUG utilities::tokio::select_watcher: Exiting: [main loop] arm="main_loop_compat_rx" elapsed=6.108206ms
+2025-08-05T09:00:59.857Z DEBUG warp_api_endpoints::payloads: Warp endpoint override ports ports=[443, 500, 1701, 4500, 4443, 8443, 8095]
+2025-08-05T09:00:59.858Z DEBUG main_loop: warp_api_client::executor: Returning API response for GetRegistrationConfig request_id=63116098-1355-41f5-ae0a-ee8d747f60d7
+2025-08-05T09:00:59.858Z DEBUG utilities::tokio::select_watcher: Entering: [main loop] arm="api_responses"
+2025-08-05T09:00:59.859Z DEBUG run: warp_settings::manager: LayerManager update: NetworkPolicy(Some(NetworkPolicySettings { onboarding: None, operation_mode: None, disable_auto_fallback: None, fallback_domains: None, proxy_port: None, split_config: None, gateway_id: None, support_url: None, allow_mode_switch: None, switch_locked: None, auto_connect: None, captive_portal: None, organization: None, allow_updates: None, allowed_to_leave: None, profile_id: None, lan_allow_settings: Some(LanAllowSettings { minutes: None, subnet_size: SubnetSize(24) }), warp_tunnel_protocol: Some(Masque), masque_settings: None, register_interface_ip_with_dns: None, anycast_split_ips: Some(AnycastSplitIps { always_exclude: [162.159.197.3, 2606:4700:102::3], always_include: [162.159.197.4, 2606:4700:102::4] }), firewall_scope: None, sccm_vpn_boundary_support: None, enable_post_quantum: None }))
+2025-08-05T09:00:59.859Z DEBUG main_loop: warp::warp_service::api_handlers: Registration updated current_registration=Registered(reg=1f1d1654-fca8-43e2-9237-68ed5e5d78fa) disposition=CheckAndUpdate
+2025-08-05T09:00:59.859Z DEBUG main_loop: warp::warp_service::api_handlers: Registration is up to date, updating refresh time
+2025-08-05T09:00:59.859Z DEBUG main_loop: warp::warp_service::api_handlers: Registration refresh time updated 0.00 hours old, refresh at 2025-08-06 9:00:59.857830362 +00:00:00
+Registration: 1f1d1654-fca8-43e2-9237-68ed5e5d78fa
+Device Identifiers: System User
+Auth Method: Consumer
+Public key: 3059301306072a8648ce3d020106082a8648ce3d030107034200045da51d34b94732fca18398ee5aead7334604c63d0c36a8abd4f587788de5d115dc3a890a1c18cc9b8394beb93be1f2a6692c5cf1a799b20e1dc0a17aeca7ee6b
+Interface: WarpEndpoint { v4: 172.16.0.2, v6: 2606:4700:110:8f0c:c3ca:eb6d:11c:53ed }
+Endpoints: [WarpSocketAddrPair { v4: 162.159.198.2:443, v6: [2606:4700:103::2]:443 }, WarpSocketAddrPair { v4: 162.159.198.2:500, v6: [2606:4700:103::2]:500 }, WarpSocketAddrPair { v4: 162.159.198.2:1701, v6: [2606:4700:103::2]:1701 }, WarpSocketAddrPair { v4: 162.159.198.2:4500, v6: [2606:4700:103::2]:4500 }, WarpSocketAddrPair { v4: 162.159.198.2:4443, v6: [2606:4700:103::2]:4443 }, WarpSocketAddrPair { v4: 162.159.198.2:8443, v6: [2606:4700:103::2]:8443 }, WarpSocketAddrPair { v4: 162.159.198.2:8095, v6: [2606:4700:103::2]:8095 }]
+Subnet CIDRS: None
+
+Account: Free { id: AccountId(d9247341-7d38-41d3-be0c-36a6fdab612c), license: "980qTKI6-6329prKy-Y35NLP06" }
+
+2025-08-05T09:00:59.859Z  INFO main_loop: warp_storage::registration::registration_storage: Saving registration to active cache config_name=None username="WARPSecret"
+2025-08-05T09:00:59.912Z DEBUG utilities::tokio::select_watcher: Exiting: [main loop] arm="api_responses" elapsed=53.601742ms
+2025-08-05T09:01:00.112Z DEBUG captive_portal::detections::http_redirect: Failed to perform HTTP request err=reqwest::Error { kind: Request, url: "http://www.msftconnecttest.com/connecttest.txt", source: TimedOut }
+2025-08-05T09:01:00.113Z DEBUG run{detection_type=third-party}: captive_portal::detections::third_party: Third party detections complete detections=[("connectivitycheck.gstatic.com", Ok(NoCaptivePortalDetected)), ("captive.apple.com", Ok(NoCaptivePortalDetected)), ("www.msftconnecttest.com", Err(BadNetwork))]
+2025-08-05T09:01:00.113Z DEBUG run{detection_type=third-party}: captive_portal::detections: return=Err(BadNetwork)
+2025-08-05T09:01:00.113Z DEBUG captive_portal: Captive portal detection completed results=[("os-detected", Ok(NoCaptivePortalDetected)), ("no-dns-redirect[cloudflareportal.com]", Ok(NoCaptivePortalDetected)), ("http-redirect[cloudflareportal.com]", Ok(NoCaptivePortalDetected)), ("expected-content", Ok(NoCaptivePortalDetected)), ("legacy", Ok(NoCaptivePortalDetected)), ("third-party", Err(BadNetwork))]
+2025-08-05T09:01:00.113Z DEBUG firewall::change: Firewall disallow captive portal detection
+2025-08-05T09:01:00.147Z DEBUG firewall::linux: Firewall rules loaded
+2025-08-05T09:01:00.151Z DEBUG firewall::captive_portal: Firewall captive portal detection expired
+2025-08-05T09:01:00.891Z  INFO actor_emergency_disconnect::handler: Polling API for latest emergency disconnect state
+2025-08-05T09:01:05.881Z DEBUG actor_root_ca::handler: Starting root-ca actor loop
+2025-08-05T09:01:05.900Z DEBUG handle_registration_changed: root_ca::store: Done installing certificate(s) total=0
+2025-08-05T09:01:05.915Z DEBUG handle_registration_changed: root_ca::store: Done installing certificate(s) total=0
+2025-08-05T09:01:11.780Z DEBUG slog: got a response for stream_id=8, headers=[":status: 200", "cf-team: 291b0fae9700011c7630074400000001"] slog.target="httx::http3::client" slog.module_path="httx::http3::client" slog.file="/home/vsts_azpcontainer/.cargo/registry/src/freighter.rust.cfdata.org-59708f22138b42f9/httx-0.31.0/src/http3/client/mod.rs" slog.line=253 slog.column=17
+2025-08-05T09:01:17.166Z DEBUG actor_connectivity::connectivity: Routes changed:
+NewNeighbour; Destination: 172.24.0.1; 
+2025-08-05T09:01:24.072Z DEBUG actor_connectivity::connectivity: Routes changed:
+NewNeighbour; Destination: 172.24.0.1; 
+NewNeighbour; Destination: 172.24.0.1; 
+2025-08-05T09:01:26.784Z DEBUG slog: got a response for stream_id=12, headers=[":status: 200", "cf-team: 291b0fe94400011c76301d8400000001"] slog.target="httx::http3::client" slog.module_path="httx::http3::client" slog.file="/home/vsts_azpcontainer/.cargo/registry/src/freighter.rust.cfdata.org-59708f22138b42f9/httx-0.31.0/src/http3/client/mod.rs" slog.line=253 slog.column=17
+2025-08-05T09:01:41.717Z DEBUG slog: got a response for stream_id=16, headers=[":status: 200", "cf-team: 291b1023bc00011c7630310400000001"] slog.target="httx::http3::client" slog.module_path="httx::http3::client" slog.file="/home/vsts_azpcontainer/.cargo/registry/src/freighter.rust.cfdata.org-59708f22138b42f9/httx-0.31.0/src/http3/client/mod.rs" slog.line=253 slog.column=17
+2025-08-05T09:01:55.050Z DEBUG actor_connectivity::connectivity: Routes changed:
+NewNeighbour; Destination: 172.24.0.1; 
+2025-08-05T09:01:56.716Z DEBUG slog: got a response for stream_id=20, headers=[":status: 200", "cf-team: 291b105e5200011c7630402400000001"] slog.target="httx::http3::client" slog.module_path="httx::http3::client" slog.file="/home/vsts_azpcontainer/.cargo/registry/src/freighter.rust.cfdata.org-59708f22138b42f9/httx-0.31.0/src/http3/client/mod.rs" slog.line=253 slog.column=17
+2025-08-05T09:02:01.702Z DEBUG actor_connectivity::connectivity: Routes changed:
+NewNeighbour; Destination: 172.24.0.1; 
+NewNeighbour; Destination: 172.24.0.1; 
+2025-08-05T09:02:11.741Z DEBUG slog: got a response for stream_id=24, headers=[":status: 200", "cf-team: 291b1098eb00011c76304d1400000001"] slog.target="httx::http3::client" slog.module_path="httx::http3::client" slog.file="/home/vsts_azpcontainer/.cargo/registry/src/freighter.rust.cfdata.org-59708f22138b42f9/httx-0.31.0/src/http3/client/mod.rs" slog.line=253 slog.column=17
+2025-08-05T09:02:26.713Z DEBUG slog: got a response for stream_id=28, headers=[":status: 200", "cf-team: 291b10d38100011c7630581400000001"] slog.target="httx::http3::client" slog.module_path="httx::http3::client" slog.file="/home/vsts_azpcontainer/.cargo/registry/src/freighter.rust.cfdata.org-59708f22138b42f9/httx-0.31.0/src/http3/client/mod.rs" slog.line=253 slog.column=17
+2025-08-05T09:02:33.704Z DEBUG actor_connectivity::connectivity: Routes changed:
+NewNeighbour; Destination: 172.24.0.1; 
+2025-08-05T09:02:38.824Z DEBUG actor_connectivity::connectivity: Routes changed:
+NewNeighbour; Destination: 172.24.0.1; 
+NewNeighbour; Destination: 172.24.0.1; 
+2025-08-05T09:02:41.719Z DEBUG slog: got a response for stream_id=32, headers=[":status: 200", "cf-team: 291b110e1a00011c763065e400000001"] slog.target="httx::http3::client" slog.module_path="httx::http3::client" slog.file="/home/vsts_azpcontainer/.cargo/registry/src/freighter.rust.cfdata.org-59708f22138b42f9/httx-0.31.0/src/http3/client/mod.rs" slog.line=253 slog.column=17
+2025-08-05T09:02:50.871Z DEBUG upload_stats{stats=StatsPayload { counters: [CounterPayload { name: "main-loop-compat.commands_recv", labels: {}, count: 2 }, CounterPayload { name: "message_bus.bus_driver_commands_sent", labels: {}, count: 4 }, CounterPayload { name: "main-loop-compat.updates_recv", labels: {}, count: 2 }, CounterPayload { name: "device-state.updates_recv", labels: {}, count: 2 }, CounterPayload { name: "watchdog.requests_recv", labels: {}, count: 1153 }, CounterPayload { name: "message_bus.bus_driver_updates_sent", labels: {}, count: 2 }, CounterPayload { name: "statistics.commands_recv", labels: {}, count: 1 }, CounterPayload { name: "alternate-network.updates_recv", labels: {}, count: 2 }, CounterPayload { name: "registration-verifier.commands_recv", labels: {}, count: 1 }], summaries: [SummaryPayload { name: "happy_eyeballs.conn_attempts_all", labels: {}, sum: 1.0, count: 1 }, SummaryPayload { name: "dns_proxy.doh_avg_ms", labels: {}, sum: 187.0, count: 28 }, SummaryPayload { name: "message_bus.bus_driver_request_duration_sec_nano_sec", labels: {}, sum: 0.058879699999999986, count: 1153 }, SummaryPayload { name: "firewall.fw_avg_ms", labels: {}, sum: 1156.0, count: 15 }], gauges: [GaugesPayload { name: "happy_eyeballs.conn_attempts_current", labels: {}, value: 1.0 }, GaugesPayload { name: "ntp-clock.min_since_ntp_sync", labels: {}, value: 59.969287901 }] } context="timer"}: actor_statistics::handler: Starting to upload stats
+2025-08-05T09:02:50.871Z  WARN upload_stats{stats=StatsPayload { counters: [CounterPayload { name: "main-loop-compat.commands_recv", labels: {}, count: 2 }, CounterPayload { name: "message_bus.bus_driver_commands_sent", labels: {}, count: 4 }, CounterPayload { name: "main-loop-compat.updates_recv", labels: {}, count: 2 }, CounterPayload { name: "device-state.updates_recv", labels: {}, count: 2 }, CounterPayload { name: "watchdog.requests_recv", labels: {}, count: 1153 }, CounterPayload { name: "message_bus.bus_driver_updates_sent", labels: {}, count: 2 }, CounterPayload { name: "statistics.commands_recv", labels: {}, count: 1 }, CounterPayload { name: "alternate-network.updates_recv", labels: {}, count: 2 }, CounterPayload { name: "registration-verifier.commands_recv", labels: {}, count: 1 }], summaries: [SummaryPayload { name: "happy_eyeballs.conn_attempts_all", labels: {}, sum: 1.0, count: 1 }, SummaryPayload { name: "dns_proxy.doh_avg_ms", labels: {}, sum: 187.0, count: 28 }, SummaryPayload { name: "message_bus.bus_driver_request_duration_sec_nano_sec", labels: {}, sum: 0.058879699999999986, count: 1153 }, SummaryPayload { name: "firewall.fw_avg_ms", labels: {}, sum: 1156.0, count: 15 }], gauges: [GaugesPayload { name: "happy_eyeballs.conn_attempts_current", labels: {}, value: 1.0 }, GaugesPayload { name: "ntp-clock.min_since_ntp_sync", labels: {}, value: 59.969287901 }] } context="timer"}: actor_statistics::handler: Skipped uploading aggregate stats because registration was none!
+2025-08-05T09:02:50.998Z DEBUG warp_api_client::client: Method: POST, Path: v0/1f1d1654-fca8-43e2-9237-68ed5e5d78fa/observe_events, StructuredLogsEndpoint { device_id: "1f1d1654-fca8-43e2-9237-68ed5e5d78fa", logs: Array [Object {"event": String("UserToggledV0"), "toggle": String("on"), "warp_colo": String("none"), "warp_metal": String("none"), "account_name": String("\"\""), "account_id": String("\"d92473417d3841d3be0c36a6fdab612c\""), "hostname": String("\"17535891ce66\""), "serial_number": String("\"\""), "version": Number(0), "client_sample_rate": Number(1), "app_version": String("2025.5.943.0"), "os": String("Linux"), "os_version": String("6.6.87"), "timestamp": Number(1754384453082469), "session_id": String("29cd3c9f-fae0-42e9-a5f4-51abe6c8e3fe")}] }
+2025-08-05T09:02:51.422Z ERROR warp_api_client::client: Failed API Request endpoint=StructuredLogsEndpoint { device_id: "1f1d1654-fca8-43e2-9237-68ed5e5d78fa", logs: Array [Object {"event": String("UserToggledV0"), "toggle": String("on"), "warp_colo": String("none"), "warp_metal": String("none"), "account_name": String("\"\""), "account_id": String("\"d92473417d3841d3be0c36a6fdab612c\""), "hostname": String("\"17535891ce66\""), "serial_number": String("\"\""), "version": Number(0), "client_sample_rate": Number(1), "app_version": String("2025.5.943.0"), "os": String("Linux"), "os_version": String("6.6.87"), "timestamp": Number(1754384453082469), "session_id": String("29cd3c9f-fae0-42e9-a5f4-51abe6c8e3fe")}] } err=ApiFailure(500, ApiErrors { errors: [], other: {"result": Null, "success": Bool(false), "messages": Array []} })
+2025-08-05T09:02:51.422Z ERROR warp_api_client::client: API request error ApiFailure(500, ApiErrors { errors: [], other: {"result": Null, "success": Bool(false), "messages": Array []} }), retrying in 1.425027912s
+2025-08-05T09:02:53.173Z ERROR warp_api_client::client: Failed API Request endpoint=StructuredLogsEndpoint { device_id: "1f1d1654-fca8-43e2-9237-68ed5e5d78fa", logs: Array [Object {"event": String("UserToggledV0"), "toggle": String("on"), "warp_colo": String("none"), "warp_metal": String("none"), "account_name": String("\"\""), "account_id": String("\"d92473417d3841d3be0c36a6fdab612c\""), "hostname": String("\"17535891ce66\""), "serial_number": String("\"\""), "version": Number(0), "client_sample_rate": Number(1), "app_version": String("2025.5.943.0"), "os": String("Linux"), "os_version": String("6.6.87"), "timestamp": Number(1754384453082469), "session_id": String("29cd3c9f-fae0-42e9-a5f4-51abe6c8e3fe")}] } err=ApiFailure(500, ApiErrors { errors: [], other: {"success": Bool(false), "result": Null, "messages": Array []} })
+2025-08-05T09:02:53.173Z ERROR warp_api_client::client: API request error ApiFailure(500, ApiErrors { errors: [], other: {"success": Bool(false), "result": Null, "messages": Array []} }), retrying in 3.829366439s
+2025-08-05T09:02:56.708Z DEBUG slog: got a response for stream_id=36, headers=[":status: 200", "cf-team: 291b1148ae00011c76307c0400000001"] slog.target="httx::http3::client" slog.module_path="httx::http3::client" slog.file="/home/vsts_azpcontainer/.cargo/registry/src/freighter.rust.cfdata.org-59708f22138b42f9/httx-0.31.0/src/http3/client/mod.rs" slog.line=253 slog.column=17
+2025-08-05T09:02:57.003Z DEBUG tunnel_loop{protocol="masque" con_id="f3167fe12f9552954c006dc9820ff1b9366ebea9"}: warp_edge::tunnel_loop: Tunnel loop statistics stats=TunnelLoopStats { tun_packet_too_large: 0, edge_packet_too_large: 0, tun_packet_too_small: 0, edge_packet_too_small: 0, tun_packet_martian: 0, tun_packet_unhandled: 5, dropped_edge_packet: 0, dropped_tun_packet: 0, dropped_dns_packet: 0, successfully_retried_tun_packet: 0 }
+2025-08-05T09:02:57.387Z ERROR warp_api_client::client: Failed API Request endpoint=StructuredLogsEndpoint { device_id: "1f1d1654-fca8-43e2-9237-68ed5e5d78fa", logs: Array [Object {"event": String("UserToggledV0"), "toggle": String("on"), "warp_colo": String("none"), "warp_metal": String("none"), "account_name": String("\"\""), "account_id": String("\"d92473417d3841d3be0c36a6fdab612c\""), "hostname": String("\"17535891ce66\""), "serial_number": String("\"\""), "version": Number(0), "client_sample_rate": Number(1), "app_version": String("2025.5.943.0"), "os": String("Linux"), "os_version": String("6.6.87"), "timestamp": Number(1754384453082469), "session_id": String("29cd3c9f-fae0-42e9-a5f4-51abe6c8e3fe")}] } err=ApiFailure(500, ApiErrors { errors: [], other: {"messages": Array [], "result": Null, "success": Bool(false)} })
+2025-08-05T09:03:11.723Z DEBUG slog: got a response for stream_id=40, headers=[":status: 200", "cf-team: 291b11835500011c76308e1400000001"] slog.target="httx::http3::client" slog.module_path="httx::http3::client" slog.file="/home/vsts_azpcontainer/.cargo/registry/src/freighter.rust.cfdata.org-59708f22138b42f9/httx-0.31.0/src/http3/client/mod.rs" slog.line=253 slog.column=17
+2025-08-05T09:03:26.709Z DEBUG slog: got a response for stream_id=44, headers=[":status: 200", "cf-team: 291b11bddc00011c7630a2a400000001"] slog.target="httx::http3::client" slog.module_path="httx::http3::client" slog.file="/home/vsts_azpcontainer/.cargo/registry/src/freighter.rust.cfdata.org-59708f22138b42f9/httx-0.31.0/src/http3/client/mod.rs" slog.line=253 slog.column=17
+2025-08-05T09:03:28.993Z DEBUG actor_connectivity::connectivity: Routes changed:
+NewNeighbour; Destination: 172.24.0.1; 
+2025-08-05T09:03:35.905Z DEBUG actor_connectivity::connectivity: Routes changed:
+NewNeighbour; Destination: 172.24.0.1; 
+NewNeighbour; Destination: 172.24.0.1; 
+2025-08-05T09:03:41.705Z DEBUG slog: got a response for stream_id=48, headers=[":status: 200", "cf-team: 291b11f87300011c7630ac3400000001"] slog.target="httx::http3::client" slog.module_path="httx::http3::client" slog.file="/home/vsts_azpcontainer/.cargo/registry/src/freighter.rust.cfdata.org-59708f22138b42f9/httx-0.31.0/src/http3/client/mod.rs" slog.line=253 slog.column=17
+2025-08-05T09:03:56.703Z DEBUG slog: got a response for stream_id=52, headers=[":status: 200", "cf-team: 291b12330a00011c7630d3c400000001"] slog.target="httx::http3::client" slog.module_path="httx::http3::client" slog.file="/home/vsts_azpcontainer/.cargo/registry/src/freighter.rust.cfdata.org-59708f22138b42f9/httx-0.31.0/src/http3/client/mod.rs" slog.line=253 slog.column=17
+2025-08-05T09:04:07.902Z DEBUG actor_connectivity::connectivity: Routes changed:
+NewNeighbour; Destination: 172.24.0.1; 
+2025-08-05T09:04:11.705Z DEBUG slog: got a response for stream_id=56, headers=[":status: 200", "cf-team: 291b126da200011c763120c400000001"] slog.target="httx::http3::client" slog.module_path="httx::http3::client" slog.file="/home/vsts_azpcontainer/.cargo/registry/src/freighter.rust.cfdata.org-59708f22138b42f9/httx-0.31.0/src/http3/client/mod.rs" slog.line=253 slog.column=17
+2025-08-05T09:04:16.092Z DEBUG actor_connectivity::connectivity: Routes changed:
+NewNeighbour; Destination: 172.24.0.1; 
+NewNeighbour; Destination: 172.24.0.1; 
+2025-08-05T09:04:26.701Z DEBUG slog: got a response for stream_id=60, headers=[":status: 200", "cf-team: 291b12a83800011c763147f400000001"] slog.target="httx::http3::client" slog.module_path="httx::http3::client" slog.file="/home/vsts_azpcontainer/.cargo/registry/src/freighter.rust.cfdata.org-59708f22138b42f9/httx-0.31.0/src/http3/client/mod.rs" slog.line=253 slog.column=17
+2025-08-05T09:04:41.704Z DEBUG slog: got a response for stream_id=64, headers=[":status: 200", "cf-team: 291b12e2cf00011c763161b400000001"] slog.target="httx::http3::client" slog.module_path="httx::http3::client" slog.file="/home/vsts_azpcontainer/.cargo/registry/src/freighter.rust.cfdata.org-59708f22138b42f9/httx-0.31.0/src/http3/client/mod.rs" slog.line=253 slog.column=17
+2025-08-05T09:04:48.859Z DEBUG actor_connectivity::connectivity: Routes changed:
+NewNeighbour; Destination: 172.24.0.1; 
+2025-08-05T09:04:50.863Z DEBUG upload_stats{stats=StatsPayload { counters: [CounterPayload { name: "message_bus.bus_driver_updates_sent", labels: {}, count: 2 }, CounterPayload { name: "main-loop-compat.commands_recv", labels: {}, count: 2 }, CounterPayload { name: "alternate-network.updates_recv", labels: {}, count: 2 }, CounterPayload { name: "registration-verifier.commands_recv", labels: {}, count: 1 }, CounterPayload { name: "device-state.updates_recv", labels: {}, count: 2 }, CounterPayload { name: "main-loop-compat.updates_recv", labels: {}, count: 2 }, CounterPayload { name: "statistics.commands_recv", labels: {}, count: 1 }, CounterPayload { name: "watchdog.requests_recv", labels: {}, count: 2352 }, CounterPayload { name: "message_bus.bus_driver_commands_sent", labels: {}, count: 4 }], summaries: [SummaryPayload { name: "dns_proxy.doh_avg_ms", labels: {}, sum: 313.0, count: 46 }, SummaryPayload { name: "happy_eyeballs.conn_attempts_all", labels: {}, sum: 1.0, count: 1 }, SummaryPayload { name: "firewall.fw_avg_ms", labels: {}, sum: 1156.0, count: 15 }, SummaryPayload { name: "message_bus.bus_driver_request_duration_sec_nano_sec", labels: {}, sum: 0.09400581800000005, count: 2352 }], gauges: [GaugesPayload { name: "happy_eyeballs.conn_attempts_current", labels: {}, value: 1.0 }, GaugesPayload { name: "ntp-clock.min_since_ntp_sync", labels: {}, value: 59.989849507 }] } context="timer"}: actor_statistics::handler: Starting to upload stats
+2025-08-05T09:04:50.863Z  WARN upload_stats{stats=StatsPayload { counters: [CounterPayload { name: "message_bus.bus_driver_updates_sent", labels: {}, count: 2 }, CounterPayload { name: "main-loop-compat.commands_recv", labels: {}, count: 2 }, CounterPayload { name: "alternate-network.updates_recv", labels: {}, count: 2 }, CounterPayload { name: "registration-verifier.commands_recv", labels: {}, count: 1 }, CounterPayload { name: "device-state.updates_recv", labels: {}, count: 2 }, CounterPayload { name: "main-loop-compat.updates_recv", labels: {}, count: 2 }, CounterPayload { name: "statistics.commands_recv", labels: {}, count: 1 }, CounterPayload { name: "watchdog.requests_recv", labels: {}, count: 2352 }, CounterPayload { name: "message_bus.bus_driver_commands_sent", labels: {}, count: 4 }], summaries: [SummaryPayload { name: "dns_proxy.doh_avg_ms", labels: {}, sum: 313.0, count: 46 }, SummaryPayload { name: "happy_eyeballs.conn_attempts_all", labels: {}, sum: 1.0, count: 1 }, SummaryPayload { name: "firewall.fw_avg_ms", labels: {}, sum: 1156.0, count: 15 }, SummaryPayload { name: "message_bus.bus_driver_request_duration_sec_nano_sec", labels: {}, sum: 0.09400581800000005, count: 2352 }], gauges: [GaugesPayload { name: "happy_eyeballs.conn_attempts_current", labels: {}, value: 1.0 }, GaugesPayload { name: "ntp-clock.min_since_ntp_sync", labels: {}, value: 59.989849507 }] } context="timer"}: actor_statistics::handler: Skipped uploading aggregate stats because registration was none!
+2025-08-05T09:04:55.771Z DEBUG actor_connectivity::connectivity: Routes changed:
+NewNeighbour; Destination: 172.24.0.1; 
+NewNeighbour; Destination: 172.24.0.1; 
+2025-08-05T09:04:56.700Z DEBUG slog: got a response for stream_id=68, headers=[":status: 200", "cf-team: 291b131d6600011c763183d400000001"] slog.target="httx::http3::client" slog.module_path="httx::http3::client" slog.file="/home/vsts_azpcontainer/.cargo/registry/src/freighter.rust.cfdata.org-59708f22138b42f9/httx-0.31.0/src/http3/client/mod.rs" slog.line=253 slog.column=17
+2025-08-05T09:04:56.996Z DEBUG tunnel_loop{protocol="masque" con_id="f3167fe12f9552954c006dc9820ff1b9366ebea9"}: warp_edge::tunnel_loop: Tunnel loop statistics stats=TunnelLoopStats { tun_packet_too_large: 0, edge_packet_too_large: 0, tun_packet_too_small: 0, edge_packet_too_small: 0, tun_packet_martian: 0, tun_packet_unhandled: 6, dropped_edge_packet: 0, dropped_tun_packet: 0, dropped_dns_packet: 0, successfully_retried_tun_packet: 0 }
+2025-08-05T09:05:11.707Z DEBUG slog: got a response for stream_id=72, headers=[":status: 200", "cf-team: 291b1357fe00011c76319ea400000001"] slog.target="httx::http3::client" slog.module_path="httx::http3::client" slog.file="/home/vsts_azpcontainer/.cargo/registry/src/freighter.rust.cfdata.org-59708f22138b42f9/httx-0.31.0/src/http3/client/mod.rs" slog.line=253 slog.column=17
+2025-08-05T09:05:26.701Z DEBUG slog: got a response for stream_id=76, headers=[":status: 200", "cf-team: 291b13929500011c7631bb4400000001"] slog.target="httx::http3::client" slog.module_path="httx::http3::client" slog.file="/home/vsts_azpcontainer/.cargo/registry/src/freighter.rust.cfdata.org-59708f22138b42f9/httx-0.31.0/src/http3/client/mod.rs" slog.line=253 slog.column=17
+2025-08-05T09:05:27.772Z DEBUG actor_connectivity::connectivity: Routes changed:
+NewNeighbour; Destination: 172.24.0.1; 
+2025-08-05T09:05:35.961Z DEBUG actor_connectivity::connectivity: Routes changed:
+NewNeighbour; Destination: 172.24.0.1; 
+NewNeighbour; Destination: 172.24.0.1; 
+2025-08-05T09:05:41.705Z DEBUG slog: got a response for stream_id=80, headers=[":status: 200", "cf-team: 291b13cd2b00011c7631dbe400000001"] slog.target="httx::http3::client" slog.module_path="httx::http3::client" slog.file="/home/vsts_azpcontainer/.cargo/registry/src/freighter.rust.cfdata.org-59708f22138b42f9/httx-0.31.0/src/http3/client/mod.rs" slog.line=253 slog.column=17
+2025-08-05T09:05:56.831Z DEBUG slog: got a response for stream_id=84, headers=[":status: 200", "cf-team: 291b14081c00011c7631f5f400000001"] slog.target="httx::http3::client" slog.module_path="httx::http3::client" slog.file="/home/vsts_azpcontainer/.cargo/registry/src/freighter.rust.cfdata.org-59708f22138b42f9/httx-0.31.0/src/http3/client/mod.rs" slog.line=253 slog.column=17
+2025-08-05T09:06:08.731Z DEBUG actor_connectivity::connectivity: Routes changed:
+NewNeighbour; Destination: 172.24.0.1; 
+2025-08-05T09:06:12.178Z DEBUG slog: got a response for stream_id=88, headers=[":status: 200", "cf-team: 291b14439b00011c76320f0400000001"] slog.target="httx::http3::client" slog.module_path="httx::http3::client" slog.file="/home/vsts_azpcontainer/.cargo/registry/src/freighter.rust.cfdata.org-59708f22138b42f9/httx-0.31.0/src/http3/client/mod.rs" slog.line=253 slog.column=17
+2025-08-05T09:06:13.873Z DEBUG actor_connectivity::connectivity: Routes changed:
+NewNeighbour; Destination: 172.24.0.1; 
+NewNeighbour; Destination: 172.24.0.1; 
+2025-08-05T09:06:26.739Z DEBUG slog: got a response for stream_id=92, headers=[":status: 200", "cf-team: 291b147cf400011c76322e7400000001"] slog.target="httx::http3::client" slog.module_path="httx::http3::client" slog.file="/home/vsts_azpcontainer/.cargo/registry/src/freighter.rust.cfdata.org-59708f22138b42f9/httx-0.31.0/src/http3/client/mod.rs" slog.line=253 slog.column=17
+2025-08-05T09:06:42.123Z DEBUG slog: got a response for stream_id=96, headers=[":status: 200", "cf-team: 291b14b88500011c76324ee400000001"] slog.target="httx::http3::client" slog.module_path="httx::http3::client" slog.file="/home/vsts_azpcontainer/.cargo/registry/src/freighter.rust.cfdata.org-59708f22138b42f9/httx-0.31.0/src/http3/client/mod.rs" slog.line=253 slog.column=17
+2025-08-05T09:06:45.544Z DEBUG actor_connectivity::connectivity: Routes changed:
+NewNeighbour; Destination: 172.24.0.1; 
+2025-08-05T09:06:50.808Z DEBUG upload_stats{stats=StatsPayload { counters: [CounterPayload { name: "watchdog.requests_recv", labels: {}, count: 3530 }, CounterPayload { name: "statistics.commands_recv", labels: {}, count: 1 }, CounterPayload { name: "device-state.updates_recv", labels: {}, count: 2 }, CounterPayload { name: "message_bus.bus_driver_updates_sent", labels: {}, count: 2 }, CounterPayload { name: "main-loop-compat.commands_recv", labels: {}, count: 2 }, CounterPayload { name: "registration-verifier.commands_recv", labels: {}, count: 1 }, CounterPayload { name: "alternate-network.updates_recv", labels: {}, count: 2 }, CounterPayload { name: "message_bus.bus_driver_commands_sent", labels: {}, count: 4 }, CounterPayload { name: "main-loop-compat.updates_recv", labels: {}, count: 2 }], summaries: [SummaryPayload { name: "happy_eyeballs.conn_attempts_all", labels: {}, sum: 1.0, count: 1 }, SummaryPayload { name: "dns_proxy.doh_avg_ms", labels: {}, sum: 372.0, count: 66 }, SummaryPayload { name: "firewall.fw_avg_ms", labels: {}, sum: 1156.0, count: 15 }, SummaryPayload { name: "message_bus.bus_driver_request_duration_sec_nano_sec", labels: {}, sum: 0.1546058330000001, count: 3530 }], gauges: [GaugesPayload { name: "happy_eyeballs.conn_attempts_current", labels: {}, value: 1.0 }, GaugesPayload { name: "ntp-clock.min_since_ntp_sync", labels: {}, value: 59.934718499 }] } context="timer"}: actor_statistics::handler: Starting to upload stats
+2025-08-05T09:06:50.808Z  WARN upload_stats{stats=StatsPayload { counters: [CounterPayload { name: "watchdog.requests_recv", labels: {}, count: 3530 }, CounterPayload { name: "statistics.commands_recv", labels: {}, count: 1 }, CounterPayload { name: "device-state.updates_recv", labels: {}, count: 2 }, CounterPayload { name: "message_bus.bus_driver_updates_sent", labels: {}, count: 2 }, CounterPayload { name: "main-loop-compat.commands_recv", labels: {}, count: 2 }, CounterPayload { name: "registration-verifier.commands_recv", labels: {}, count: 1 }, CounterPayload { name: "alternate-network.updates_recv", labels: {}, count: 2 }, CounterPayload { name: "message_bus.bus_driver_commands_sent", labels: {}, count: 4 }, CounterPayload { name: "main-loop-compat.updates_recv", labels: {}, count: 2 }], summaries: [SummaryPayload { name: "happy_eyeballs.conn_attempts_all", labels: {}, sum: 1.0, count: 1 }, SummaryPayload { name: "dns_proxy.doh_avg_ms", labels: {}, sum: 372.0, count: 66 }, SummaryPayload { name: "firewall.fw_avg_ms", labels: {}, sum: 1156.0, count: 15 }, SummaryPayload { name: "message_bus.bus_driver_request_duration_sec_nano_sec", labels: {}, sum: 0.1546058330000001, count: 3530 }], gauges: [GaugesPayload { name: "happy_eyeballs.conn_attempts_current", labels: {}, value: 1.0 }, GaugesPayload { name: "ntp-clock.min_since_ntp_sync", labels: {}, value: 59.934718499 }] } context="timer"}: actor_statistics::handler: Skipped uploading aggregate stats because registration was none!
+2025-08-05T09:06:51.948Z DEBUG actor_connectivity::connectivity: Routes changed:
+NewNeighbour; Destination: 172.24.0.1; 
+NewNeighbour; Destination: 172.24.0.1; 
+2025-08-05T09:06:56.654Z DEBUG slog: got a response for stream_id=100, headers=[":status: 200", "cf-team: 291b14f22100011c7632672400000001"] slog.target="httx::http3::client" slog.module_path="httx::http3::client" slog.file="/home/vsts_azpcontainer/.cargo/registry/src/freighter.rust.cfdata.org-59708f22138b42f9/httx-0.31.0/src/http3/client/mod.rs" slog.line=253 slog.column=17
+2025-08-05T09:06:56.940Z DEBUG tunnel_loop{protocol="masque" con_id="f3167fe12f9552954c006dc9820ff1b9366ebea9"}: warp_edge::tunnel_loop: Tunnel loop statistics stats=TunnelLoopStats { tun_packet_too_large: 0, edge_packet_too_large: 0, tun_packet_too_small: 0, edge_packet_too_small: 0, tun_packet_martian: 0, tun_packet_unhandled: 7, dropped_edge_packet: 0, dropped_tun_packet: 0, dropped_dns_packet: 0, successfully_retried_tun_packet: 0 }
+2025-08-05T09:07:11.645Z DEBUG slog: got a response for stream_id=104, headers=[":status: 200", "cf-team: 291b152cb600011c7632852400000001"] slog.target="httx::http3::client" slog.module_path="httx::http3::client" slog.file="/home/vsts_azpcontainer/.cargo/registry/src/freighter.rust.cfdata.org-59708f22138b42f9/httx-0.31.0/src/http3/client/mod.rs" slog.line=253 slog.column=17
+2025-08-05T09:07:18.352Z DEBUG actor_connectivity::connectivity: Routes changed:
+NewNeighbour; Destination: 172.24.0.1; 
+2025-08-05T09:07:23.985Z DEBUG actor_connectivity::connectivity: Routes changed:
+NewNeighbour; Destination: 172.24.0.1; 
+NewNeighbour; Destination: 172.24.0.1; 
+2025-08-05T09:07:26.794Z DEBUG slog: got a response for stream_id=108, headers=[":status: 200", "cf-team: 291b15676c00011c7632ac9400000001"] slog.target="httx::http3::client" slog.module_path="httx::http3::client" slog.file="/home/vsts_azpcontainer/.cargo/registry/src/freighter.rust.cfdata.org-59708f22138b42f9/httx-0.31.0/src/http3/client/mod.rs" slog.line=253 slog.column=17
+2025-08-05T09:07:41.701Z DEBUG slog: got a response for stream_id=112, headers=[":status: 200", "cf-team: 291b15a1e300011c7632ca8400000001"] slog.target="httx::http3::client" slog.module_path="httx::http3::client" slog.file="/home/vsts_azpcontainer/.cargo/registry/src/freighter.rust.cfdata.org-59708f22138b42f9/httx-0.31.0/src/http3/client/mod.rs" slog.line=253 slog.column=17
+2025-08-05T09:07:51.123Z DEBUG actor_connectivity::connectivity: Routes changed:
+NewNeighbour; Destination: 172.24.0.1; 
+2025-08-05T09:07:56.689Z DEBUG slog: got a response for stream_id=116, headers=[":status: 200", "cf-team: 291b15dc7b00011c7632e8b400000001"] slog.target="httx::http3::client" slog.module_path="httx::http3::client" slog.file="/home/vsts_azpcontainer/.cargo/registry/src/freighter.rust.cfdata.org-59708f22138b42f9/httx-0.31.0/src/http3/client/mod.rs" slog.line=253 slog.column=17
+2025-08-05T09:08:00.079Z DEBUG actor_connectivity::connectivity: Routes changed:
+NewNeighbour; Destination: 172.24.0.1; 
+NewNeighbour; Destination: 172.24.0.1; 
+2025-08-05T09:08:11.693Z DEBUG slog: got a response for stream_id=120, headers=[":status: 200", "cf-team: 291b16171100011c7632feb400000001"] slog.target="httx::http3::client" slog.module_path="httx::http3::client" slog.file="/home/vsts_azpcontainer/.cargo/registry/src/freighter.rust.cfdata.org-59708f22138b42f9/httx-0.31.0/src/http3/client/mod.rs" slog.line=253 slog.column=17
+2025-08-05T09:08:25.933Z DEBUG actor_connectivity::connectivity: Routes changed:
+NewNeighbour; Destination: 172.24.0.1; 
+2025-08-05T09:08:26.689Z DEBUG slog: got a response for stream_id=124, headers=[":status: 200", "cf-team: 291b1651a900011c76331ee400000001"] slog.target="httx::http3::client" slog.module_path="httx::http3::client" slog.file="/home/vsts_azpcontainer/.cargo/registry/src/freighter.rust.cfdata.org-59708f22138b42f9/httx-0.31.0/src/http3/client/mod.rs" slog.line=253 slog.column=17
+2025-08-05T09:08:31.821Z DEBUG actor_connectivity::connectivity: Routes changed:
+NewNeighbour; Destination: 172.24.0.1; 
+NewNeighbour; Destination: 172.24.0.1; 
+2025-08-05T09:08:41.690Z DEBUG slog: got a response for stream_id=128, headers=[":status: 200", "cf-team: 291b168c3f00011c76333dd400000001"] slog.target="httx::http3::client" slog.module_path="httx::http3::client" slog.file="/home/vsts_azpcontainer/.cargo/registry/src/freighter.rust.cfdata.org-59708f22138b42f9/httx-0.31.0/src/http3/client/mod.rs" slog.line=253 slog.column=17
+2025-08-05T09:08:50.847Z DEBUG upload_stats{stats=StatsPayload { counters: [CounterPayload { name: "message_bus.bus_driver_updates_sent", labels: {}, count: 2 }, CounterPayload { name: "main-loop-compat.commands_recv", labels: {}, count: 2 }, CounterPayload { name: "registration-verifier.commands_recv", labels: {}, count: 1 }, CounterPayload { name: "device-state.updates_recv", labels: {}, count: 2 }, CounterPayload { name: "watchdog.requests_recv", labels: {}, count: 4715 }, CounterPayload { name: "main-loop-compat.updates_recv", labels: {}, count: 2 }, CounterPayload { name: "message_bus.bus_driver_commands_sent", labels: {}, count: 4 }, CounterPayload { name: "statistics.commands_recv", labels: {}, count: 1 }, CounterPayload { name: "alternate-network.updates_recv", labels: {}, count: 2 }], summaries: [SummaryPayload { name: "dns_proxy.doh_avg_ms", labels: {}, sum: 414.0, count: 86 }, SummaryPayload { name: "firewall.fw_avg_ms", labels: {}, sum: 1156.0, count: 15 }, SummaryPayload { name: "happy_eyeballs.conn_attempts_all", labels: {}, sum: 1.0, count: 1 }, SummaryPayload { name: "message_bus.bus_driver_request_duration_sec_nano_sec", labels: {}, sum: 0.20301278200000025, count: 4715 }], gauges: [GaugesPayload { name: "happy_eyeballs.conn_attempts_current", labels: {}, value: 1.0 }, GaugesPayload { name: "ntp-clock.min_since_ntp_sync", labels: {}, value: 59.987712768 }] } context="timer"}: actor_statistics::handler: Starting to upload stats
+2025-08-05T09:08:50.847Z  WARN upload_stats{stats=StatsPayload { counters: [CounterPayload { name: "message_bus.bus_driver_updates_sent", labels: {}, count: 2 }, CounterPayload { name: "main-loop-compat.commands_recv", labels: {}, count: 2 }, CounterPayload { name: "registration-verifier.commands_recv", labels: {}, count: 1 }, CounterPayload { name: "device-state.updates_recv", labels: {}, count: 2 }, CounterPayload { name: "watchdog.requests_recv", labels: {}, count: 4715 }, CounterPayload { name: "main-loop-compat.updates_recv", labels: {}, count: 2 }, CounterPayload { name: "message_bus.bus_driver_commands_sent", labels: {}, count: 4 }, CounterPayload { name: "statistics.commands_recv", labels: {}, count: 1 }, CounterPayload { name: "alternate-network.updates_recv", labels: {}, count: 2 }], summaries: [SummaryPayload { name: "dns_proxy.doh_avg_ms", labels: {}, sum: 414.0, count: 86 }, SummaryPayload { name: "firewall.fw_avg_ms", labels: {}, sum: 1156.0, count: 15 }, SummaryPayload { name: "happy_eyeballs.conn_attempts_all", labels: {}, sum: 1.0, count: 1 }, SummaryPayload { name: "message_bus.bus_driver_request_duration_sec_nano_sec", labels: {}, sum: 0.20301278200000025, count: 4715 }], gauges: [GaugesPayload { name: "happy_eyeballs.conn_attempts_current", labels: {}, value: 1.0 }, GaugesPayload { name: "ntp-clock.min_since_ntp_sync", labels: {}, value: 59.987712768 }] } context="timer"}: actor_statistics::handler: Skipped uploading aggregate stats because registration was none!
+2025-08-05T09:08:56.684Z DEBUG slog: got a response for stream_id=132, headers=[":status: 200", "cf-team: 291b16c6d500011c7633590400000001"] slog.target="httx::http3::client" slog.module_path="httx::http3::client" slog.file="/home/vsts_azpcontainer/.cargo/registry/src/freighter.rust.cfdata.org-59708f22138b42f9/httx-0.31.0/src/http3/client/mod.rs" slog.line=253 slog.column=17
+2025-08-05T09:08:56.979Z DEBUG tunnel_loop{protocol="masque" con_id="f3167fe12f9552954c006dc9820ff1b9366ebea9"}: warp_edge::tunnel_loop: Tunnel loop statistics stats=TunnelLoopStats { tun_packet_too_large: 0, edge_packet_too_large: 0, tun_packet_too_small: 0, edge_packet_too_small: 0, tun_packet_martian: 0, tun_packet_unhandled: 7, dropped_edge_packet: 0, dropped_tun_packet: 0, dropped_dns_packet: 0, successfully_retried_tun_packet: 0 }
+2025-08-05T09:08:58.699Z DEBUG actor_connectivity::connectivity: Routes changed:
+NewNeighbour; Destination: 172.24.0.1; 
+2025-08-05T09:09:04.075Z DEBUG actor_connectivity::connectivity: Routes changed:
+NewNeighbour; Destination: 172.24.0.1; 
+NewNeighbour; Destination: 172.24.0.1; 
+2025-08-05T09:09:11.695Z DEBUG slog: got a response for stream_id=136, headers=[":status: 200", "cf-team: 291b17016e00011c7633829400000001"] slog.target="httx::http3::client" slog.module_path="httx::http3::client" slog.file="/home/vsts_azpcontainer/.cargo/registry/src/freighter.rust.cfdata.org-59708f22138b42f9/httx-0.31.0/src/http3/client/mod.rs" slog.line=253 slog.column=17

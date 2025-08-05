@@ -29,4 +29,3 @@ USER tor
 
 # Point d'entrée
 ENTRYPOINT ["/entrypoint.sh"]
-

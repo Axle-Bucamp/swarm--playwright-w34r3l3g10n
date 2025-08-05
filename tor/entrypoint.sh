@@ -177,4 +177,3 @@ main() {
 
 # Point d'entrée
 main "$@"
-

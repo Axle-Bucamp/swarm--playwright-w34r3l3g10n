@@ -1,0 +1,1 @@
+2025-08-05T09:00:53.763Z DEBUG boringtun::noise: Sending handshake_initiation
